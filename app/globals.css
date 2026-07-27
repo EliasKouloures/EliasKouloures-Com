@@ -549,9 +549,10 @@ button:focus-visible {
 
 .proof-item strong {
   color: var(--ink);
-  font-size: clamp(1.45rem, 2.2vw, 2.45rem);
-  font-weight: 520;
-  letter-spacing: -0.04em;
+  font-size: clamp(1.1rem, 1.55vw, 1.7rem);
+  font-weight: 560;
+  letter-spacing: -0.035em;
+  line-height: 1.08;
 }
 
 .proof-item span {
@@ -621,7 +622,7 @@ button:focus-visible {
 }
 
 .capability-card {
-  min-height: 280px;
+  min-height: 235px;
   padding: 34px;
   border-right: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
@@ -635,18 +636,12 @@ button:focus-visible {
   background: rgba(104, 241, 219, 0.035);
 }
 
-.capability-card > span {
-  color: var(--gold);
-  font-size: 0.67rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
-}
-
 .capability-card h3 {
-  margin: 78px 0 14px;
-  font-size: 1.35rem;
+  margin: 0 0 18px;
+  font-size: clamp(1.45rem, 2vw, 2rem);
   font-weight: 540;
-  letter-spacing: -0.025em;
+  letter-spacing: -0.035em;
+  line-height: 1.1;
 }
 
 .capability-card p {
@@ -665,9 +660,9 @@ button:focus-visible {
   background-image:
     linear-gradient(
       90deg,
-      rgba(5, 5, 9, 0.18) 0%,
-      rgba(5, 5, 9, 0.22) 48%,
-      rgba(5, 5, 9, 0.8) 100%
+      rgba(5, 5, 9, 0.82) 0%,
+      rgba(5, 5, 9, 0.28) 52%,
+      rgba(5, 5, 9, 0.12) 100%
     ),
     linear-gradient(0deg, rgba(5, 5, 9, 0.82), transparent 45%),
     var(--section-image);
@@ -677,7 +672,7 @@ button:focus-visible {
   display: flex;
   min-height: inherit;
   align-items: center;
-  justify-content: flex-end;
+  justify-content: flex-start;
   padding-block: 90px;
 }
 
@@ -729,27 +724,12 @@ button:focus-visible {
     rgba(7, 7, 11, 0.48);
 }
 
-.work-card-top {
-  display: flex;
-  align-items: flex-start;
-  justify-content: space-between;
-  gap: 24px;
-}
-
 .work-card h3 {
   margin: 0;
-  font-size: 1.4rem;
+  font-size: clamp(1.45rem, 2vw, 2rem);
   font-weight: 540;
-  letter-spacing: -0.025em;
-}
-
-.work-card strong {
-  flex: 0 0 auto;
-  color: var(--teal);
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.08em;
-  text-transform: uppercase;
+  letter-spacing: -0.035em;
+  line-height: 1.1;
 }
 
 .work-card p {
@@ -769,19 +749,12 @@ button:focus-visible {
 
 .engagement-list article {
   display: grid;
-  grid-template-columns: 70px minmax(0, 1fr) 180px;
+  grid-template-columns: minmax(0, 1fr) 180px;
   align-items: center;
   gap: 28px;
   min-height: 190px;
   padding: 32px 0;
   border-bottom: 1px solid var(--line);
-}
-
-.engagement-list article > span {
-  color: var(--gold);
-  font-size: 0.66rem;
-  font-weight: 700;
-  letter-spacing: 0.12em;
 }
 
 .engagement-list h3 {
@@ -850,10 +823,22 @@ button:focus-visible {
 
 .playlist-fallback {
   display: flex;
+  width: 100%;
   align-items: flex-end;
   justify-content: space-between;
   gap: 40px;
   padding: clamp(30px, 6vw, 78px);
+  color: inherit;
+  cursor: pointer;
+  text-align: left;
+  transition:
+    border-color 200ms ease,
+    filter 200ms ease;
+}
+
+.playlist-fallback:hover {
+  border-color: rgba(104, 241, 219, 0.52);
+  filter: brightness(1.06);
 }
 
 .playlist-fallback > div {
@@ -873,6 +858,45 @@ button:focus-visible {
   margin: 24px 0 0;
   color: var(--muted);
   line-height: 1.7;
+}
+
+.playlist-fallback .button {
+  flex: 0 0 auto;
+  pointer-events: none;
+}
+
+.playlist-channel-links {
+  display: flex;
+  justify-content: space-between;
+  gap: 24px;
+  padding: 18px 4px 0;
+}
+
+.playlist-channel-links a {
+  color: var(--muted);
+  font-size: 0.72rem;
+  font-weight: 650;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  transition: color 180ms ease;
+}
+
+.playlist-channel-links a:hover {
+  color: var(--teal);
+}
+
+.playlist-embed {
+  overflow: hidden;
+  aspect-ratio: 16 / 9;
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  background: #0c0c12;
+}
+
+.playlist-embed iframe {
+  width: 100%;
+  height: 100%;
+  border: 0;
 }
 
 .video-list {
@@ -926,16 +950,6 @@ button:focus-visible {
     transparent 55%,
     rgba(4, 4, 8, 0.2)
   );
-}
-
-.video-index {
-  position: absolute;
-  top: 30px;
-  left: 30px;
-  color: rgba(255, 255, 255, 0.66);
-  font-size: 0.7rem;
-  font-weight: 700;
-  letter-spacing: 0.13em;
 }
 
 .play-button {
@@ -1530,7 +1544,7 @@ button:focus-visible {
   }
 
   .proof-item strong {
-    font-size: 1.45rem;
+    font-size: 1.18rem;
   }
 
   .proof-item span {
@@ -1557,12 +1571,12 @@ button:focus-visible {
   }
 
   .capability-card {
-    min-height: 230px;
+    min-height: 205px;
     padding: 28px;
   }
 
   .capability-card h3 {
-    margin-top: 58px;
+    margin-top: 0;
   }
 
   .editorial {
@@ -1604,13 +1618,12 @@ button:focus-visible {
   }
 
   .engagement-list article {
-    grid-template-columns: 42px 1fr;
+    grid-template-columns: 1fr;
     gap: 16px;
     padding: 32px 0;
   }
 
   .engagement-list article > strong {
-    grid-column: 2;
     justify-self: start;
     text-align: left;
   }
@@ -1626,6 +1639,12 @@ button:focus-visible {
     width: 100%;
   }
 
+  .playlist-channel-links {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 12px;
+  }
+
   .video-list {
     gap: 16px;
   }
@@ -1637,11 +1656,6 @@ button:focus-visible {
   .play-button {
     width: 58px;
     height: 58px;
-  }
-
-  .video-index {
-    top: 18px;
-    left: 18px;
   }
 
   .video-title {
@@ -1745,11 +1759,6 @@ button:focus-visible {
 
   .proof-item {
     padding: 17px 14px;
-  }
-
-  .work-card-top {
-    flex-direction: column;
-    gap: 9px;
   }
 
   .work-card p {

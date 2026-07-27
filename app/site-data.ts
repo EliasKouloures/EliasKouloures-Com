@@ -5,7 +5,6 @@ export type ServicePageData = {
   pairSlug: string;
   language: Language;
   label: string;
-  counterpartLabel: string;
   eyebrow: string;
   title: string;
   intro: string;
@@ -15,13 +14,13 @@ export type ServicePageData = {
   proof: Array<{ value: string; label: string }>;
   capabilityHeading: string;
   capabilityIntro: string;
-  capabilities: Array<{ number: string; title: string; text: string }>;
+  capabilities: Array<{ title: string; text: string }>;
   editorialKicker: string;
   editorialTitle: string;
   editorialText: string;
   workHeading: string;
   workIntro: string;
-  work: Array<{ title: string; result: string; text: string }>;
+  work: Array<{ title: string; text: string }>;
   engagementHeading: string;
   engagements: Array<{ title: string; timing: string; text: string }>;
   playlistHeading: string;
@@ -35,6 +34,12 @@ export const contact = {
   calendar: "https://calendar.app.google/ANb76KDuvg4J7LS28",
   linkedin: "https://linkedin.com/in/eliaskouloures",
   github: "https://github.com/EliasKouloures",
+  youtube: "https://www.youtube.com/channel/UCNnTHykYkGaNaJPIe2WWtVA",
+};
+
+export const youtube = {
+  userId: "NnTHykYkGaNaJPIe2WWtVA",
+  channelId: "UCNnTHykYkGaNaJPIe2WWtVA",
 };
 
 export const services: Record<string, ServicePageData> = {
@@ -43,7 +48,6 @@ export const services: Record<string, ServicePageData> = {
     pairSlug: "loesen",
     language: "en",
     label: "SOLVE",
-    counterpartLabel: "LÖSEN",
     eyebrow: "SOLVE · SENIOR ADVISORY",
     title: "When the problem has no playbook, bring it here.",
     intro:
@@ -54,44 +58,40 @@ export const services: Record<string, ServicePageData> = {
       "/images/EliasKouloures-Com_Background_Image_Coding.png",
     playlistId: "PL66aLwkPo2YqtBCXQExJz14zxIAoFu-Tk",
     proof: [
-      { value: "24", label: "international awards" },
-      { value: "401%", label: "crowdfunding result" },
-      { value: "35", label: "jobs protected" },
-      { value: "8 days", label: "to B2B proposal" },
-      { value: "2 weeks", label: "to launch" },
+      { value: "Awarded", label: "24 international awards across creative and innovation work." },
+      { value: "Crowdfunded", label: "COBI reached 401% of its Kickstarter goal." },
+      { value: "Jobs protected", label: "A zero-CAPEX response secured 35 roles during lockdown." },
+      { value: "Retail system", label: "A B2B assistant proposal for 7,200 German stores in 8 days." },
+      { value: "Venture launch", label: "The 360X venture website launched in 2 weeks." },
     ],
-    capabilityHeading: "You do not hire a deck. You deploy an operator.",
+    capabilityHeading:
+      "You don’t book a presentation. You get a full-stack problem solver.",
     capabilityIntro:
       "I enter where the brief is incomplete, the stakes are high and disciplines collide. Then I reduce the problem to what is true, what matters and what can be shipped.",
     capabilities: [
       {
-        number: "01",
         title: "Built for chaos",
         text: "Ambiguous mandates, conflicting incentives and compressed timelines are the starting point—not an exception.",
       },
       {
-        number: "02",
         title: "Think, build, deploy",
         text: "Strategy, creative direction, data and AI execution stay connected from diagnosis to working output.",
       },
       {
-        number: "03",
         title: "Systems from wreckage",
         text: "I turn scattered evidence, tools and stakeholders into a decision system your team can keep using.",
       },
       {
-        number: "04",
         title: "Human + machine fluency",
         text: "AI accelerates the work. Judgment, accountability and the final quality gate remain human.",
       },
       {
-        number: "05",
         title: "Speed under pressure",
         text: "Short feedback loops expose risk early and move useful work into the world quickly.",
       },
     ],
     editorialKicker: "THE OPERATING PRINCIPLE",
-    editorialTitle: "Find the constraint. Build the system. Leave evidence.",
+    editorialTitle: "Find the constraint. Build the system. Leave the playbook.",
     editorialText:
       "Every engagement is structured around decisions that can be explained, tested and handed over. No black box, no theatre, no dependency by design.",
     workHeading: "Selected proof under pressure",
@@ -100,32 +100,26 @@ export const services: Record<string, ServicePageData> = {
     work: [
       {
         title: "Samsung",
-        result: "8 days",
-        text: "Built a B2B assistant proposal for 7,200 German retail stores—from use case logic to delivery system.",
+        text: "In 8 days, built a B2B assistant proposal for 7,200 German retail stores—from use case logic to delivery system.",
       },
       {
         title: "Commerzbank · 360X",
-        result: "2 weeks",
-        text: "Launched a venture website with language aligned for BaFin and Deutsche Börse stakeholders.",
+        text: "In 2 weeks, launched a venture website with language aligned for BaFin and Deutsche Börse stakeholders.",
       },
       {
         title: "Berlin hospitality",
-        result: "35 jobs",
-        text: "Designed a zero-CAPEX livestream response that kept a nightlife SME operating during lockdown.",
+        text: "Designed a zero-CAPEX livestream response that kept a nightlife SME operating and protected 35 jobs during lockdown.",
       },
       {
         title: "COBI",
-        result: "401%",
         text: "Helped take a connected-bike proposition through Kickstarter, 13 markets, 250+ press features and the path to acquisition by Bosch.",
       },
       {
         title: "Federal budget",
-        result: "€10bn+",
         text: "Mapped double-digit-billion-euro savings potential through a first-principles review of public spending.",
       },
       {
         title: "AI systems",
-        result: "Evidence-first",
         text: "Designed prompt architectures, evaluation gates and retrieval systems for outputs people can inspect.",
       },
     ],
@@ -159,7 +153,6 @@ export const services: Record<string, ServicePageData> = {
     pairSlug: "solve",
     language: "de",
     label: "LÖSEN",
-    counterpartLabel: "SOLVE",
     eyebrow: "LÖSEN · SENIOR ADVISORY",
     title: "Wenn es keine Anleitung gibt, bringen Sie das Problem zu mir.",
     intro:
@@ -170,44 +163,40 @@ export const services: Record<string, ServicePageData> = {
       "/images/EliasKouloures-Com_Background_Image_Coding.png",
     playlistId: "PL66aLwkPo2YqtBCXQExJz14zxIAoFu-Tk",
     proof: [
-      { value: "24", label: "internationale Awards" },
-      { value: "401 %", label: "Crowdfunding-Ergebnis" },
-      { value: "35", label: "gesicherte Arbeitsplätze" },
-      { value: "8 Tage", label: "bis zum B2B-Konzept" },
-      { value: "2 Wochen", label: "bis zum Launch" },
+      { value: "Ausgezeichnet", label: "24 internationale Awards für Kreation und Innovation." },
+      { value: "Crowdfunding", label: "COBI erreichte 401 % des Kickstarter-Ziels." },
+      { value: "Jobs gesichert", label: "Eine Zero-CAPEX-Lösung sicherte im Lockdown 35 Arbeitsplätze." },
+      { value: "Handelssystem", label: "B2B-Assistant-Konzept für 7.200 deutsche Stores in 8 Tagen." },
+      { value: "Venture-Launch", label: "Die 360X Venture-Website ging in 2 Wochen live." },
     ],
-    capabilityHeading: "Sie buchen keine Präsentation. Sie setzen einen Operator ein.",
+    capabilityHeading:
+      "Sie buchen keine Präsentation. Sondern einen Full-Stack Problemlöser.",
     capabilityIntro:
       "Ich steige dort ein, wo das Briefing lückenhaft, der Einsatz hoch und mehrere Disziplinen betroffen sind. Dann reduziere ich das Problem auf Fakten, Prioritäten und lieferbare Ergebnisse.",
     capabilities: [
       {
-        number: "01",
         title: "Für Chaos gebaut",
         text: "Unklare Mandate, widersprüchliche Interessen und knappe Zeit sind der Ausgangspunkt—nicht die Ausnahme.",
       },
       {
-        number: "02",
         title: "Denken, bauen, umsetzen",
         text: "Strategie, Kreation, Daten und KI bleiben von der Diagnose bis zum fertigen Ergebnis verbunden.",
       },
       {
-        number: "03",
         title: "Systeme aus Fragmenten",
         text: "Aus verstreuten Fakten, Tools und Beteiligten entsteht ein Entscheidungssystem, das Ihr Team weiter nutzen kann.",
       },
       {
-        number: "04",
         title: "Mensch + Maschine",
         text: "KI beschleunigt die Arbeit. Urteilskraft, Verantwortung und die letzte Qualitätskontrolle bleiben menschlich.",
       },
       {
-        number: "05",
         title: "Tempo unter Druck",
         text: "Kurze Feedbackschleifen machen Risiken früh sichtbar und bringen brauchbare Arbeit schnell in die Anwendung.",
       },
     ],
     editorialKicker: "DAS ARBEITSPRINZIP",
-    editorialTitle: "Engpass finden. System bauen. Nachweise hinterlassen.",
+    editorialTitle: "Engpass finden. System bauen. Anleitung hinterlassen.",
     editorialText:
       "Jedes Mandat wird um Entscheidungen gebaut, die erklärbar, testbar und übertragbar sind. Keine Blackbox, kein Theater, keine gewollte Abhängigkeit.",
     workHeading: "Ausgewählte Ergebnisse unter Druck",
@@ -216,32 +205,26 @@ export const services: Record<string, ServicePageData> = {
     work: [
       {
         title: "Samsung",
-        result: "8 Tage",
-        text: "B2B-Assistant-Konzept für 7.200 deutsche Stores entwickelt—von der Use-Case-Logik bis zum Umsetzungssystem.",
+        text: "In 8 Tagen ein B2B-Assistant-Konzept für 7.200 deutsche Stores entwickelt—von der Use-Case-Logik bis zum Umsetzungssystem.",
       },
       {
         title: "Commerzbank · 360X",
-        result: "2 Wochen",
-        text: "Venture-Website gelauncht; Formulierungen auf BaFin- und Deutsche-Börse-Stakeholder abgestimmt.",
+        text: "In 2 Wochen eine Venture-Website gelauncht; Formulierungen auf BaFin- und Deutsche-Börse-Stakeholder abgestimmt.",
       },
       {
         title: "Berliner Gastronomie",
-        result: "35 Jobs",
-        text: "Zero-CAPEX-Livestream-Lösung entwickelt, die einen Nightlife-Mittelständler im Lockdown handlungsfähig hielt.",
+        text: "Zero-CAPEX-Livestream-Lösung entwickelt, die einen Nightlife-Mittelständler handlungsfähig hielt und im Lockdown 35 Arbeitsplätze sicherte.",
       },
       {
         title: "COBI",
-        result: "401 %",
         text: "Eine Connected-Bike-Idee über Kickstarter, 13 Märkte und 250+ Presseberichte bis auf den Weg zur Bosch-Übernahme begleitet.",
       },
       {
         title: "Bundeshaushalt",
-        result: "10+ Mrd. €",
         text: "Mit einer Erstprinzipien-Analyse zweistelliges Milliardenpotenzial bei öffentlichen Ausgaben sichtbar gemacht.",
       },
       {
         title: "KI-Systeme",
-        result: "Nachweisbar",
         text: "Prompt-Architekturen, Evaluationsschranken und Retrieval-Systeme für überprüfbare Ergebnisse entwickelt.",
       },
     ],
@@ -275,7 +258,6 @@ export const services: Record<string, ServicePageData> = {
     pairSlug: "fortbilden",
     language: "en",
     label: "EDUCATE",
-    counterpartLabel: "FORTBILDEN",
     eyebrow: "EDUCATE · APPLIED AI LITERACY",
     title: "Turn AI confusion into a working capability.",
     intro:
@@ -286,42 +268,36 @@ export const services: Record<string, ServicePageData> = {
       "/images/EliasKouloures-Com_Background_Image_Business_Meeting.png",
     playlistId: "PL66aLwkPo2YqLUhYuNpuVYOS_vwEuLvhl",
     proof: [
-      { value: "150+", label: "keynotes & workshops" },
-      { value: "5 levels", label: "of explanation" },
-      { value: "30/60/90", label: "day roadmaps" },
-      { value: "DE + EN", label: "native delivery" },
+      { value: "Proven delivery", label: "More than 150 keynotes and workshops." },
+      { value: "Any audience", label: "Complex ideas explained across five levels." },
+      { value: "Actionable", label: "Clear 30/60/90-day capability roadmaps." },
+      { value: "Bilingual", label: "Native delivery in German and English." },
     ],
     capabilityHeading: "Knowledge becomes valuable when behaviour changes.",
     capabilityIntro:
       "I meet every audience at its real starting point, remove status games and make the next useful action obvious.",
     capabilities: [
       {
-        number: "01",
         title: "C-suite 1:1",
         text: "Private briefings for decisions, risk, opportunity and the questions leaders cannot delegate.",
       },
       {
-        number: "02",
         title: "Role-based team tracks",
         text: "Marketing, HR, product, operations and creative teams learn with examples from their actual work.",
       },
       {
-        number: "03",
         title: "Organisation roadmaps",
         text: "A shared capability model, priorities and a practical 30/60/90-day path.",
       },
       {
-        number: "04",
         title: "Hands-on workflows",
         text: "People leave having built something they can use the next morning.",
       },
       {
-        number: "05",
         title: "Prompt libraries",
         text: "Reusable patterns, evaluation criteria and guardrails instead of one-off tricks.",
       },
       {
-        number: "06",
         title: "Accessible by design",
         text: "From baby to boomer, neurodiverse teams to expert rooms: complexity without exclusion.",
       },
@@ -336,22 +312,18 @@ export const services: Record<string, ServicePageData> = {
     work: [
       {
         title: "Leadership",
-        result: "Decide",
         text: "C-suite briefings that connect technical reality to strategy, governance and investment.",
       },
       {
         title: "Teams",
-        result: "Apply",
         text: "Role-based sessions with workflows, prompts and quality gates grounded in daily work.",
       },
       {
         title: "Organisations",
-        result: "Scale",
         text: "Capability maps and roadmaps that turn isolated experiments into a coherent operating model.",
       },
       {
         title: "Schools & families",
-        result: "Understand",
         text: "Clear, age-aware guidance for using AI without surrendering curiosity, judgment or agency.",
       },
     ],
@@ -385,7 +357,6 @@ export const services: Record<string, ServicePageData> = {
     pairSlug: "educate",
     language: "de",
     label: "FORTBILDEN",
-    counterpartLabel: "EDUCATE",
     eyebrow: "FORTBILDEN · ANGEWANDTE KI-KOMPETENZ",
     title: "Machen Sie aus KI-Verwirrung echte Handlungsfähigkeit.",
     intro:
@@ -396,42 +367,36 @@ export const services: Record<string, ServicePageData> = {
       "/images/EliasKouloures-Com_Background_Image_Business_Meeting.png",
     playlistId: "PL66aLwkPo2YqLUhYuNpuVYOS_vwEuLvhl",
     proof: [
-      { value: "150+", label: "Keynotes & Workshops" },
-      { value: "5 Ebenen", label: "der Erklärung" },
-      { value: "30/60/90", label: "Tage im Fahrplan" },
-      { value: "DE + EN", label: "native Vermittlung" },
+      { value: "Praxiserprobt", label: "Mehr als 150 Keynotes und Workshops." },
+      { value: "Für jedes Niveau", label: "Komplexe Inhalte auf fünf Ebenen erklärt." },
+      { value: "Umsetzbar", label: "Klare 30/60/90-Tage-Kompetenzfahrpläne." },
+      { value: "Zweisprachig", label: "Native Vermittlung auf Deutsch und Englisch." },
     ],
     capabilityHeading: "Wissen wird wertvoll, wenn sich Verhalten verändert.",
     capabilityIntro:
       "Ich hole jede Zielgruppe an ihrem tatsächlichen Ausgangspunkt ab, nehme Statusspiele aus dem Raum und mache den nächsten sinnvollen Schritt klar.",
     capabilities: [
       {
-        number: "01",
         title: "C-Suite 1:1",
         text: "Vertrauliche Briefings zu Entscheidungen, Risiken, Chancen und Fragen, die Führungskräfte nicht delegieren können.",
       },
       {
-        number: "02",
         title: "Rollenbasierte Team-Tracks",
         text: "Marketing, HR, Produkt, Operations und Kreation lernen an Beispielen aus ihrer echten Arbeit.",
       },
       {
-        number: "03",
         title: "Organisations-Roadmaps",
         text: "Ein gemeinsames Kompetenzmodell, klare Prioritäten und ein praktischer 30/60/90-Tage-Pfad.",
       },
       {
-        number: "04",
         title: "Hands-on-Workflows",
         text: "Menschen verlassen den Raum mit etwas, das sie am nächsten Morgen einsetzen können.",
       },
       {
-        number: "05",
         title: "Prompt-Bibliotheken",
         text: "Wiederverwendbare Muster, Bewertungskriterien und Leitplanken statt einmaliger Tricks.",
       },
       {
-        number: "06",
         title: "Zugänglich konzipiert",
         text: "Vom Baby bis zum Boomer, neurodiverse Teams bis zum Expertenkreis: Komplexität ohne Ausschluss.",
       },
@@ -446,22 +411,18 @@ export const services: Record<string, ServicePageData> = {
     work: [
       {
         title: "Führung",
-        result: "Entscheiden",
         text: "C-Suite-Briefings, die technische Realität mit Strategie, Governance und Investitionen verbinden.",
       },
       {
         title: "Teams",
-        result: "Anwenden",
         text: "Rollenbasierte Sessions mit Workflows, Prompts und Qualitätskontrollen aus dem Arbeitsalltag.",
       },
       {
         title: "Organisationen",
-        result: "Skalieren",
         text: "Kompetenzmodelle und Roadmaps, die einzelne Experimente in ein schlüssiges Betriebsmodell überführen.",
       },
       {
         title: "Schulen & Familien",
-        result: "Verstehen",
         text: "Klare, altersgerechte Orientierung für KI-Nutzung ohne Verlust von Neugier, Urteilskraft oder Selbstbestimmung.",
       },
     ],
@@ -495,7 +456,6 @@ export const services: Record<string, ServicePageData> = {
     pairSlug: "entwickeln",
     language: "en",
     label: "CREATE",
-    counterpartLabel: "ENTWICKELN",
     eyebrow: "CREATE · MULTIMEDIA SYSTEMS",
     title: "Turn the idea into an image, film or song that earns attention.",
     intro:
@@ -506,42 +466,36 @@ export const services: Record<string, ServicePageData> = {
       "/images/EliasKouloures-Com_Background_Image_Sci-Fi_Steampunk_Device.png",
     playlistId: "PL66aLwkPo2YqZ00aBJcmxbCSqgFYavoN-",
     proof: [
-      { value: "25+", label: "years creating" },
-      { value: "24", label: "international awards" },
-      { value: "~300", label: "engagements" },
-      { value: "150+", label: "European brands" },
+      { value: "Deep craft", label: "More than 25 years of creative practice." },
+      { value: "Recognised", label: "24 international creative awards." },
+      { value: "Battle-tested", label: "Around 300 completed engagements." },
+      { value: "European reach", label: "Work for more than 150 European brands." },
     ],
     capabilityHeading: "One idea. One world. A system that can make more.",
     capabilityIntro:
       "I combine concept, direction, generation and quality control so every asset belongs to the same visual and strategic universe.",
     capabilities: [
       {
-        number: "01",
         title: "AI images",
         text: "Art direction, prompt architecture and final selection for images with intention—not visual noise.",
       },
       {
-        number: "02",
         title: "AI films",
         text: "Concept, storyboard, shot generation, edit logic and sound designed as one narrative system.",
       },
       {
-        number: "03",
         title: "AI music",
         text: "Original sonic directions, lyrical concepts and production briefs aligned to audience and use.",
       },
       {
-        number: "04",
         title: "Production pipelines",
         text: "Prompt-optimised workflows that preserve character, tone and quality across many outputs.",
       },
       {
-        number: "05",
         title: "Campaign content",
         text: "A coherent family of assets designed for the formats and moments that matter.",
       },
       {
-        number: "06",
         title: "Direction + transfer",
         text: "Making-of logic, reusable templates and a clean handover so the capability remains.",
       },
@@ -556,22 +510,18 @@ export const services: Record<string, ServicePageData> = {
     work: [
       {
         title: "Visual worlds",
-        result: "Recognisable",
         text: "A defined image language with repeatable composition, light, material and character rules.",
       },
       {
         title: "Film systems",
-        result: "Cinematic",
         text: "Shot logic and editorial rhythm that connect generated scenes into a purposeful whole.",
       },
       {
         title: "Sonic identity",
-        result: "Memorable",
         text: "Music and sound directions that reinforce the emotional job of the communication.",
       },
       {
         title: "GTM content",
-        result: "Deployable",
         text: "Modular assets mapped to audience, channel, funnel moment and production reality.",
       },
     ],
@@ -605,7 +555,6 @@ export const services: Record<string, ServicePageData> = {
     pairSlug: "create",
     language: "de",
     label: "ENTWICKELN",
-    counterpartLabel: "CREATE",
     eyebrow: "ENTWICKELN · MULTIMEDIA-SYSTEME",
     title: "Machen Sie aus der Idee ein Bild, einen Film oder einen Song, der Aufmerksamkeit verdient.",
     intro:
@@ -616,42 +565,36 @@ export const services: Record<string, ServicePageData> = {
       "/images/EliasKouloures-Com_Background_Image_Sci-Fi_Steampunk_Device.png",
     playlistId: "PL66aLwkPo2YqZ00aBJcmxbCSqgFYavoN-",
     proof: [
-      { value: "25+", label: "Jahre Kreation" },
-      { value: "24", label: "internationale Awards" },
-      { value: "~300", label: "Mandate" },
-      { value: "150+", label: "europäische Marken" },
+      { value: "Tiefes Handwerk", label: "Mehr als 25 Jahre kreative Praxis." },
+      { value: "Ausgezeichnet", label: "24 internationale Kreativ-Awards." },
+      { value: "Praxiserprobt", label: "Rund 300 abgeschlossene Mandate." },
+      { value: "Europäische Reichweite", label: "Arbeit für mehr als 150 europäische Marken." },
     ],
     capabilityHeading: "Eine Idee. Eine Welt. Ein System, das mehr erzeugen kann.",
     capabilityIntro:
       "Ich verbinde Konzept, Direktion, Generierung und Qualitätskontrolle, damit jedes Asset zum selben visuellen und strategischen Universum gehört.",
     capabilities: [
       {
-        number: "01",
         title: "KI-Bilder",
         text: "Art Direction, Prompt-Architektur und finale Auswahl für Bilder mit Absicht—statt visuellem Rauschen.",
       },
       {
-        number: "02",
         title: "KI-Filme",
         text: "Konzept, Storyboard, Shot-Generierung, Schnittlogik und Sound als ein zusammenhängendes Erzählsystem.",
       },
       {
-        number: "03",
         title: "KI-Musik",
         text: "Originäre Klangrichtungen, Textkonzepte und Produktionsbriefings passend zu Zielgruppe und Einsatz.",
       },
       {
-        number: "04",
         title: "Produktionspipelines",
         text: "Prompt-optimierte Workflows, die Charakter, Tonalität und Qualität über viele Outputs hinweg sichern.",
       },
       {
-        number: "05",
         title: "Kampagnen-Content",
         text: "Eine zusammenhängende Asset-Familie für die Formate und Momente, die zählen.",
       },
       {
-        number: "06",
         title: "Direktion + Transfer",
         text: "Making-of-Logik, wiederverwendbare Vorlagen und saubere Übergabe, damit die Fähigkeit bleibt.",
       },
@@ -666,22 +609,18 @@ export const services: Record<string, ServicePageData> = {
     work: [
       {
         title: "Visuelle Welten",
-        result: "Erkennbar",
         text: "Eine definierte Bildsprache mit wiederholbaren Regeln für Komposition, Licht, Material und Charakter.",
       },
       {
         title: "Filmsysteme",
-        result: "Cineastisch",
         text: "Shot-Logik und Schnittrhythmus, die generierte Szenen zu einem sinnvollen Ganzen verbinden.",
       },
       {
         title: "Klangidentität",
-        result: "Einprägsam",
         text: "Musik- und Soundrichtungen, die die emotionale Aufgabe der Kommunikation verstärken.",
       },
       {
         title: "GTM-Content",
-        result: "Einsetzbar",
         text: "Modulare Assets, abgestimmt auf Zielgruppe, Kanal, Funnel-Moment und Produktionsrealität.",
       },
     ],

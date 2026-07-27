@@ -21,7 +21,6 @@ export function ServicePage({ data }: ServicePageProps) {
       <SiteHeader
         language={data.language}
         pairSlug={data.pairSlug}
-        counterpartLabel={data.counterpartLabel}
       />
       <section
         className="service-hero image-section"
@@ -72,8 +71,7 @@ export function ServicePage({ data }: ServicePageProps) {
           </div>
           <div className="capability-grid">
             {data.capabilities.map((capability) => (
-              <article className="capability-card" key={capability.number}>
-                <span>{capability.number}</span>
+              <article className="capability-card" key={capability.title}>
                 <h3>{capability.title}</h3>
                 <p>{capability.text}</p>
               </article>
@@ -105,10 +103,7 @@ export function ServicePage({ data }: ServicePageProps) {
           <div className="work-grid">
             {data.work.map((item) => (
               <article className="work-card" key={item.title}>
-                <div className="work-card-top">
-                  <h3>{item.title}</h3>
-                  <strong>{item.result}</strong>
-                </div>
+                <h3>{item.title}</h3>
                 <p>{item.text}</p>
               </article>
             ))}
@@ -123,9 +118,8 @@ export function ServicePage({ data }: ServicePageProps) {
             <h2>{data.engagementHeading}</h2>
           </div>
           <div className="engagement-list">
-            {data.engagements.map((item, index) => (
+            {data.engagements.map((item) => (
               <article key={item.title}>
-                <span>{String(index + 1).padStart(2, "0")}</span>
                 <div>
                   <h3>{item.title}</h3>
                   <p>{item.text}</p>

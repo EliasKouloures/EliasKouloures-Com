@@ -5,6 +5,7 @@ const PLAYLIST_IDS = new Set([
   "PL66aLwkPo2YqLUhYuNpuVYOS_vwEuLvhl",
   "PL66aLwkPo2YqZ00aBJcmxbCSqgFYavoN-",
 ]);
+const YOUTUBE_CHANNEL_ID = "UCNnTHykYkGaNaJPIe2WWtVA";
 
 type YouTubePlaylistItem = {
   snippet?: {
@@ -41,9 +42,10 @@ export async function GET(request: NextRequest) {
     return NextResponse.json(
       {
         configured: false,
+        channelId: YOUTUBE_CHANNEL_ID,
         playlistUrl,
         message:
-          "The automatic gallery is configured and will activate when YOUTUBE_API_KEY is added.",
+          "The channel is connected. The official playlist player is available without an API key.",
       },
       {
         headers: { "Cache-Control": "no-store" },
@@ -105,7 +107,12 @@ export async function GET(request: NextRequest) {
     } while (pageToken);
 
     return NextResponse.json(
-      { configured: true, playlistUrl, videos },
+      {
+        configured: true,
+        channelId: YOUTUBE_CHANNEL_ID,
+        playlistUrl,
+        videos,
+      },
       {
         headers: {
           "Cache-Control": "public, max-age=600, s-maxage=3600",

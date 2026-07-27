@@ -41,6 +41,9 @@ export function SiteFooter() {
             <a href={contact.github} target="_blank" rel="noreferrer">
               GitHub <span aria-hidden="true">↗</span>
             </a>
+            <a href={contact.youtube} target="_blank" rel="noreferrer">
+              YouTube <span aria-hidden="true">↗</span>
+            </a>
           </div>
         </div>
       </div>

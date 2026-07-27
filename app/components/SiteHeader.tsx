@@ -4,13 +4,11 @@ import { contact, type Language } from "../site-data";
 type SiteHeaderProps = {
   language?: Language;
   pairSlug?: string;
-  counterpartLabel?: string;
 };
 
 export function SiteHeader({
   language = "en",
   pairSlug,
-  counterpartLabel,
 }: SiteHeaderProps) {
   const isGerman = language === "de";
 
@@ -23,9 +21,9 @@ export function SiteHeader({
         </Link>
 
         <nav className="header-actions" aria-label="Primary navigation">
-          {pairSlug && counterpartLabel ? (
+          {pairSlug ? (
             <Link className="language-link" href={`/${pairSlug}`}>
-              {counterpartLabel}
+              {isGerman ? "ENGLISH" : "DEUTSCH"}
             </Link>
           ) : null}
           <a className="text-link header-email" href={`mailto:${contact.email}`}>

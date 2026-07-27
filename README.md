@@ -28,9 +28,15 @@ YouTube Data API v3 key to activate automatic playlist loading:
 cp .env.example .env.local
 ```
 
-Then set `YOUTUBE_API_KEY`. Without a key, the site shows an intentional review
-state and links to the configured playlist. With a key, every public playlist
-video is loaded automatically, including playlists longer than 50 items.
+Then set `YOUTUBE_API_KEY`. Without a key, the site loads the official,
+automatically updated YouTube playlist player after visitor consent. With a key,
+every public playlist video is displayed as its own full-width thumbnail,
+including playlists longer than 50 items.
+
+Connected YouTube identity:
+
+- User ID: `NnTHykYkGaNaJPIe2WWtVA`
+- Channel ID: `UCNnTHykYkGaNaJPIe2WWtVA`
 
 Players use `youtube-nocookie.com` and load only after the visitor clicks a
 thumbnail. Thumbnails are proxied through the website.

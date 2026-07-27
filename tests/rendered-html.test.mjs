@@ -1,7 +1,7 @@
 import assert from "node:assert/strict";
 import test from "node:test";
 
-async function render(pathname = "/") {
+async function request(pathname = "/", accept = "text/html") {
   const workerUrl = new URL("../dist/server/index.js", import.meta.url);
   workerUrl.searchParams.set(
     "test",
@@ -11,7 +11,7 @@ async function render(pathname = "/") {
 
   return worker.fetch(
     new Request(`http://localhost${pathname}`, {
-      headers: { accept: "text/html" },
+      headers: { accept },
     }),
     {
       ASSETS: {
@@ -23,6 +23,10 @@ async function render(pathname = "/") {
       passThroughOnException() {},
     },
   );
+}
+
+function render(pathname = "/") {
+  return request(pathname);
 }
 
 test("renders the bilingual landing page with all six flat routes", async () => {
@@ -56,10 +60,43 @@ test("renders paired English and German service pages", async () => {
   ]);
   assert.match(english, /When the problem has no playbook/);
   assert.match(english, /href="\/loesen"/);
+  assert.match(english, />DEUTSCH</);
+  assert.match(
+    english,
+    /You don’t book a presentation\. You get a full-stack problem solver\./,
+  );
+  assert.match(
+    english,
+    /Find the constraint\. Build the system\. Leave the playbook\./,
+  );
   assert.match(german, /Wenn es keine Anleitung gibt/);
   assert.match(german, /href="\/solve"/);
+  assert.match(german, />ENGLISH</);
+  assert.match(
+    german,
+    /Sie buchen keine Präsentation\. Sondern einen Full-Stack Problemlöser\./,
+  );
+  assert.match(
+    german,
+    /Engpass finden\. System bauen\. Anleitung hinterlassen\./,
+  );
   assert.match(english, /YOUTUBE PLAYLIST/);
   assert.match(german, /YOUTUBE PLAYLIST/);
+  assert.doesNotMatch(english, />0[1-9]</);
+  assert.doesNotMatch(german, />0[1-9]</);
+});
+
+test("connects the supplied YouTube channel to the service playlists", async () => {
+  const response = await request(
+    "/api/youtube?playlist=PL66aLwkPo2YqtBCXQExJz14zxIAoFu-Tk",
+    "application/json",
+  );
+  assert.equal(response.status, 200);
+
+  const data = await response.json();
+  assert.equal(data.channelId, "UCNnTHykYkGaNaJPIe2WWtVA");
+  assert.equal(data.configured, false);
+  assert.match(data.playlistUrl, /PL66aLwkPo2YqtBCXQExJz14zxIAoFu-Tk/);
 });
 
 test("renders current legal identity data", async () => {

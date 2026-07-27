@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import type { Language } from "../site-data";
+import { contact, type Language } from "../site-data";
 
 type PlaylistVideo = {
   videoId: string;
@@ -27,6 +27,7 @@ export function PlaylistGallery({
 }: PlaylistGalleryProps) {
   const [data, setData] = useState<PlaylistResponse | null>(null);
   const [activeVideo, setActiveVideo] = useState<string | null>(null);
+  const [fallbackActive, setFallbackActive] = useState(false);
   const isGerman = language === "de";
 
   useEffect(() => {
@@ -61,40 +62,65 @@ export function PlaylistGallery({
   }
 
   if (!data.configured || !data.videos?.length) {
-    return (
-      <div className="playlist-fallback">
-        <div>
-          <p className="eyebrow">
-            {isGerman ? "AUTOMATISCHE PLAYLIST" : "AUTOMATIC PLAYLIST"}
-          </p>
-          <h3>
-            {isGerman
-              ? "Bereit für die finalen Videos."
-              : "Ready for the final videos."}
-          </h3>
-          <p>
-            {data.message ??
-              (isGerman
-                ? "Sobald der YouTube-API-Schlüssel hinterlegt ist, erscheinen hier automatisch alle Videos dieser Playlist."
-                : "Once the YouTube API key is connected, every video in this playlist will appear here automatically.")}
-          </p>
+    if (fallbackActive) {
+      return (
+        <div className="playlist-embed">
+          <iframe
+            allow="autoplay; encrypted-media; picture-in-picture"
+            allowFullScreen
+            referrerPolicy="strict-origin-when-cross-origin"
+            src={`https://www.youtube-nocookie.com/embed?listType=playlist&list=${playlistId}&autoplay=1&rel=0&hl=${language}`}
+            title={isGerman ? "YouTube-Playlist" : "YouTube playlist"}
+          />
         </div>
-        <a
-          className="button button-secondary"
-          href={data.playlistUrl}
-          target="_blank"
-          rel="noreferrer"
+      );
+    }
+
+    return (
+      <div className="playlist-fallback-wrap">
+        <button
+          className="playlist-fallback"
+          onClick={() => setFallbackActive(true)}
+          type="button"
         >
-          {isGerman ? "Playlist auf YouTube öffnen" : "Open playlist on YouTube"}
-          <span aria-hidden="true">↗</span>
-        </a>
+          <div>
+            <p className="eyebrow">
+              ELIAS KOULOURES · YOUTUBE
+            </p>
+            <h3>
+              {isGerman
+                ? "Vollständige Playlist laden."
+                : "Load the complete playlist."}
+            </h3>
+            <p>
+              {isGerman
+                ? "Alle Videos werden direkt aus der verknüpften YouTube-Playlist geladen und automatisch aktuell gehalten."
+                : "Every video loads directly from the connected YouTube playlist and stays automatically up to date."}
+            </p>
+          </div>
+          <span className="button">
+            {isGerman ? "Playlist laden" : "Load playlist"}
+            <span aria-hidden="true">▶</span>
+          </span>
+        </button>
+        <div className="playlist-channel-links">
+          <a href={contact.youtube} target="_blank" rel="noreferrer">
+            {isGerman ? "YouTube-Kanal öffnen" : "Open YouTube channel"} ↗
+          </a>
+          <a href={data.playlistUrl} target="_blank" rel="noreferrer">
+            {isGerman
+              ? "Playlist auf YouTube öffnen"
+              : "Open playlist on YouTube"}{" "}
+            ↗
+          </a>
+        </div>
       </div>
     );
   }
 
   return (
     <div className="video-list">
-      {data.videos.map((video, index) => (
+      {data.videos.map((video) => (
         <article className="video-card" key={video.videoId}>
           {activeVideo === video.videoId ? (
             <iframe
@@ -115,9 +141,6 @@ export function PlaylistGallery({
               {/* eslint-disable-next-line @next/next/no-img-element */}
               <img src={video.thumbnail} alt="" loading="lazy" />
               <span className="video-shade" />
-              <span className="video-index">
-                {String(index + 1).padStart(2, "0")}
-              </span>
               <span className="play-button" aria-hidden="true">
                 ▶
               </span>
