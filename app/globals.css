@@ -462,11 +462,11 @@ button:focus-visible {
 .service-hero h1 {
   max-width: 970px;
   margin: 0;
-  font-size: clamp(3.6rem, 7.1vw, 8rem);
+  font-size: clamp(2.7rem, 4vw, 3.9rem);
   font-weight: 490;
   letter-spacing: -0.06em;
   line-height: 0.92;
-  text-wrap: balance;
+  text-wrap: wrap;
   animation: fade-up 700ms var(--ease) both;
 }
 
@@ -1483,10 +1483,6 @@ button:focus-visible {
     padding-bottom: 86px;
   }
 
-  .service-hero h1 {
-    font-size: clamp(3.35rem, 15vw, 5.4rem);
-  }
-
   .hero-intro {
     margin-top: 25px;
   }
@@ -1729,10 +1725,6 @@ button:focus-visible {
 
   .brand-lockup {
     max-width: 150px;
-  }
-
-  .service-hero h1 {
-    font-size: 3.35rem;
   }
 
   .tag-list a {

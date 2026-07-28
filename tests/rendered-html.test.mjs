@@ -1,4 +1,5 @@
 import assert from "node:assert/strict";
+import { readFile } from "node:fs/promises";
 import test from "node:test";
 
 async function request(pathname = "/", accept = "text/html") {
@@ -56,6 +57,27 @@ test("renders the bilingual landing page with all six flat routes", async () => 
     /href="https:\/\/kardashev-campus\.beehiiv\.com\/"[^>]*>German Newsletter/,
   );
   assert.doesNotMatch(html, /react-loading-skeleton|codex-preview/);
+});
+
+test("uses one reduced responsive scale for every subpage headline", async () => {
+  const css = await readFile(
+    new URL("../app/globals.css", import.meta.url),
+    "utf8",
+  );
+  const serviceRules = [
+    ...css.matchAll(/\.service-hero h1\s*\{([^}]*)\}/g),
+  ];
+
+  assert.equal(serviceRules.length, 1);
+  assert.match(
+    serviceRules[0][1],
+    /font-size: clamp\(2\.7rem, 4vw, 3\.9rem\);/,
+  );
+  assert.match(serviceRules[0][1], /text-wrap: wrap;/);
+  assert.match(
+    css,
+    /\.landing-heading h1\s*\{[^}]*font-size: clamp\(1\.75rem, 6\.8vw, 8\.2rem\);/s,
+  );
 });
 
 test("renders paired English and German service pages", async () => {
