@@ -29,6 +29,12 @@ function render(pathname = "/") {
   return request(pathname);
 }
 
+function assertIncludesAll(html, expected) {
+  for (const copy of expected) {
+    assert.ok(html.includes(copy), `Missing expected copy: ${copy}`);
+  }
+}
+
 test("renders the bilingual landing page with all six flat routes", async () => {
   const response = await render();
   assert.equal(response.status, 200);
@@ -64,7 +70,7 @@ test("renders paired English and German service pages", async () => {
     englishResponse.text(),
     germanResponse.text(),
   ]);
-  assert.match(english, /When the problem has no playbook/);
+  assert.match(english, /Give me your challenges where no playbook exists\./);
   assert.match(english, /href="\/loesen"/);
   assert.match(english, />DEUTSCH</);
   assert.match(
@@ -75,7 +81,23 @@ test("renders paired English and German service pages", async () => {
     english,
     /Find the constraint\. Build the system\. Leave the playbook\./,
   );
-  assert.match(german, /Wenn es keine Anleitung gibt/);
+  assert.match(
+    english,
+    /Bring me challenges others cannot fathom, structure nor solve\./,
+  );
+  assertIncludesAll(english, [
+    "RevOps automation",
+    "3–5 days to 19 minutes",
+    "~150 emails daily",
+    "€0.50/day",
+    "98% accuracy",
+    "full pipeline visibility",
+  ]);
+  assert.doesNotMatch(english, /Federal budget/);
+  assert.match(
+    german,
+    /Geben Sie mir Herausforderungen, für die es keine Anleitung gibt\./,
+  );
   assert.match(german, /href="\/solve"/);
   assert.match(german, />ENGLISH</);
   assert.match(
@@ -86,6 +108,19 @@ test("renders paired English and German service pages", async () => {
     german,
     /Engpass finden\. System bauen\. Anleitung hinterlassen\./,
   );
+  assert.match(
+    german,
+    /Bringen Sie mir Probleme, die andere weder begreifen, strukturieren noch lösen können\./,
+  );
+  assertIncludesAll(german, [
+    "RevOps-Automatisierung",
+    "3–5 Tagen auf 19 Minuten",
+    "rund 150 E-Mails",
+    "€0,50",
+    "98 % Genauigkeit",
+    "volle Pipeline-Transparenz",
+  ]);
+  assert.doesNotMatch(german, /Bundeshaushalt/);
   assert.match(english, /YOUTUBE PLAYLIST/);
   assert.match(german, /YOUTUBE PLAYLIST/);
   assert.match(english, /Award-winning/);
@@ -100,6 +135,47 @@ test("renders paired English and German service pages", async () => {
   );
   assert.doesNotMatch(english, />0[1-9]</);
   assert.doesNotMatch(german, />0[1-9]</);
+});
+
+test("renders the revised educate and create headlines in both languages", async () => {
+  const responses = await Promise.all([
+    render("/educate"),
+    render("/fortbilden"),
+    render("/create"),
+    render("/entwickeln"),
+  ]);
+
+  for (const response of responses) {
+    assert.equal(response.status, 200);
+  }
+
+  const [educate, fortbilden, create, entwickeln] = await Promise.all(
+    responses.map((response) => response.text()),
+  );
+
+  assertIncludesAll(educate, [
+    "Turn AI confusion into a working advantage.",
+    "Eliminate your drudgery. And leverage your knowledge.",
+    "Understand at any level. And practice on relevant use-cases.",
+  ]);
+  assertIncludesAll(fortbilden, [
+    "Verwandeln Sie KI-Verwirrung zum Wettbewerbsvorteil. Mit maßgeschneiderten Fortbildungen.",
+    "Befreien Sie sich von unnötiger Arbeit. Und profitieren Sie von Ihrem Erfahrungsschatz.",
+    "KI besser verstehen – für jeden Wissensstand. Und üben mit relevanten Anwendungsfällen.",
+    "Maßgeschneiderte Fortbildungen. Von C-Suite bis Praktikant. Von Profi bis Beginner.",
+  ]);
+  assertIncludesAll(create, [
+    "Book me as multimedia creator. Or learn how to become one yourself.",
+    "Turn your ideas into images, films or songs that attract fans and customers.",
+    "Invest in world-class creative assets because AI slop exists in abundance.",
+    "Name your idea. And desired audience.",
+  ]);
+  assertIncludesAll(entwickeln, [
+    "Buchen Sie mich als Multimedia-Künstler. Oder lernen Sie, selber einer zu werden.",
+    "Verwandeln Sie Ihre Ideen in Bilder, Filme oder Lieder, die Fans und Kunden anziehen.",
+    "Investieren Sie in Weltklasse-Kreativität, weil KI-Müll kann jeder.",
+    "Nennen Sie Ihre Idee. Und Wunschzielgruppe.",
+  ]);
 });
 
 test("connects the supplied YouTube channel to the service playlists", async () => {

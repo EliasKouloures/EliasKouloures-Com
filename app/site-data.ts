@@ -50,7 +50,7 @@ export const services: Record<string, ServicePageData> = {
     language: "en",
     label: "SOLVE",
     eyebrow: "SOLVE · SENIOR ADVISORY",
-    title: "When the problem has no playbook, bring it here.",
+    title: "Give me your challenges where no playbook exists.",
     intro:
       "First-principles diagnosis, evidence-traced decisions and working solutions for complex growth, innovation and AI challenges—built for EU and German realities.",
     heroImage:
@@ -131,8 +131,8 @@ export const services: Record<string, ServicePageData> = {
         text: "Helped take a connected-bike proposition through Kickstarter, 13 markets, 250+ press features and the path to acquisition by Bosch.",
       },
       {
-        title: "Federal budget",
-        text: "Mapped double-digit-billion-euro savings potential through a first-principles review of public spending.",
+        title: "RevOps automation",
+        text: "Built an AI-first n8n, Claude and Pipedrive intake engine that cut response times from 3–5 days to 19 minutes, triaged ~150 emails daily at €0.50/day with 98% accuracy, and gave the CEO full pipeline visibility.",
       },
       {
         title: "AI systems",
@@ -160,7 +160,8 @@ export const services: Record<string, ServicePageData> = {
     playlistHeading: "Solve · field notes",
     playlistIntro:
       "The complete playlist updates automatically as new videos are published.",
-    closingTitle: "Bring the problem others cannot structure.",
+    closingTitle:
+      "Bring me challenges others cannot fathom, structure nor solve.",
     closingText:
       "A short call is enough to establish the constraint, the stakes and whether I am the right operator.",
   },
@@ -170,7 +171,7 @@ export const services: Record<string, ServicePageData> = {
     language: "de",
     label: "LÖSEN",
     eyebrow: "LÖSEN · SENIOR ADVISORY",
-    title: "Wenn es keine Anleitung gibt, bringen Sie das Problem zu mir.",
+    title: "Geben Sie mir Herausforderungen, für die es keine Anleitung gibt.",
     intro:
       "Erstprinzipien-Diagnose, nachvollziehbare Entscheidungen und funktionierende Lösungen für komplexe Wachstums-, Innovations- und KI-Herausforderungen—ausgerichtet auf Deutschland und die EU.",
     heroImage:
@@ -251,8 +252,8 @@ export const services: Record<string, ServicePageData> = {
         text: "Eine Connected-Bike-Idee über Kickstarter, 13 Märkte und 250+ Presseberichte bis auf den Weg zur Bosch-Übernahme begleitet.",
       },
       {
-        title: "Bundeshaushalt",
-        text: "Mit einer Erstprinzipien-Analyse zweistelliges Milliardenpotenzial bei öffentlichen Ausgaben sichtbar gemacht.",
+        title: "RevOps-Automatisierung",
+        text: "Ein KI-basiertes Intake-System mit n8n, Claude und Pipedrive gebaut: Reaktionszeit von 3–5 Tagen auf 19 Minuten gesenkt, täglich rund 150 E-Mails für €0,50 bei 98 % Genauigkeit bearbeitet und dem CEO volle Pipeline-Transparenz verschafft.",
       },
       {
         title: "KI-Systeme",
@@ -280,7 +281,8 @@ export const services: Record<string, ServicePageData> = {
     playlistHeading: "Lösen · Praxisnotizen",
     playlistIntro:
       "Die vollständige Playlist aktualisiert sich automatisch, sobald neue Videos veröffentlicht werden.",
-    closingTitle: "Bringen Sie das Problem, das andere nicht strukturieren können.",
+    closingTitle:
+      "Bringen Sie mir Probleme, die andere weder begreifen, strukturieren noch lösen können.",
     closingText:
       "Ein kurzes Gespräch reicht, um Engpass, Tragweite und die passende Form der Zusammenarbeit zu klären.",
   },
@@ -290,7 +292,7 @@ export const services: Record<string, ServicePageData> = {
     language: "en",
     label: "EDUCATE",
     eyebrow: "EDUCATE · APPLIED AI LITERACY",
-    title: "Turn AI confusion into a working capability.",
+    title: "Turn AI confusion into a working advantage.",
     intro:
       "Role-specific learning for leaders, teams and families—translated into useful workflows, shared language and a roadmap people can act on.",
     heroImage:
@@ -316,7 +318,7 @@ export const services: Record<string, ServicePageData> = {
         label: "Native delivery in German and English.",
       },
     ],
-    capabilityHeading: "Knowledge becomes valuable when behaviour changes.",
+    capabilityHeading: "Eliminate your drudgery. And leverage your knowledge.",
     capabilityIntro:
       "I meet every audience at its real starting point, remove status games and make the next useful action obvious.",
     capabilities: [
@@ -346,7 +348,8 @@ export const services: Record<string, ServicePageData> = {
       },
     ],
     editorialKicker: "THE LEARNING PRINCIPLE",
-    editorialTitle: "Explain at five levels. Practise on real work. Transfer ownership.",
+    editorialTitle:
+      "Understand at any level. And practice on relevant use-cases.",
     editorialText:
       "The objective is not excitement about a tool. It is independent judgment: knowing when AI helps, how to test it and when to stop.",
     workHeading: "Built for the room you actually have",
@@ -401,7 +404,8 @@ export const services: Record<string, ServicePageData> = {
     language: "de",
     label: "FORTBILDEN",
     eyebrow: "FORTBILDEN · ANGEWANDTE KI-KOMPETENZ",
-    title: "Machen Sie aus KI-Verwirrung echte Handlungsfähigkeit.",
+    title:
+      "Verwandeln Sie KI-Verwirrung zum Wettbewerbsvorteil. Mit maßgeschneiderten Fortbildungen.",
     intro:
       "Rollenspezifische Weiterbildung für Führungskräfte, Teams und Familien—übersetzt in nützliche Workflows, eine gemeinsame Sprache und einen umsetzbaren Fahrplan.",
     heroImage:
@@ -427,7 +431,8 @@ export const services: Record<string, ServicePageData> = {
         label: "Native Vermittlung auf Deutsch und Englisch.",
       },
     ],
-    capabilityHeading: "Wissen wird wertvoll, wenn sich Verhalten verändert.",
+    capabilityHeading:
+      "Befreien Sie sich von unnötiger Arbeit. Und profitieren Sie von Ihrem Erfahrungsschatz.",
     capabilityIntro:
       "Ich hole jede Zielgruppe an ihrem tatsächlichen Ausgangspunkt ab, nehme Statusspiele aus dem Raum und mache den nächsten sinnvollen Schritt klar.",
     capabilities: [
@@ -457,10 +462,12 @@ export const services: Record<string, ServicePageData> = {
       },
     ],
     editorialKicker: "DAS LERNPRINZIP",
-    editorialTitle: "Auf fünf Ebenen erklären. An echter Arbeit üben. Verantwortung übergeben.",
+    editorialTitle:
+      "KI besser verstehen – für jeden Wissensstand. Und üben mit relevanten Anwendungsfällen.",
     editorialText:
       "Das Ziel ist keine Begeisterung für ein Tool. Das Ziel ist unabhängige Urteilskraft: wissen, wann KI hilft, wie man sie prüft und wann man stoppt.",
-    workHeading: "Gebaut für den Raum, den Sie wirklich haben",
+    workHeading:
+      "Maßgeschneiderte Fortbildungen. Von C-Suite bis Praktikant. Von Profi bis Beginner.",
     workIntro:
       "Eine Methode, angepasst an Entscheidungsrechte, Anreize und Wissensstand der jeweiligen Zielgruppe.",
     work: [
@@ -512,7 +519,8 @@ export const services: Record<string, ServicePageData> = {
     language: "en",
     label: "CREATE",
     eyebrow: "CREATE · MULTIMEDIA SYSTEMS",
-    title: "Turn the idea into an image, film or song that earns attention.",
+    title:
+      "Book me as multimedia creator. Or learn how to become one yourself.",
     intro:
       "Creative direction and reusable AI production systems for high-impact multimedia—built around the audience, the channel and the result.",
     heroImage:
@@ -538,7 +546,8 @@ export const services: Record<string, ServicePageData> = {
         label: "Work for more than 150 European brands.",
       },
     ],
-    capabilityHeading: "One idea. One world. A system that can make more.",
+    capabilityHeading:
+      "Turn your ideas into images, films or songs that attract fans and customers.",
     capabilityIntro:
       "I combine concept, direction, generation and quality control so every asset belongs to the same visual and strategic universe.",
     capabilities: [
@@ -568,7 +577,8 @@ export const services: Record<string, ServicePageData> = {
       },
     ],
     editorialKicker: "THE CREATIVE PRINCIPLE",
-    editorialTitle: "Novelty gets a glance. Meaning earns attention.",
+    editorialTitle:
+      "Invest in world-class creative assets because AI slop exists in abundance.",
     editorialText:
       "The tool is never the idea. Every choice—frame, rhythm, texture, voice—must strengthen what the audience should feel, understand or do next.",
     workHeading: "From isolated asset to creative engine",
@@ -613,7 +623,7 @@ export const services: Record<string, ServicePageData> = {
     playlistHeading: "Create · process and output",
     playlistIntro:
       "The complete playlist updates automatically as new videos are published.",
-    closingTitle: "Bring the idea and the audience.",
+    closingTitle: "Name your idea. And desired audience.",
     closingText:
       "We will establish the one thing the work must make people feel, understand or do.",
   },
@@ -623,7 +633,8 @@ export const services: Record<string, ServicePageData> = {
     language: "de",
     label: "ENTWICKELN",
     eyebrow: "ENTWICKELN · MULTIMEDIA-SYSTEME",
-    title: "Machen Sie aus der Idee ein Bild, einen Film oder einen Song, der Aufmerksamkeit verdient.",
+    title:
+      "Buchen Sie mich als Multimedia-Künstler. Oder lernen Sie, selber einer zu werden.",
     intro:
       "Kreativdirektion und wiederverwendbare KI-Produktionssysteme für wirkungsvolle Multimedia-Inhalte—gebaut um Zielgruppe, Kanal und Ergebnis.",
     heroImage:
@@ -649,7 +660,8 @@ export const services: Record<string, ServicePageData> = {
         label: "Arbeit für mehr als 150 europäische Marken.",
       },
     ],
-    capabilityHeading: "Eine Idee. Eine Welt. Ein System, das mehr erzeugen kann.",
+    capabilityHeading:
+      "Verwandeln Sie Ihre Ideen in Bilder, Filme oder Lieder, die Fans und Kunden anziehen.",
     capabilityIntro:
       "Ich verbinde Konzept, Direktion, Generierung und Qualitätskontrolle, damit jedes Asset zum selben visuellen und strategischen Universum gehört.",
     capabilities: [
@@ -679,7 +691,8 @@ export const services: Record<string, ServicePageData> = {
       },
     ],
     editorialKicker: "DAS KREATIVPRINZIP",
-    editorialTitle: "Neuheit bekommt einen Blick. Bedeutung verdient Aufmerksamkeit.",
+    editorialTitle:
+      "Investieren Sie in Weltklasse-Kreativität, weil KI-Müll kann jeder.",
     editorialText:
       "Das Tool ist niemals die Idee. Jede Entscheidung—Bild, Rhythmus, Textur, Stimme—muss verstärken, was die Zielgruppe fühlen, verstehen oder als Nächstes tun soll.",
     workHeading: "Vom einzelnen Asset zur Kreativmaschine",
@@ -724,7 +737,7 @@ export const services: Record<string, ServicePageData> = {
     playlistHeading: "Entwickeln · Prozess und Ergebnis",
     playlistIntro:
       "Die vollständige Playlist aktualisiert sich automatisch, sobald neue Videos veröffentlicht werden.",
-    closingTitle: "Bringen Sie die Idee und die Zielgruppe.",
+    closingTitle: "Nennen Sie Ihre Idee. Und Wunschzielgruppe.",
     closingText:
       "Wir klären die eine Sache, die die Arbeit Menschen fühlen, verstehen oder als Nächstes tun lassen muss.",
   },
