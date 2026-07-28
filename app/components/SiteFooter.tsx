@@ -44,6 +44,9 @@ export function SiteFooter() {
             <a href={contact.youtube} target="_blank" rel="noreferrer">
               YouTube <span aria-hidden="true">↗</span>
             </a>
+            <a href={contact.newsletter} target="_blank" rel="noreferrer">
+              German Newsletter <span aria-hidden="true">↗</span>
+            </a>
           </div>
         </div>
       </div>

@@ -160,8 +160,8 @@ export function ServicePage({ data }: ServicePageProps) {
               {isGerman ? "Gespräch buchen" : "Book a call"}
               <span aria-hidden="true">↗</span>
             </a>
-            <a className="text-link" href={`mailto:${contact.email}`}>
-              {contact.email}
+            <a className="button" href={`mailto:${contact.email}`}>
+              {isGerman ? "E-Mail senden" : "Email me"}
             </a>
           </div>
           <Link className="back-home" href="/">

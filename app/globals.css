@@ -255,28 +255,20 @@ button:focus-visible {
 }
 
 .landing-heading {
-  max-width: 990px;
+  max-width: none;
   margin: 0 auto 54px;
   text-align: center;
   animation: fade-up 700ms var(--ease) both;
 }
 
 .landing-heading h1 {
-  max-width: 12ch;
+  max-width: none;
   margin: 0 auto;
-  font-size: clamp(3.6rem, 7.4vw, 8.4rem);
+  font-size: clamp(1.75rem, 6.8vw, 8.2rem);
   font-weight: 500;
   letter-spacing: -0.064em;
   line-height: 0.91;
-  text-wrap: balance;
-}
-
-.landing-heading > p:last-child {
-  max-width: 620px;
-  margin: 28px auto 0;
-  color: rgba(247, 245, 242, 0.76);
-  font-size: clamp(0.95rem, 1.5vw, 1.16rem);
-  line-height: 1.6;
+  white-space: nowrap;
 }
 
 .service-card-grid {
@@ -288,7 +280,10 @@ button:focus-visible {
 
 .landing-card {
   position: relative;
+  display: flex;
   min-height: 230px;
+  flex-direction: column;
+  justify-content: center;
   overflow: hidden;
   padding: 30px;
   border: 1px solid var(--line);
@@ -365,7 +360,7 @@ button:focus-visible {
 .landing-card h2 {
   position: relative;
   z-index: 1;
-  margin: 56px 0 17px;
+  margin: 0 0 17px;
   font-size: clamp(1.55rem, 2.1vw, 2.35rem);
   font-weight: 550;
   letter-spacing: -0.035em;
@@ -379,16 +374,6 @@ button:focus-visible {
   color: var(--muted);
   font-size: 0.9rem;
   line-height: 1.62;
-}
-
-.card-lang {
-  position: absolute;
-  top: 30px;
-  left: 30px;
-  color: var(--quiet);
-  font-size: 0.65rem;
-  font-weight: 750;
-  letter-spacing: 0.16em;
 }
 
 .card-arrow {
@@ -549,20 +534,21 @@ button:focus-visible {
 
 .proof-item strong {
   color: var(--ink);
-  font-size: clamp(1.1rem, 1.55vw, 1.7rem);
+  font-size: clamp(1.05rem, 1.35vw, 1.5rem);
   font-weight: 560;
   letter-spacing: -0.035em;
-  line-height: 1.08;
+  line-height: 1.14;
+  overflow-wrap: anywhere;
 }
 
 .proof-item span {
   margin-top: 8px;
   color: var(--quiet);
   font-size: 0.68rem;
-  font-weight: 650;
-  letter-spacing: 0.08em;
-  line-height: 1.4;
-  text-transform: uppercase;
+  font-weight: 500;
+  letter-spacing: 0;
+  line-height: 1.55;
+  text-transform: none;
 }
 
 .content-section,
@@ -1097,19 +1083,25 @@ button:focus-visible {
 }
 
 .tag-list {
-  display: flex;
-  flex-wrap: wrap;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 9px;
 }
 
 .tag-list a {
-  padding: 10px 13px;
+  display: flex;
+  min-width: 0;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 8px;
   border: 1px solid var(--line);
   border-radius: 999px;
   color: var(--muted);
   font-size: 0.65rem;
   font-weight: 700;
   letter-spacing: 0.08em;
+  text-align: center;
+  white-space: nowrap;
   transition:
     color 180ms ease,
     border-color 180ms ease;
@@ -1325,10 +1317,6 @@ button:focus-visible {
     padding: 38px;
   }
 
-  .landing-card h2 {
-    margin-top: 72px;
-  }
-
   .landing-card p {
     font-size: 1rem;
   }
@@ -1442,17 +1430,13 @@ button:focus-visible {
 
   .landing-heading {
     margin-bottom: 38px;
-    text-align: left;
+    text-align: center;
   }
 
   .landing-heading h1 {
-    margin: 0;
-    font-size: clamp(3.5rem, 17vw, 5.4rem);
+    margin: 0 auto;
+    font-size: clamp(1.75rem, 8.6vw, 3.6rem);
     line-height: 0.92;
-  }
-
-  .landing-heading > p:last-child {
-    margin: 22px 0 0;
   }
 
   .service-card-grid {
@@ -1465,13 +1449,8 @@ button:focus-visible {
   }
 
   .landing-card h2 {
-    margin-top: 48px;
+    margin-top: 0;
     font-size: 1.8rem;
-  }
-
-  .card-lang {
-    top: 25px;
-    left: 25px;
   }
 
   .landing-backdrop {
@@ -1752,9 +1731,14 @@ button:focus-visible {
     max-width: 150px;
   }
 
-  .landing-heading h1,
   .service-hero h1 {
     font-size: 3.35rem;
+  }
+
+  .tag-list a {
+    padding-inline: 4px;
+    font-size: 0.56rem;
+    letter-spacing: 0.05em;
   }
 
   .proof-item {

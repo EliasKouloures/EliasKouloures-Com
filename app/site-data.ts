@@ -35,6 +35,7 @@ export const contact = {
   linkedin: "https://linkedin.com/in/eliaskouloures",
   github: "https://github.com/EliasKouloures",
   youtube: "https://www.youtube.com/channel/UCNnTHykYkGaNaJPIe2WWtVA",
+  newsletter: "https://kardashev-campus.beehiiv.com/",
 };
 
 export const youtube = {
@@ -58,11 +59,26 @@ export const services: Record<string, ServicePageData> = {
       "/images/EliasKouloures-Com_Background_Image_Coding.png",
     playlistId: "PL66aLwkPo2YqtBCXQExJz14zxIAoFu-Tk",
     proof: [
-      { value: "Awarded", label: "24 international awards across creative and innovation work." },
-      { value: "Crowdfunded", label: "COBI reached 401% of its Kickstarter goal." },
-      { value: "Jobs protected", label: "A zero-CAPEX response secured 35 roles during lockdown." },
-      { value: "Retail system", label: "A B2B assistant proposal for 7,200 German stores in 8 days." },
-      { value: "Venture launch", label: "The 360X venture website launched in 2 weeks." },
+      {
+        value: "Award-winning",
+        label: "24 international awards across creative and innovation work.",
+      },
+      {
+        value: "Crowdfunding success",
+        label: "COBI reached 401% of its Kickstarter goal.",
+      },
+      {
+        value: "Jobs preserved",
+        label: "A zero-CAPEX response secured 35 roles during lockdown.",
+      },
+      {
+        value: "Retail AI at speed",
+        label: "A B2B assistant proposal for 7,200 German stores in 8 days.",
+      },
+      {
+        value: "Rapid venture launch",
+        label: "The 360X venture website launched in 2 weeks.",
+      },
     ],
     capabilityHeading:
       "You don’t book a presentation. You get a full-stack problem solver.",
@@ -163,11 +179,26 @@ export const services: Record<string, ServicePageData> = {
       "/images/EliasKouloures-Com_Background_Image_Coding.png",
     playlistId: "PL66aLwkPo2YqtBCXQExJz14zxIAoFu-Tk",
     proof: [
-      { value: "Ausgezeichnet", label: "24 internationale Awards für Kreation und Innovation." },
-      { value: "Crowdfunding", label: "COBI erreichte 401 % des Kickstarter-Ziels." },
-      { value: "Jobs gesichert", label: "Eine Zero-CAPEX-Lösung sicherte im Lockdown 35 Arbeitsplätze." },
-      { value: "Handelssystem", label: "B2B-Assistant-Konzept für 7.200 deutsche Stores in 8 Tagen." },
-      { value: "Venture-Launch", label: "Die 360X Venture-Website ging in 2 Wochen live." },
+      {
+        value: "Preisgekrönt",
+        label: "24 internationale Awards für Kreation und Innovation.",
+      },
+      {
+        value: "Crowdfunding-Erfolg",
+        label: "COBI erreichte 401 % des Kickstarter-Ziels.",
+      },
+      {
+        value: "Arbeitsplätze gesichert",
+        label: "Eine Zero-CAPEX-Lösung sicherte im Lockdown 35 Arbeitsplätze.",
+      },
+      {
+        value: "Retail-KI im Sprint",
+        label: "B2B-Assistant-Konzept für 7.200 deutsche Stores in 8 Tagen.",
+      },
+      {
+        value: "Schneller Venture-Launch",
+        label: "Die 360X Venture-Website ging in 2 Wochen live.",
+      },
     ],
     capabilityHeading:
       "Sie buchen keine Präsentation. Sondern einen Full-Stack Problemlöser.",
@@ -268,10 +299,22 @@ export const services: Record<string, ServicePageData> = {
       "/images/EliasKouloures-Com_Background_Image_Business_Meeting.png",
     playlistId: "PL66aLwkPo2YqLUhYuNpuVYOS_vwEuLvhl",
     proof: [
-      { value: "Proven delivery", label: "More than 150 keynotes and workshops." },
-      { value: "Any audience", label: "Complex ideas explained across five levels." },
-      { value: "Actionable", label: "Clear 30/60/90-day capability roadmaps." },
-      { value: "Bilingual", label: "Native delivery in German and English." },
+      {
+        value: "Proven at scale",
+        label: "More than 150 keynotes and workshops.",
+      },
+      {
+        value: "Clear at every level",
+        label: "Complex ideas explained across five levels.",
+      },
+      {
+        value: "Built for action",
+        label: "Clear 30/60/90-day capability roadmaps.",
+      },
+      {
+        value: "Native in both languages",
+        label: "Native delivery in German and English.",
+      },
     ],
     capabilityHeading: "Knowledge becomes valuable when behaviour changes.",
     capabilityIntro:
@@ -367,10 +410,22 @@ export const services: Record<string, ServicePageData> = {
       "/images/EliasKouloures-Com_Background_Image_Business_Meeting.png",
     playlistId: "PL66aLwkPo2YqLUhYuNpuVYOS_vwEuLvhl",
     proof: [
-      { value: "Praxiserprobt", label: "Mehr als 150 Keynotes und Workshops." },
-      { value: "Für jedes Niveau", label: "Komplexe Inhalte auf fünf Ebenen erklärt." },
-      { value: "Umsetzbar", label: "Klare 30/60/90-Tage-Kompetenzfahrpläne." },
-      { value: "Zweisprachig", label: "Native Vermittlung auf Deutsch und Englisch." },
+      {
+        value: "Vielfach bewährt",
+        label: "Mehr als 150 Keynotes und Workshops.",
+      },
+      {
+        value: "Klar auf jedem Niveau",
+        label: "Komplexe Inhalte auf fünf Ebenen erklärt.",
+      },
+      {
+        value: "Für die Praxis gebaut",
+        label: "Klare 30/60/90-Tage-Kompetenzfahrpläne.",
+      },
+      {
+        value: "In beiden Sprachen zu Hause",
+        label: "Native Vermittlung auf Deutsch und Englisch.",
+      },
     ],
     capabilityHeading: "Wissen wird wertvoll, wenn sich Verhalten verändert.",
     capabilityIntro:
@@ -466,10 +521,22 @@ export const services: Record<string, ServicePageData> = {
       "/images/EliasKouloures-Com_Background_Image_Sci-Fi_Steampunk_Device.png",
     playlistId: "PL66aLwkPo2YqZ00aBJcmxbCSqgFYavoN-",
     proof: [
-      { value: "Deep craft", label: "More than 25 years of creative practice." },
-      { value: "Recognised", label: "24 international creative awards." },
-      { value: "Battle-tested", label: "Around 300 completed engagements." },
-      { value: "European reach", label: "Work for more than 150 European brands." },
+      {
+        value: "Decades of craft",
+        label: "More than 25 years of creative practice.",
+      },
+      {
+        value: "Award-winning",
+        label: "24 international creative awards.",
+      },
+      {
+        value: "Proven in practice",
+        label: "Around 300 completed engagements.",
+      },
+      {
+        value: "Trusted across Europe",
+        label: "Work for more than 150 European brands.",
+      },
     ],
     capabilityHeading: "One idea. One world. A system that can make more.",
     capabilityIntro:
@@ -565,10 +632,22 @@ export const services: Record<string, ServicePageData> = {
       "/images/EliasKouloures-Com_Background_Image_Sci-Fi_Steampunk_Device.png",
     playlistId: "PL66aLwkPo2YqZ00aBJcmxbCSqgFYavoN-",
     proof: [
-      { value: "Tiefes Handwerk", label: "Mehr als 25 Jahre kreative Praxis." },
-      { value: "Ausgezeichnet", label: "24 internationale Kreativ-Awards." },
-      { value: "Praxiserprobt", label: "Rund 300 abgeschlossene Mandate." },
-      { value: "Europäische Reichweite", label: "Arbeit für mehr als 150 europäische Marken." },
+      {
+        value: "Jahrzehntelange Erfahrung",
+        label: "Mehr als 25 Jahre kreative Praxis.",
+      },
+      {
+        value: "Preisgekrönt",
+        label: "24 internationale Kreativ-Awards.",
+      },
+      {
+        value: "Vielfach bewährt",
+        label: "Rund 300 abgeschlossene Mandate.",
+      },
+      {
+        value: "Europaweit vertraut",
+        label: "Arbeit für mehr als 150 europäische Marken.",
+      },
     ],
     capabilityHeading: "Eine Idee. Eine Welt. Ein System, das mehr erzeugen kann.",
     capabilityIntro:

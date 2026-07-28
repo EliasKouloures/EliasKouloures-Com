@@ -23,10 +23,6 @@ export default function Home() {
           <div className="landing-heading">
             <p className="eyebrow">SENIOR ADVISOR · GROWTH · INNOVATION · AI</p>
             <h1>How may I help you?</h1>
-            <p>
-              Three service areas. Two languages. One senior operator from
-              problem to working result.
-            </p>
           </div>
 
           <div className="service-card-grid">
@@ -37,7 +33,6 @@ export default function Home() {
                 key={card.slug}
                 lang={card.lang === "DE" ? "de" : "en"}
               >
-                <span className="card-lang">{card.lang}</span>
                 <span className="card-arrow" aria-hidden="true">
                   ↗
                 </span>

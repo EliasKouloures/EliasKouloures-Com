@@ -43,6 +43,12 @@ test("renders the bilingual landing page with all six flat routes", async () => 
   assert.match(html, /href="\/fortbilden"/);
   assert.match(html, /href="\/entwickeln"/);
   assert.doesNotMatch(html, /href="\/de\//);
+  assert.doesNotMatch(html, /Three service areas\. Two languages\./);
+  assert.doesNotMatch(html, /class="card-lang"/);
+  assert.match(
+    html,
+    /href="https:\/\/kardashev-campus\.beehiiv\.com\/"[^>]*>German Newsletter/,
+  );
   assert.doesNotMatch(html, /react-loading-skeleton|codex-preview/);
 });
 
@@ -82,6 +88,16 @@ test("renders paired English and German service pages", async () => {
   );
   assert.match(english, /YOUTUBE PLAYLIST/);
   assert.match(german, /YOUTUBE PLAYLIST/);
+  assert.match(english, /Award-winning/);
+  assert.match(german, /Preisgekrönt/);
+  assert.match(
+    english,
+    /class="button" href="mailto:Elias\.Kouloures@gmail\.com">Email me<\/a>/,
+  );
+  assert.match(
+    german,
+    /class="button" href="mailto:Elias\.Kouloures@gmail\.com">E-Mail senden<\/a>/,
+  );
   assert.doesNotMatch(english, />0[1-9]</);
   assert.doesNotMatch(german, />0[1-9]</);
 });
