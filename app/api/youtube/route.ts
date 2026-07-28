@@ -1,9 +1,9 @@
 import { NextRequest, NextResponse } from "next/server";
 
 const PLAYLIST_IDS = new Set([
-  "PL66aLwkPo2YqtBCXQExJz14zxIAoFu-Tk",
-  "PL66aLwkPo2YqLUhYuNpuVYOS_vwEuLvhl",
-  "PL66aLwkPo2YqZ00aBJcmxbCSqgFYavoN-",
+  "PLJMSxPvhcOuA",
+  "PLHtF5eYRujpY",
+  "PLIlY05RIg36c",
 ]);
 const YOUTUBE_CHANNEL_ID = "UCNnTHykYkGaNaJPIe2WWtVA";
 

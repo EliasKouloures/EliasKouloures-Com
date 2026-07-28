@@ -59,21 +59,40 @@ test("renders the bilingual landing page with all six flat routes", async () => 
   assert.doesNotMatch(html, /react-loading-skeleton|codex-preview/);
 });
 
-test("uses one reduced responsive scale for every subpage headline", async () => {
+test("uses the same responsive scale for every major service-page headline", async () => {
   const css = await readFile(
     new URL("../app/globals.css", import.meta.url),
     "utf8",
   );
-  const serviceRules = [
-    ...css.matchAll(/\.service-hero h1\s*\{([^}]*)\}/g),
+  const headlineSelectors = [
+    ".service-hero h1",
+    ".section-heading h2",
+    ".editorial-copy h2",
+    ".closing-inner h2",
   ];
 
-  assert.equal(serviceRules.length, 1);
   assert.match(
-    serviceRules[0][1],
-    /font-size: clamp\(2\.7rem, 4vw, 3\.9rem\);/,
+    css,
+    /\.service-page\s*\{[^}]*--major-headline-size: clamp\(2\.5rem, 4\.5vw, 5\.3rem\);/s,
   );
-  assert.match(serviceRules[0][1], /text-wrap: wrap;/);
+  for (const selector of headlineSelectors) {
+    const escapedSelector = selector.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    assert.match(
+      css,
+      new RegExp(
+        `${escapedSelector}\\s*\\{[^}]*font-size: var\\(--major-headline-size\\);`,
+        "s",
+      ),
+    );
+  }
+  assert.match(
+    css,
+    /@media \(max-width: 760px\)[\s\S]*?\.service-page\s*\{[^}]*--major-headline-size: clamp\(2\.65rem, 12vw, 4\.2rem\);/,
+  );
+  assert.doesNotMatch(
+    css,
+    /\.capability-card h3\s*\{[^}]*font-size: var\(--major-headline-size\);/s,
+  );
   assert.match(
     css,
     /\.landing-heading h1\s*\{[^}]*font-size: clamp\(1\.75rem, 6\.8vw, 8\.2rem\);/s,
@@ -101,7 +120,7 @@ test("renders paired English and German service pages", async () => {
   );
   assert.match(
     english,
-    /Find the constraint\. Build the system\. Leave the playbook\./,
+    /Find constraints\. Build systems\. Leave playbooks\./,
   );
   assert.match(
     english,
@@ -128,7 +147,7 @@ test("renders paired English and German service pages", async () => {
   );
   assert.match(
     german,
-    /Engpass finden\. System bauen\. Anleitung hinterlassen\./,
+    /Engpässe finden\. Systeme bauen\. Anleitungen hinterlassen\./,
   );
   assert.match(
     german,
@@ -200,9 +219,26 @@ test("renders the revised educate and create headlines in both languages", async
   ]);
 });
 
-test("connects the supplied YouTube channel to the service playlists", async () => {
+test("assigns the supplied playlists to all six service pages", async () => {
+  const assignments = [
+    ["/solve", "PLJMSxPvhcOuA"],
+    ["/loesen", "PLJMSxPvhcOuA"],
+    ["/educate", "PLHtF5eYRujpY"],
+    ["/fortbilden", "PLHtF5eYRujpY"],
+    ["/create", "PLIlY05RIg36c"],
+    ["/entwickeln", "PLIlY05RIg36c"],
+  ];
+  const renderedPages = await Promise.all(
+    assignments.map(([pathname]) => render(pathname)),
+  );
+
+  for (const [index, response] of renderedPages.entries()) {
+    assert.equal(response.status, 200);
+    assert.match(await response.text(), new RegExp(assignments[index][1]));
+  }
+
   const response = await request(
-    "/api/youtube?playlist=PL66aLwkPo2YqtBCXQExJz14zxIAoFu-Tk",
+    "/api/youtube?playlist=PLJMSxPvhcOuA",
     "application/json",
   );
   assert.equal(response.status, 200);
@@ -210,7 +246,7 @@ test("connects the supplied YouTube channel to the service playlists", async () 
   const data = await response.json();
   assert.equal(data.channelId, "UCNnTHykYkGaNaJPIe2WWtVA");
   assert.equal(data.configured, false);
-  assert.match(data.playlistUrl, /PL66aLwkPo2YqtBCXQExJz14zxIAoFu-Tk/);
+  assert.match(data.playlistUrl, /PLJMSxPvhcOuA/);
 });
 
 test("renders current legal identity data", async () => {

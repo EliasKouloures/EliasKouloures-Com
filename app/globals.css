@@ -445,6 +445,8 @@ button:focus-visible {
 
 /* Service pages */
 .service-page {
+  --major-headline-size: clamp(2.5rem, 4.5vw, 5.3rem);
+
   overflow: clip;
 }
 
@@ -462,7 +464,7 @@ button:focus-visible {
 .service-hero h1 {
   max-width: 970px;
   margin: 0;
-  font-size: clamp(2.7rem, 4vw, 3.9rem);
+  font-size: var(--major-headline-size);
   font-weight: 490;
   letter-spacing: -0.06em;
   line-height: 0.92;
@@ -581,7 +583,7 @@ button:focus-visible {
 .section-heading h2 {
   max-width: 830px;
   margin: 0;
-  font-size: clamp(2.5rem, 4.5vw, 5.3rem);
+  font-size: var(--major-headline-size);
   font-weight: 500;
   letter-spacing: -0.055em;
   line-height: 0.98;
@@ -677,7 +679,7 @@ button:focus-visible {
 
 .editorial-copy h2 {
   margin: 0;
-  font-size: clamp(2.6rem, 4.6vw, 5.2rem);
+  font-size: var(--major-headline-size);
   font-weight: 490;
   letter-spacing: -0.055em;
   line-height: 0.98;
@@ -1013,7 +1015,7 @@ button:focus-visible {
 .closing-inner h2 {
   max-width: 1050px;
   margin: 0;
-  font-size: clamp(3.2rem, 6.4vw, 7.6rem);
+  font-size: var(--major-headline-size);
   font-weight: 490;
   letter-spacing: -0.06em;
   line-height: 0.93;
@@ -1536,8 +1538,12 @@ button:focus-visible {
     margin-bottom: 44px;
   }
 
+  .service-page {
+    --major-headline-size: clamp(2.65rem, 12vw, 4.2rem);
+  }
+
   .section-heading h2 {
-    font-size: clamp(2.65rem, 12vw, 4.2rem);
+    font-size: var(--major-headline-size);
   }
 
   .capability-grid,
@@ -1580,7 +1586,7 @@ button:focus-visible {
   }
 
   .editorial-copy h2 {
-    font-size: clamp(2.55rem, 11vw, 4rem);
+    font-size: var(--major-headline-size);
   }
 
   .work-card {
@@ -1656,7 +1662,7 @@ button:focus-visible {
   }
 
   .closing-inner h2 {
-    font-size: clamp(3.2rem, 14vw, 5.4rem);
+    font-size: var(--major-headline-size);
   }
 
   .closing-inner .hero-actions {

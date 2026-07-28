@@ -57,7 +57,7 @@ export const services: Record<string, ServicePageData> = {
       "/images/EliasKouloures-Com_Background_Image_Person_in_Command_Center.png",
     editorialImage:
       "/images/EliasKouloures-Com_Background_Image_Coding.png",
-    playlistId: "PL66aLwkPo2YqtBCXQExJz14zxIAoFu-Tk",
+    playlistId: "PLJMSxPvhcOuA",
     proof: [
       {
         value: "Award-winning",
@@ -107,7 +107,7 @@ export const services: Record<string, ServicePageData> = {
       },
     ],
     editorialKicker: "THE OPERATING PRINCIPLE",
-    editorialTitle: "Find the constraint. Build the system. Leave the playbook.",
+    editorialTitle: "Find constraints. Build systems. Leave playbooks.",
     editorialText:
       "Every engagement is structured around decisions that can be explained, tested and handed over. No black box, no theatre, no dependency by design.",
     workHeading: "Selected proof under pressure",
@@ -178,7 +178,7 @@ export const services: Record<string, ServicePageData> = {
       "/images/EliasKouloures-Com_Background_Image_Person_in_Command_Center.png",
     editorialImage:
       "/images/EliasKouloures-Com_Background_Image_Coding.png",
-    playlistId: "PL66aLwkPo2YqtBCXQExJz14zxIAoFu-Tk",
+    playlistId: "PLJMSxPvhcOuA",
     proof: [
       {
         value: "Preisgekrönt",
@@ -228,7 +228,7 @@ export const services: Record<string, ServicePageData> = {
       },
     ],
     editorialKicker: "DAS ARBEITSPRINZIP",
-    editorialTitle: "Engpass finden. System bauen. Anleitung hinterlassen.",
+    editorialTitle: "Engpässe finden. Systeme bauen. Anleitungen hinterlassen.",
     editorialText:
       "Jedes Mandat wird um Entscheidungen gebaut, die erklärbar, testbar und übertragbar sind. Keine Blackbox, kein Theater, keine gewollte Abhängigkeit.",
     workHeading: "Ausgewählte Ergebnisse unter Druck",
@@ -299,7 +299,7 @@ export const services: Record<string, ServicePageData> = {
       "/images/EliasKouloures-Com_Background_Image_Education_Family.png",
     editorialImage:
       "/images/EliasKouloures-Com_Background_Image_Business_Meeting.png",
-    playlistId: "PL66aLwkPo2YqLUhYuNpuVYOS_vwEuLvhl",
+    playlistId: "PLHtF5eYRujpY",
     proof: [
       {
         value: "Proven at scale",
@@ -412,7 +412,7 @@ export const services: Record<string, ServicePageData> = {
       "/images/EliasKouloures-Com_Background_Image_Education_Family.png",
     editorialImage:
       "/images/EliasKouloures-Com_Background_Image_Business_Meeting.png",
-    playlistId: "PL66aLwkPo2YqLUhYuNpuVYOS_vwEuLvhl",
+    playlistId: "PLHtF5eYRujpY",
     proof: [
       {
         value: "Vielfach bewährt",
@@ -527,7 +527,7 @@ export const services: Record<string, ServicePageData> = {
       "/images/EliasKouloures-Com_Background_Image_Multimedia.png",
     editorialImage:
       "/images/EliasKouloures-Com_Background_Image_Sci-Fi_Steampunk_Device.png",
-    playlistId: "PL66aLwkPo2YqZ00aBJcmxbCSqgFYavoN-",
+    playlistId: "PLIlY05RIg36c",
     proof: [
       {
         value: "Decades of craft",
@@ -641,7 +641,7 @@ export const services: Record<string, ServicePageData> = {
       "/images/EliasKouloures-Com_Background_Image_Multimedia.png",
     editorialImage:
       "/images/EliasKouloures-Com_Background_Image_Sci-Fi_Steampunk_Device.png",
-    playlistId: "PL66aLwkPo2YqZ00aBJcmxbCSqgFYavoN-",
+    playlistId: "PLIlY05RIg36c",
     proof: [
       {
         value: "Jahrzehntelange Erfahrung",
