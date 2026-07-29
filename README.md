@@ -73,3 +73,11 @@ blocked unless `ALLOW_AI_TRAINING=true` is explicitly configured.
 The two unlisted Anthropic reports continue to use their original Wix-hosted
 HTML under their existing public paths. All other `www` traffic is permanently
 normalized to the root domain.
+
+## Production release
+
+`npm run build:pages` creates a deterministic static release in `pages-dist/`.
+It includes every public HTML route, the machine-readable Markdown endpoints,
+`robots.txt`, `sitemap.xml`, the legacy redirects and the two unlisted
+Anthropic reports. GitHub Actions validates and publishes that artifact to
+GitHub Pages after every push to `main`.
