@@ -8,7 +8,11 @@ project. It does not modify the current production website.
 - `/`
 - `/solve`, `/educate`, `/create`
 - `/loesen`, `/fortbilden`, `/entwickeln`
+- `/profile`, `/profil`
+- `/work`, `/projekte`
 - `/impressum-datenschutz`
+- `/llms.txt`, `/sitemap.xml`, `/robots.txt`
+- Markdown counterparts at `/{route}.md`
 
 ## Local development
 
@@ -51,3 +55,16 @@ npm test
 The legal page is a current implementation draft based on the supplied identity
 data and the actual technical behavior of this build. It should receive legal
 review before the public domain is switched.
+
+## Production launch controls
+
+The review deployment stays private and non-indexable. For a public deployment,
+configure:
+
+- `SITE_IS_PRODUCTION=true`
+- `NEXT_PUBLIC_PLAUSIBLE_DOMAIN=eliaskouloures.com` after the analytics account
+  and legal configuration are approved
+- Google and Bing verification values
+
+AI search crawlers are allowed on production. Model-training crawlers remain
+blocked unless `ALLOW_AI_TRAINING=true` is explicitly configured.

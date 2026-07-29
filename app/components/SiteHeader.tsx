@@ -15,22 +15,38 @@ export function SiteHeader({
   return (
     <header className="site-header">
       <div className="shell header-inner">
-        <Link className="brand-lockup" href="/" aria-label="Elias Kouloures home">
+        <Link
+          className="brand-lockup"
+          href="/"
+          aria-label={isGerman ? "Elias Kouloures Startseite" : "Elias Kouloures home"}
+        >
           <span>ELIAS KOULOURES</span>
-          <span className="brand-role">SENIOR ADVISOR</span>
+          <span className="brand-role">
+            {isGerman ? "ANGEWANDTE KI · EXECUTIVE ADVISOR" : "APPLIED AI ARCHITECT"}
+          </span>
         </Link>
 
-        <nav className="header-actions" aria-label="Primary navigation">
+        <nav
+          className="header-actions"
+          aria-label={isGerman ? "Hauptnavigation" : "Primary navigation"}
+        >
           {pairSlug ? (
             <Link className="language-link" href={`/${pairSlug}`}>
               {isGerman ? "ENGLISH" : "DEUTSCH"}
             </Link>
           ) : null}
-          <a className="text-link header-email" href={`mailto:${contact.email}`}>
+          <a
+            className="text-link header-email"
+            data-event="email_click"
+            data-event-label="Header"
+            href={`mailto:${contact.email}`}
+          >
             {isGerman ? "E-Mail" : "Email"}
           </a>
           <a
             className="button button-small"
+            data-event="book_call_click"
+            data-event-label="Header"
             href={contact.calendar}
             target="_blank"
             rel="noreferrer"

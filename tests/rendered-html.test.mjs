@@ -1,5 +1,5 @@
 import assert from "node:assert/strict";
-import { readFile } from "node:fs/promises";
+import { readFile, stat } from "node:fs/promises";
 import test from "node:test";
 
 async function request(pathname = "/", accept = "text/html") {
@@ -56,6 +56,14 @@ test("renders the bilingual landing page with all six flat routes", async () => 
     html,
     /href="https:\/\/kardashev-campus\.beehiiv\.com\/"[^>]*>German Newsletter/,
   );
+  assertIncludesAll(html, [
+    "APPLIED AI ARCHITECT",
+    "From ambiguity to deployed systems",
+    "Profile",
+    "Selected work",
+    "BRIEF ME · PROJEKT ANFRAGEN",
+    "Challenge or desired outcome",
+  ]);
   assert.doesNotMatch(html, /react-loading-skeleton|codex-preview/);
 });
 
@@ -96,6 +104,10 @@ test("uses the same responsive scale for every major service-page headline", asy
   assert.match(
     css,
     /\.landing-heading h1\s*\{[^}]*font-size: clamp\(1\.75rem, 6\.8vw, 8\.2rem\);/s,
+  );
+  assert.match(
+    css,
+    /\.authority-hero h1,\s*\.work-hero h1\s*\{[^}]*font-size: clamp\(2\.7rem, 4vw, 3\.9rem\);/s,
   );
 });
 
@@ -168,12 +180,18 @@ test("renders paired English and German service pages", async () => {
   assert.match(german, /Preisgekrönt/);
   assert.match(
     english,
-    /class="button" href="mailto:Elias\.Kouloures@gmail\.com">Email me<\/a>/,
+    /class="button button-secondary"[^>]*href="mailto:Elias\.Kouloures@gmail\.com">Email me<\/a>/,
   );
   assert.match(
     german,
-    /class="button" href="mailto:Elias\.Kouloures@gmail\.com">E-Mail senden<\/a>/,
+    /class="button button-secondary"[^>]*href="mailto:Elias\.Kouloures@gmail\.com">E-Mail senden<\/a>/,
   );
+  assert.match(german, /<main class="service-page" lang="de">/);
+  assert.equal(germanResponse.headers.get("content-language"), "de");
+  assert.equal(englishResponse.headers.get("content-language"), "en");
+  assert.match(english, /"@type":"Service"/);
+  assert.match(german, /ÖFFENTLICHE EMPFEHLUNGEN/);
+  assert.match(english, /PUBLIC RECOMMENDATIONS/);
   assert.doesNotMatch(english, />0[1-9]</);
   assert.doesNotMatch(german, />0[1-9]</);
 });
@@ -259,4 +277,156 @@ test("renders current legal identity data", async () => {
   assert.match(html, /§ 5 DDG/);
   assert.match(html, /youtube-nocookie\.com/);
   assert.match(html, /20\. Juli 2025/);
+});
+
+test("renders bilingual profile pages with positioning, evidence, and role fit", async () => {
+  const [englishResponse, germanResponse] = await Promise.all([
+    render("/profile"),
+    render("/profil"),
+  ]);
+
+  assert.equal(englishResponse.status, 200);
+  assert.equal(germanResponse.status, 200);
+
+  const [english, german] = await Promise.all([
+    englishResponse.text(),
+    germanResponse.text(),
+  ]);
+
+  assertIncludesAll(english, [
+    "Applied AI Architect &amp; Executive Advisor.",
+    "deployed systems, adopted capabilities and clear market communication",
+    "Freelance first. Open to exceptional missions.",
+    "Technical Deployment Lead",
+    "PUBLIC RECOMMENDATIONS",
+    "COBI · BOSCH",
+  ]);
+  assertIncludesAll(german, [
+    "Berater und Architekt für angewandte KI-Transformation.",
+    "Freelance zuerst. Offen für außergewöhnliche Missionen.",
+    "ÖFFENTLICHE EMPFEHLUNGEN",
+    "lang=\"de\"",
+  ]);
+  assert.match(english, /"@type":"ProfilePage"/);
+  assert.match(english, /href="\/profil"/);
+  assert.match(german, /href="\/profile"/);
+  assert.equal(germanResponse.headers.get("content-language"), "de");
+});
+
+test("renders seven detailed bilingual case studies without sensitive cases", async () => {
+  const [englishResponse, germanResponse] = await Promise.all([
+    render("/work"),
+    render("/projekte"),
+  ]);
+  assert.equal(englishResponse.status, 200);
+  assert.equal(germanResponse.status, 200);
+
+  const [english, german] = await Promise.all([
+    englishResponse.text(),
+    germanResponse.text(),
+  ]);
+
+  assertIncludesAll(english, [
+    "COBI",
+    "Samsung",
+    "E.ON",
+    "Galapagos",
+    "Commerzbank · 360X",
+    "Waldorf Future Lab",
+    "High-End Hazumfefer",
+    "5 days → 19 minutes max",
+    "€9M VC round within 6 months",
+  ]);
+  assertIncludesAll(german, [
+    "Komplexe Probleme. Nutzbare Ergebnisse.",
+    "5 Tage → max. 19 Minuten",
+    "9 Mio. € VC-Runde in 6 Monaten",
+  ]);
+  assert.doesNotMatch(english, /Clinical Diagnostics|Talyo Property/);
+  assert.doesNotMatch(german, /Klinische Diagnostik|Talyo/);
+  assert.match(english, /"@type":"CollectionPage"/);
+});
+
+test("serves machine-readable markdown, llms, sitemap, and staging robots", async () => {
+  const [profile, work, llms, sitemap, robots] = await Promise.all([
+    request("/profile.md", "text/markdown"),
+    request("/work.md", "text/markdown"),
+    request("/llms.txt", "text/plain"),
+    request("/sitemap.xml", "application/xml"),
+    request("/robots.txt", "text/plain"),
+  ]);
+
+  for (const response of [profile, work, llms, sitemap, robots]) {
+    assert.equal(response.status, 200);
+  }
+
+  assert.match(profile.headers.get("content-type") ?? "", /^text\/markdown/);
+  assert.match(await profile.text(), /Applied AI Architect & Executive Advisor/);
+  assert.match(await work.text(), /## Galapagos:/);
+  assert.match(await llms.text(), /Do not infer guarantees from past results/);
+
+  const sitemapText = await sitemap.text();
+  assert.match(sitemapText, /<loc>https:\/\/eliaskouloures\.com\/profile<\/loc>/);
+  assert.match(sitemapText, /hreflang="x-default"/);
+
+  const robotsText = await robots.text();
+  assert.match(robotsText, /User-agent: \*/);
+  assert.match(robotsText, /Disallow: \//);
+});
+
+test("applies redirects and security headers", async () => {
+  const redirect = await render("/cv");
+  assert.equal(redirect.status, 308);
+  assert.equal(
+    redirect.headers.get("location"),
+    "http://localhost/profile",
+  );
+
+  const response = await render("/profile");
+  assert.equal(response.headers.get("x-content-type-options"), "nosniff");
+  assert.equal(
+    response.headers.get("referrer-policy"),
+    "strict-origin-when-cross-origin",
+  );
+  assert.match(response.headers.get("permissions-policy") ?? "", /camera=\(\)/);
+});
+
+test("uses optimized desktop and mobile visual assets", async () => {
+  const css = await readFile(
+    new URL("../app/globals.css", import.meta.url),
+    "utf8",
+  );
+  const data = await readFile(
+    new URL("../app/site-data.ts", import.meta.url),
+    "utf8",
+  );
+
+  assert.doesNotMatch(css, /Background_Image_[^")]+\.png/);
+  assert.doesNotMatch(data, /Background_Image_[^"]+\.png/);
+  assert.match(css, /Background_Image_[^")]+_mobile\.jpg/);
+  assert.match(data, /Background_Image_[^"]+\.jpg/);
+
+  const desktop = await stat(
+    new URL(
+      "../public/images/EliasKouloures-Com_Background_Image_Person_in_Command_Center.jpg",
+      import.meta.url,
+    ),
+  );
+  const mobile = await stat(
+    new URL(
+      "../public/images/EliasKouloures-Com_Background_Image_Person_in_Command_Center_mobile.jpg",
+      import.meta.url,
+    ),
+  );
+  assert.ok(desktop.size < 700_000);
+  assert.ok(mobile.size < 220_000);
+
+  const socialPreview = await stat(
+    new URL("../public/og.jpg", import.meta.url),
+  );
+  assert.ok(socialPreview.size < 400_000);
+  assert.match(
+    await readFile(new URL("../app/layout.tsx", import.meta.url), "utf8"),
+    /url: "\/og\.jpg"/,
+  );
 });

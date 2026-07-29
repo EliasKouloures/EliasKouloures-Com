@@ -54,9 +54,9 @@ export const services: Record<string, ServicePageData> = {
     intro:
       "First-principles diagnosis, evidence-traced decisions and working solutions for complex growth, innovation and AI challenges—built for EU and German realities.",
     heroImage:
-      "/images/EliasKouloures-Com_Background_Image_Person_in_Command_Center.png",
+      "/images/EliasKouloures-Com_Background_Image_Person_in_Command_Center.jpg",
     editorialImage:
-      "/images/EliasKouloures-Com_Background_Image_Coding.png",
+      "/images/EliasKouloures-Com_Background_Image_Coding.jpg",
     playlistId: "PLJMSxPvhcOuA",
     proof: [
       {
@@ -175,9 +175,9 @@ export const services: Record<string, ServicePageData> = {
     intro:
       "Erstprinzipien-Diagnose, nachvollziehbare Entscheidungen und funktionierende Lösungen für komplexe Wachstums-, Innovations- und KI-Herausforderungen—ausgerichtet auf Deutschland und die EU.",
     heroImage:
-      "/images/EliasKouloures-Com_Background_Image_Person_in_Command_Center.png",
+      "/images/EliasKouloures-Com_Background_Image_Person_in_Command_Center.jpg",
     editorialImage:
-      "/images/EliasKouloures-Com_Background_Image_Coding.png",
+      "/images/EliasKouloures-Com_Background_Image_Coding.jpg",
     playlistId: "PLJMSxPvhcOuA",
     proof: [
       {
@@ -296,9 +296,9 @@ export const services: Record<string, ServicePageData> = {
     intro:
       "Role-specific learning for leaders, teams and families—translated into useful workflows, shared language and a roadmap people can act on.",
     heroImage:
-      "/images/EliasKouloures-Com_Background_Image_Education_Family.png",
+      "/images/EliasKouloures-Com_Background_Image_Education_Family.jpg",
     editorialImage:
-      "/images/EliasKouloures-Com_Background_Image_Business_Meeting.png",
+      "/images/EliasKouloures-Com_Background_Image_Business_Meeting.jpg",
     playlistId: "PLHtF5eYRujpY",
     proof: [
       {
@@ -409,9 +409,9 @@ export const services: Record<string, ServicePageData> = {
     intro:
       "Rollenspezifische Weiterbildung für Führungskräfte, Teams und Familien—übersetzt in nützliche Workflows, eine gemeinsame Sprache und einen umsetzbaren Fahrplan.",
     heroImage:
-      "/images/EliasKouloures-Com_Background_Image_Education_Family.png",
+      "/images/EliasKouloures-Com_Background_Image_Education_Family.jpg",
     editorialImage:
-      "/images/EliasKouloures-Com_Background_Image_Business_Meeting.png",
+      "/images/EliasKouloures-Com_Background_Image_Business_Meeting.jpg",
     playlistId: "PLHtF5eYRujpY",
     proof: [
       {
@@ -524,9 +524,9 @@ export const services: Record<string, ServicePageData> = {
     intro:
       "Creative direction and reusable AI production systems for high-impact multimedia—built around the audience, the channel and the result.",
     heroImage:
-      "/images/EliasKouloures-Com_Background_Image_Multimedia.png",
+      "/images/EliasKouloures-Com_Background_Image_Multimedia.jpg",
     editorialImage:
-      "/images/EliasKouloures-Com_Background_Image_Sci-Fi_Steampunk_Device.png",
+      "/images/EliasKouloures-Com_Background_Image_Sci-Fi_Steampunk_Device.jpg",
     playlistId: "PLIlY05RIg36c",
     proof: [
       {
@@ -638,9 +638,9 @@ export const services: Record<string, ServicePageData> = {
     intro:
       "Kreativdirektion und wiederverwendbare KI-Produktionssysteme für wirkungsvolle Multimedia-Inhalte—gebaut um Zielgruppe, Kanal und Ergebnis.",
     heroImage:
-      "/images/EliasKouloures-Com_Background_Image_Multimedia.png",
+      "/images/EliasKouloures-Com_Background_Image_Multimedia.jpg",
     editorialImage:
-      "/images/EliasKouloures-Com_Background_Image_Sci-Fi_Steampunk_Device.png",
+      "/images/EliasKouloures-Com_Background_Image_Sci-Fi_Steampunk_Device.jpg",
     playlistId: "PLIlY05RIg36c",
     proof: [
       {

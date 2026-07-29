@@ -28,6 +28,29 @@ interface ExecutionContext {
 const worker = {
   async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
     const url = new URL(request.url);
+    const redirectMap: Record<string, string> = {
+      "/cv": "/profile",
+      "/credentials": "/profile#credentials",
+      "/first-principles": "/solve",
+      "/ai-multimedia": "/create",
+      "/creative-360-marketing": "/create",
+      "/ai-upskilling": "/educate",
+      "/prompt-engineering": "/educate",
+      "/ki-fuer-familien": "/fortbilden",
+      "/ai-for-families": "/educate",
+      "/ki-fuer-schulen": "/fortbilden",
+      "/gpts": "/educate",
+      "/impressum": "/impressum-datenschutz",
+    };
+
+    if (url.hostname === "www.eliaskouloures.com") {
+      url.hostname = "eliaskouloures.com";
+      return Response.redirect(url, 308);
+    }
+
+    if (redirectMap[url.pathname]) {
+      return Response.redirect(new URL(redirectMap[url.pathname], url), 308);
+    }
 
     if (url.pathname === "/_vinext/image") {
       const allowedWidths = [...DEFAULT_DEVICE_SIZES, ...DEFAULT_IMAGE_SIZES];
@@ -40,7 +63,47 @@ const worker = {
       }, allowedWidths);
     }
 
-    return handler.fetch(request, env, ctx);
+    const appResponse = await handler.fetch(request, env, ctx);
+    const headers = new Headers(appResponse.headers);
+    headers.set("x-content-type-options", "nosniff");
+    headers.set("referrer-policy", "strict-origin-when-cross-origin");
+    headers.set(
+      "permissions-policy",
+      "camera=(), microphone=(), geolocation=(), payment=()",
+    );
+    headers.set("x-frame-options", "SAMEORIGIN");
+
+    const germanRoutes = new Set([
+      "/loesen",
+      "/fortbilden",
+      "/entwickeln",
+      "/profil",
+      "/projekte",
+      "/impressum-datenschutz",
+    ]);
+    const language = germanRoutes.has(url.pathname) ? "de" : "en";
+    headers.set("content-language", language);
+
+    let response = new Response(appResponse.body, {
+      status: appResponse.status,
+      statusText: appResponse.statusText,
+      headers,
+    });
+
+    if (
+      headers.get("content-type")?.startsWith("text/html") &&
+      typeof HTMLRewriter !== "undefined"
+    ) {
+      response = new HTMLRewriter()
+        .on("html", {
+          element(element) {
+            element.setAttribute("lang", language);
+          },
+        })
+        .transform(response);
+    }
+
+    return response;
   },
 };
 

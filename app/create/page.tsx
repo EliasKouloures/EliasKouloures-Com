@@ -8,7 +8,7 @@ export const metadata: Metadata = {
     "Creative direction and reusable AI production systems for high-impact multimedia.",
   alternates: {
     canonical: "/create",
-    languages: { en: "/create", de: "/entwickeln" },
+    languages: { en: "/create", de: "/entwickeln", "x-default": "/create" },
   },
 };
 

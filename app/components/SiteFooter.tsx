@@ -1,7 +1,13 @@
 import Link from "next/link";
-import { contact } from "../site-data";
+import { contact, type Language } from "../site-data";
 
-export function SiteFooter() {
+type SiteFooterProps = {
+  language?: Language;
+};
+
+export function SiteFooter({ language = "en" }: SiteFooterProps) {
+  const isGerman = language === "de";
+
   return (
     <footer className="site-footer">
       <div className="shell footer-grid">
@@ -10,31 +16,56 @@ export function SiteFooter() {
             ELIAS KOULOURES
           </Link>
           <p>
-            Senior Advisor for Growth, Innovation &amp; AI. Berlin-based,
-            EU-focused and freelance since 2014. AI consultant, creative
-            director, copywriter and data scientist. Native German and English.
+            {isGerman
+              ? "Berater und Architekt für angewandte KI-Transformation. Berlin-basiert, DACH- und EU-fokussiert. Nativ auf Deutsch und Englisch."
+              : "Applied AI Architect & Executive Advisor. Berlin-based, DACH- and EU-focused. Native in German and English."}
           </p>
         </div>
 
         <div>
-          <p className="footer-label">WORK WITH ME</p>
+          <p className="footer-label">
+            {isGerman ? "ZUSAMMENARBEIT" : "WORK WITH ME"}
+          </p>
           <div className="tag-list">
-            <Link href="/solve">SOLVE</Link>
-            <Link href="/educate">EDUCATE</Link>
-            <Link href="/create">CREATE</Link>
-            <Link href="/loesen">LÖSEN</Link>
-            <Link href="/fortbilden">FORTBILDEN</Link>
-            <Link href="/entwickeln">ENTWICKELN</Link>
+            <Link data-event="service_open" data-event-label="SOLVE · Footer" href="/solve">SOLVE</Link>
+            <Link data-event="service_open" data-event-label="EDUCATE · Footer" href="/educate">EDUCATE</Link>
+            <Link data-event="service_open" data-event-label="CREATE · Footer" href="/create">CREATE</Link>
+            <Link data-event="service_open" data-event-label="LÖSEN · Footer" href="/loesen">LÖSEN</Link>
+            <Link data-event="service_open" data-event-label="FORTBILDEN · Footer" href="/fortbilden">FORTBILDEN</Link>
+            <Link data-event="service_open" data-event-label="ENTWICKELN · Footer" href="/entwickeln">ENTWICKELN</Link>
+          </div>
+          <div className="footer-authority-links">
+            <Link href={isGerman ? "/profil" : "/profile"}>
+              {isGerman ? "Profil" : "Profile"}
+            </Link>
+            <Link href={isGerman ? "/projekte" : "/work"}>
+              {isGerman ? "Projekte" : "Selected work"}
+            </Link>
           </div>
         </div>
 
         <div>
-          <p className="footer-label">CONNECT</p>
+          <p className="footer-label">
+            {isGerman ? "KONTAKT" : "CONNECT"}
+          </p>
           <div className="footer-links">
-            <a href={contact.calendar} target="_blank" rel="noreferrer">
-              Book a call <span aria-hidden="true">↗</span>
+            <a
+              data-event="book_call_click"
+              data-event-label="Footer"
+              href={contact.calendar}
+              target="_blank"
+              rel="noreferrer"
+            >
+              {isGerman ? "Gespräch buchen" : "Book a call"}{" "}
+              <span aria-hidden="true">↗</span>
             </a>
-            <a href={`mailto:${contact.email}`}>Email</a>
+            <a
+              data-event="email_click"
+              data-event-label="Footer"
+              href={`mailto:${contact.email}`}
+            >
+              {isGerman ? "E-Mail" : "Email"}
+            </a>
             <a href={contact.linkedin} target="_blank" rel="noreferrer">
               LinkedIn <span aria-hidden="true">↗</span>
             </a>
@@ -45,7 +76,8 @@ export function SiteFooter() {
               YouTube <span aria-hidden="true">↗</span>
             </a>
             <a href={contact.newsletter} target="_blank" rel="noreferrer">
-              German Newsletter <span aria-hidden="true">↗</span>
+              {isGerman ? "Deutscher Newsletter" : "German Newsletter"}{" "}
+              <span aria-hidden="true">↗</span>
             </a>
           </div>
         </div>

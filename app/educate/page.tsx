@@ -8,7 +8,7 @@ export const metadata: Metadata = {
     "Role-specific AI learning for leaders, teams and families, translated into useful workflows and roadmaps.",
   alternates: {
     canonical: "/educate",
-    languages: { en: "/educate", de: "/fortbilden" },
+    languages: { en: "/educate", de: "/fortbilden", "x-default": "/educate" },
   },
 };
 

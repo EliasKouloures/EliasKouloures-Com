@@ -11,6 +11,11 @@ export const metadata: Metadata = {
 };
 
 export default function LegalPage() {
+  const analyticsEnabled = Boolean(
+    process.env.NEXT_PUBLIC_PLAUSIBLE_DOMAIN,
+  );
+  const isProduction = process.env.SITE_IS_PRODUCTION === "true";
+
   return (
     <main className="legal-page" lang="de">
       <SiteHeader language="de" />
@@ -105,16 +110,34 @@ export default function LegalPage() {
 
             <h3>Hosting und Server-Protokolle</h3>
             <p>
-              Die Review-Version wird über OpenAI Sites bereitgestellt. Dabei
-              können technische Infrastruktur-Dienstleister, insbesondere
-              Cloudflare, eingesetzt werden. Beim Aufruf können technisch
-              notwendige Daten wie IP-Adresse, Zeitpunkt, aufgerufene URL,
-              Referrer, Browser- und Betriebssysteminformationen in
+              {isProduction
+                ? "Diese Website wird über eine codebasierte Hosting-Infrastruktur bereitgestellt."
+                : "Die Review-Version wird über OpenAI Sites bereitgestellt."}{" "}
+              Dabei können technische Infrastruktur-Dienstleister,
+              insbesondere Cloudflare, eingesetzt werden. Beim Aufruf können
+              technisch notwendige Daten wie IP-Adresse, Zeitpunkt, aufgerufene
+              URL, Referrer, Browser- und Betriebssysteminformationen in
               Server-Protokollen verarbeitet werden. Dies dient der sicheren
               und stabilen Bereitstellung der Website. Rechtsgrundlage ist Art.
               6 Abs. 1 lit. f DSGVO. Das berechtigte Interesse liegt im sicheren
               Betrieb des Angebots.
             </p>
+
+            {analyticsEnabled ? (
+              <>
+                <h3>Reichweitenmessung mit Plausible</h3>
+                <p>
+                  Diese Website nutzt Plausible Analytics zur
+                  datensparsamen Reichweiten- und Ereignismessung. Die
+                  Konfiguration verwendet keine Werbeprofile und keine
+                  websiteeigenen Analyse-Cookies. Erfasst werden insbesondere
+                  aggregierte Seitenaufrufe und Interaktionen mit
+                  Kontaktmöglichkeiten. Rechtsgrundlage und konkrete
+                  Konfiguration sind vor dem öffentlichen Livegang rechtlich zu
+                  prüfen.
+                </p>
+              </>
+            ) : null}
 
             <h3>Kontakt per E-Mail oder Telefon</h3>
             <p>
@@ -188,7 +211,7 @@ export default function LegalPage() {
         </div>
       </div>
 
-      <SiteFooter />
+      <SiteFooter language="de" />
     </main>
   );
 }

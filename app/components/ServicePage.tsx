@@ -1,23 +1,48 @@
 import type { CSSProperties } from "react";
 import Link from "next/link";
+import { testimonialIdsByService } from "../authority-data";
 import { contact, type ServicePageData } from "../site-data";
 import { PlaylistGallery } from "./PlaylistGallery";
 import { SiteFooter } from "./SiteFooter";
 import { SiteHeader } from "./SiteHeader";
+import { TestimonialGrid } from "./TestimonialGrid";
 
 type ServicePageProps = {
   data: ServicePageData;
 };
 
 function backgroundStyle(image: string): CSSProperties {
-  return { "--section-image": `url("${image}")` } as CSSProperties;
+  return {
+    "--section-image": `url("${image}")`,
+    "--section-mobile-image": `url("${image.replace(".jpg", "_mobile.jpg")}")`,
+  } as CSSProperties;
 }
 
 export function ServicePage({ data }: ServicePageProps) {
   const isGerman = data.language === "de";
 
   return (
-    <main className="service-page">
+    <main className="service-page" lang={data.language}>
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{
+          __html: JSON.stringify({
+            "@context": "https://schema.org",
+            "@type": "Service",
+            "@id": `https://eliaskouloures.com/${data.slug}#service`,
+            name: data.label,
+            description: data.intro,
+            url: `https://eliaskouloures.com/${data.slug}`,
+            areaServed: ["Germany", "Austria", "Switzerland", "European Union"],
+            availableLanguage: isGerman ? ["de", "en"] : ["en", "de"],
+            provider: {
+              "@type": "Person",
+              "@id": "https://eliaskouloures.com/#elias-kouloures",
+              name: "Elias Kouloures",
+            },
+          }),
+        }}
+      />
       <SiteHeader
         language={data.language}
         pairSlug={data.pairSlug}
@@ -33,6 +58,8 @@ export function ServicePage({ data }: ServicePageProps) {
           <div className="hero-actions">
             <a
               className="button"
+              data-event="book_call_click"
+              data-event-label={`${data.label} hero`}
               href={contact.calendar}
               target="_blank"
               rel="noreferrer"
@@ -40,7 +67,12 @@ export function ServicePage({ data }: ServicePageProps) {
               {isGerman ? "Gespräch buchen" : "Book a call"}
               <span aria-hidden="true">↗</span>
             </a>
-            <a className="button button-secondary" href={`mailto:${contact.email}`}>
+            <a
+              className="button button-secondary"
+              data-event="email_click"
+              data-event-label={`${data.label} hero`}
+              href={`mailto:${contact.email}`}
+            >
               {isGerman ? "E-Mail senden" : "Email me"}
             </a>
           </div>
@@ -111,6 +143,25 @@ export function ServicePage({ data }: ServicePageProps) {
         </div>
       </section>
 
+      <section className="content-section testimonial-section">
+        <div className="shell">
+          <div className="section-heading compact">
+            <p className="eyebrow">
+              {isGerman ? "ÖFFENTLICHE EMPFEHLUNGEN" : "PUBLIC RECOMMENDATIONS"}
+            </p>
+            <h2>
+              {isGerman
+                ? "Vertrauen entsteht durch Arbeit, die andere bestätigen."
+                : "Trust is earned through work others validate."}
+            </h2>
+          </div>
+          <TestimonialGrid
+            ids={testimonialIdsByService[data.slug]}
+            language={data.language}
+          />
+        </div>
+      </section>
+
       <section className="engagement-section">
         <div className="shell">
           <div className="section-heading compact">
@@ -153,6 +204,8 @@ export function ServicePage({ data }: ServicePageProps) {
           <div className="hero-actions">
             <a
               className="button"
+              data-event="book_call_click"
+              data-event-label={`${data.label} closing`}
               href={contact.calendar}
               target="_blank"
               rel="noreferrer"
@@ -160,9 +213,22 @@ export function ServicePage({ data }: ServicePageProps) {
               {isGerman ? "Gespräch buchen" : "Book a call"}
               <span aria-hidden="true">↗</span>
             </a>
-            <a className="button" href={`mailto:${contact.email}`}>
+            <a
+              className="button"
+              data-event="email_click"
+              data-event-label={`${data.label} closing`}
+              href={`mailto:${contact.email}`}
+            >
               {isGerman ? "E-Mail senden" : "Email me"}
             </a>
+            <Link
+              className="button button-secondary"
+              data-event="brief_open"
+              data-event-label={`${data.label} closing`}
+              href="/#brief"
+            >
+              {isGerman ? "Projekt beschreiben" : "Brief me"}
+            </Link>
           </div>
           <Link className="back-home" href="/">
             ← {isGerman ? "Zur Übersicht" : "Back to overview"}
@@ -170,7 +236,7 @@ export function ServicePage({ data }: ServicePageProps) {
         </div>
       </section>
 
-      <SiteFooter />
+      <SiteFooter language={data.language} />
     </main>
   );
 }

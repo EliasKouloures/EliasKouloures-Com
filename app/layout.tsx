@@ -1,42 +1,59 @@
 import type { Metadata, Viewport } from "next";
+import { Analytics } from "./components/Analytics";
+import { contact } from "./site-data";
 import "./globals.css";
 
+const isProduction = process.env.SITE_IS_PRODUCTION === "true";
+
 export const metadata: Metadata = {
-  metadataBase: new URL("https://www.eliaskouloures.com"),
+  metadataBase: new URL("https://eliaskouloures.com"),
   title: {
-    default: "Elias Kouloures · Senior Advisor",
+    default: "Elias Kouloures · Applied AI Architect & Executive Advisor",
     template: "%s · Elias Kouloures",
   },
   description:
-    "Senior Advisor for Growth, Innovation & AI. Solve complex problems, build AI capability and create multimedia systems.",
+    "Applied AI Architect & Executive Advisor. Complex AI and business challenges turned into deployed systems, adopted capability and clear market communication.",
   openGraph: {
-    title: "Elias Kouloures · Senior Advisor",
+    title: "Elias Kouloures · Applied AI Architect & Executive Advisor",
     description:
-      "Solve complex problems, build AI capability and create multimedia systems.",
+      "From ambiguity to deployed systems, adopted capability and market clarity.",
     images: [
       {
-        url: "/og.png",
-        width: 1727,
-        height: 911,
-        alt: "A senior advisor overlooking an interplanetary city.",
+        url: "/og.jpg",
+        width: 1600,
+        height: 900,
+        alt: "Elias Kouloures — Applied AI Architect and Executive Advisor.",
       },
     ],
     type: "website",
   },
   twitter: {
     card: "summary_large_image",
-    title: "Elias Kouloures · Senior Advisor",
+    title: "Elias Kouloures · Applied AI Architect & Executive Advisor",
     description:
-      "Solve complex problems, build AI capability and create multimedia systems.",
-    images: ["/og.png"],
+      "From ambiguity to deployed systems, adopted capability and market clarity.",
+    images: ["/og.jpg"],
   },
   icons: {
     icon: "/favicon.svg",
     shortcut: "/favicon.svg",
   },
   robots: {
-    index: false,
-    follow: false,
+    index: isProduction,
+    follow: isProduction,
+    googleBot: {
+      index: isProduction,
+      follow: isProduction,
+      "max-image-preview": "large",
+      "max-snippet": -1,
+      "max-video-preview": -1,
+    },
+  },
+  verification: {
+    google: process.env.GOOGLE_SITE_VERIFICATION,
+    other: process.env.BING_SITE_VERIFICATION
+      ? { "msvalidate.01": process.env.BING_SITE_VERIFICATION }
+      : undefined,
   },
 };
 
@@ -54,7 +71,43 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body>{children}</body>
+      <body>
+        {children}
+        <Analytics />
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "Person",
+              "@id": "https://eliaskouloures.com/#elias-kouloures",
+              name: "Elias Kouloures",
+              url: "https://eliaskouloures.com",
+              jobTitle: "Applied AI Architect & Executive Advisor",
+              homeLocation: {
+                "@type": "Place",
+                name: "Berlin, Germany",
+              },
+              knowsLanguage: ["English", "German"],
+              knowsAbout: [
+                "Applied artificial intelligence",
+                "AI transformation",
+                "AI architecture",
+                "AI enablement",
+                "Executive advisory",
+                "First-principles systems thinking",
+                "Technical communication",
+                "Creative technology",
+              ],
+              sameAs: [
+                contact.linkedin,
+                contact.github,
+                contact.youtube,
+              ],
+            }),
+          }}
+        />
+      </body>
     </html>
   );
 }

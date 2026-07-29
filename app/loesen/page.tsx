@@ -8,7 +8,7 @@ export const metadata: Metadata = {
     "Erstprinzipien-Diagnose und funktionierende Lösungen für komplexe Wachstums-, Innovations- und KI-Herausforderungen.",
   alternates: {
     canonical: "/loesen",
-    languages: { en: "/solve", de: "/loesen" },
+    languages: { en: "/solve", de: "/loesen", "x-default": "/solve" },
   },
 };
 
