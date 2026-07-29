@@ -192,8 +192,42 @@ test("renders paired English and German service pages", async () => {
   assert.match(english, /"@type":"Service"/);
   assert.match(german, /ÖFFENTLICHE EMPFEHLUNGEN/);
   assert.match(english, /PUBLIC RECOMMENDATIONS/);
-  assert.doesNotMatch(english, />0[1-9]</);
-  assert.doesNotMatch(german, />0[1-9]</);
+
+  // Guard retained from the earlier design: capability, work and engagement
+  // cards must never regress to numbered markers. The flagship signal list is
+  // a deliberate ordered list, so it is excluded here and asserted below.
+  const withoutFlagship = (html) =>
+    html.replace(/<section class="flagship-section"[\s\S]*?<\/section>/, "");
+  assert.doesNotMatch(withoutFlagship(english), />0[1-9]</);
+  assert.doesNotMatch(withoutFlagship(german), />0[1-9]</);
+});
+
+test("promotes crisis intervention as the flagship offer in SOLVE and LÖSEN", async () => {
+  const [solve, loesen, educate] = await Promise.all([
+    render("/solve").then((response) => response.text()),
+    render("/loesen").then((response) => response.text()),
+    render("/educate").then((response) => response.text()),
+  ]);
+
+  assert.match(solve, /FLAGSHIP MANDATE · CRISIS INTERVENTION/);
+  assert.match(solve, /When it is already burning\./);
+  assert.match(loesen, /KERNMANDAT · KRISENINTERVENTION/);
+  assert.match(loesen, /Wenn es bereits brennt\./);
+
+  // Three numbered signals in each language.
+  for (const html of [solve, loesen]) {
+    for (const index of ["01", "02", "03"]) {
+      assert.match(html, new RegExp(`>${index}<`));
+    }
+  }
+
+  // The flagship band belongs to pillar one only.
+  assert.doesNotMatch(educate, /flagship-section/);
+
+  // The "Brief me" round trip was removed from service pages.
+  for (const html of [solve, loesen, educate]) {
+    assert.doesNotMatch(html, /href="\/#brief"/);
+  }
 });
 
 test("renders the revised educate and create headlines in both languages", async () => {
@@ -313,7 +347,45 @@ test("renders bilingual profile pages with positioning, evidence, and role fit",
   assert.equal(germanResponse.headers.get("content-language"), "de");
 });
 
-test("renders seven detailed bilingual case studies without sensitive cases", async () => {
+test("renders Why-How-What as native text, not baked image content", async () => {
+  const [english, german, profileMd] = await Promise.all([
+    render("/profile").then((r) => r.text()),
+    render("/profil").then((r) => r.text()),
+    request("/profile.md", "text/markdown").then((r) => r.text()),
+  ]);
+
+  // The three tiers exist as real markup.
+  assert.match(english, /class="whw-section"/);
+  assert.match(english, /Elevate humanity to an interplanetary civilisation\./);
+  assert.match(german, /Die Menschheit zu einer interplanetaren Zivilisation zu erheben\.|Die Menschheit zu einer interplanetaren Zivilisation erheben\./);
+
+  // Proof points are selectable text in both languages, not pixels.
+  assertIncludesAll(english, [
+    "Rescued Berlin hospitality venue",
+    "IP failsafes",
+    "groundtruth dataset",
+    "Comparative Research Network",
+    "C-Suite Coach",
+    "Secure AI for Schools",
+  ]);
+  assertIncludesAll(german, [
+    "Berliner Gastronomiebetrieb gerettet",
+    "IP-Absicherung",
+    "Comparative Research Network",
+  ]);
+
+  // And they reach machine-readable endpoints for search and AI retrieval.
+  assertIncludesAll(profileMd, [
+    "Rescued Berlin hospitality venue",
+    "Comparative Research Network",
+  ]);
+
+  // The old baked-image version must not come back.
+  assert.doesNotMatch(english, /Elias_WHW-Kardashev_07-2026_V1/);
+  assert.doesNotMatch(german, /Elias_WHW-Kardashev_07-2026_V1/);
+});
+
+test("renders twelve detailed bilingual case studies without sensitive cases", async () => {
   const [englishResponse, germanResponse] = await Promise.all([
     render("/work"),
     render("/projekte"),
@@ -334,16 +406,29 @@ test("renders seven detailed bilingual case studies without sensitive cases", as
     "Commerzbank · 360X",
     "Waldorf Future Lab",
     "High-End Hazumfefer",
+    "Berlin hospitality venue",
+    "EU TRANSFORM",
+    "ASU &amp; Max Planck",
+    "Laisterdam Rijksmonument",
+    "Beat Em Hub · Games Ground",
     "5 days → 19 minutes max",
     "€9M VC round within 6 months",
+    "35 jobs protected",
   ]);
   assertIncludesAll(german, [
     "Komplexe Probleme. Nutzbare Ergebnisse.",
     "5 Tage → max. 19 Minuten",
     "9 Mio. € VC-Runde in 6 Monaten",
+    "35 Arbeitsplätze gesichert",
   ]);
   assert.doesNotMatch(english, /Clinical Diagnostics|Talyo Property/);
   assert.doesNotMatch(german, /Klinische Diagnostik|Talyo/);
+  // The rescued venue must never be identifiable by its original name.
+  assert.doesNotMatch(english, /Insomnia/i);
+  assert.doesNotMatch(german, /Insomnia/i);
+  // Modelled projections must stay labelled as projections.
+  assert.match(english, /Modelled: −60% draft complaints/);
+  assert.match(german, /Modelliert: −60 % Zugluftbeschwerden/);
   assert.match(english, /"@type":"CollectionPage"/);
 });
 

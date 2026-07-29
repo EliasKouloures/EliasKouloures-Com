@@ -1,5 +1,19 @@
 export type Language = "en" | "de";
 
+/**
+ * The flagship offer inside a pillar. Currently SOLVE / LÖSEN only:
+ * Crisis Intervention is the flagship urgent-problem mandate.
+ */
+export type FlagshipOffer = {
+  eyebrow: string;
+  title: string;
+  intro: string;
+  signalHeading: string;
+  signals: Array<{ title: string; text: string }>;
+  response: string;
+  cta: string;
+};
+
 export type ServicePageData = {
   slug: string;
   pairSlug: string;
@@ -8,6 +22,7 @@ export type ServicePageData = {
   eyebrow: string;
   title: string;
   intro: string;
+  flagship?: FlagshipOffer;
   heroImage: string;
   editorialImage: string;
   playlistId: string;
@@ -53,6 +68,30 @@ export const services: Record<string, ServicePageData> = {
     title: "Give me your challenges where no playbook exists.",
     intro:
       "First-principles diagnosis, evidence-traced decisions and working solutions for complex growth, innovation and AI challenges—built for EU and German realities.",
+    flagship: {
+      eyebrow: "FLAGSHIP MANDATE · CRISIS INTERVENTION",
+      title: "When it is already burning.",
+      intro:
+        "Crisis intervention is the flagship mandate inside SOLVE. It applies when a high-stakes problem is already costing customers, revenue, headcount or reputation, no playbook exists, and there is no time to write one. I take the constraint apart, name the root cause and ship the smallest defensible fix first.",
+      signalHeading: "Three signals that this is the right mandate",
+      signals: [
+        {
+          title: "The clock is the constraint",
+          text: "Damage compounds weekly. A conventional discovery phase would land after the deadline that actually matters.",
+        },
+        {
+          title: "The brief is incomplete",
+          text: "Nobody can state the real problem in one sentence yet. Ownership is unclear and the evidence sits in five places.",
+        },
+        {
+          title: "It crosses disciplines",
+          text: "Strategy, data, AI, compliance, communication and delivery all touch it, so no single specialist can close it alone.",
+        },
+      ],
+      response:
+        "Typical shape: a diagnosis within days, a defensible decision path inside the first week, working output in weeks. EU and German requirements are designed in from the first hour rather than retrofitted at the end.",
+      cta: "Book a call",
+    },
     heroImage:
       "/images/EliasKouloures-Com_Background_Image_Person_in_Command_Center.jpg",
     editorialImage:
@@ -174,6 +213,30 @@ export const services: Record<string, ServicePageData> = {
     title: "Geben Sie mir Herausforderungen, für die es keine Anleitung gibt.",
     intro:
       "Erstprinzipien-Diagnose, nachvollziehbare Entscheidungen und funktionierende Lösungen für komplexe Wachstums-, Innovations- und KI-Herausforderungen—ausgerichtet auf Deutschland und die EU.",
+    flagship: {
+      eyebrow: "KERNMANDAT · KRISENINTERVENTION",
+      title: "Wenn es bereits brennt.",
+      intro:
+        "Krisenintervention ist das Kernmandat innerhalb von LÖSEN. Es greift, wenn ein Problem mit hoher Tragweite bereits Kunden, Umsatz, Personal oder Reputation kostet, keine Anleitung existiert und keine Zeit bleibt, eine zu schreiben. Ich zerlege die Rahmenbedingungen, benenne die Ursache und liefere zuerst die kleinste belastbare Lösung.",
+      signalHeading: "Drei Anzeichen, dass dies das richtige Mandat ist",
+      signals: [
+        {
+          title: "Die Zeit ist der Engpass",
+          text: "Der Schaden wächst wöchentlich. Eine klassische Analysephase wäre erst nach dem entscheidenden Termin fertig.",
+        },
+        {
+          title: "Der Auftrag ist unvollständig",
+          text: "Niemand kann das eigentliche Problem in einem Satz formulieren. Die Verantwortung ist ungeklärt, die Belege liegen verstreut.",
+        },
+        {
+          title: "Es reicht über Disziplinen hinweg",
+          text: "Strategie, Daten, KI, Compliance, Kommunikation und Umsetzung greifen ineinander. Kein einzelner Spezialist schließt das allein.",
+        },
+      ],
+      response:
+        "Typischer Ablauf: Diagnose innerhalb von Tagen, ein belastbarer Entscheidungspfad in der ersten Woche, funktionierende Ergebnisse in Wochen. EU- und DE-Anforderungen sind ab der ersten Stunde eingeplant und werden nicht nachträglich ergänzt.",
+      cta: "Gespräch buchen",
+    },
     heroImage:
       "/images/EliasKouloures-Com_Background_Image_Person_in_Command_Center.jpg",
     editorialImage:
@@ -303,7 +366,7 @@ export const services: Record<string, ServicePageData> = {
     proof: [
       {
         value: "Proven at scale",
-        label: "More than 150 keynotes and workshops.",
+        label: "More than 200 keynotes and workshops.",
       },
       {
         value: "Clear at every level",
@@ -416,7 +479,7 @@ export const services: Record<string, ServicePageData> = {
     proof: [
       {
         value: "Vielfach bewährt",
-        label: "Mehr als 150 Keynotes und Workshops.",
+        label: "Mehr als 200 Keynotes und Workshops.",
       },
       {
         value: "Klar auf jedem Niveau",
@@ -539,7 +602,7 @@ export const services: Record<string, ServicePageData> = {
       },
       {
         value: "Proven in practice",
-        label: "Around 300 completed engagements.",
+        label: "More than 350 completed engagements.",
       },
       {
         value: "Trusted across Europe",
@@ -653,7 +716,7 @@ export const services: Record<string, ServicePageData> = {
       },
       {
         value: "Vielfach bewährt",
-        label: "Rund 300 abgeschlossene Mandate.",
+        label: "Mehr als 350 abgeschlossene Mandate.",
       },
       {
         value: "Europaweit vertraut",
@@ -743,41 +806,87 @@ export const services: Record<string, ServicePageData> = {
   },
 };
 
-export const landingCards = [
+export type LandingCard = {
+  index: string;
+  label: string;
+  slug: string;
+  lang: "EN" | "DE";
+  text: string;
+};
+
+export type LandingStack = {
+  lang: Language;
+  langLabel: "EN" | "DE";
+  /** Rendered above the German stack only; the H1 heads the English stack. */
+  heading?: string;
+  cards: LandingCard[];
+};
+
+export const landingStacks: LandingStack[] = [
   {
-    label: "SOLVE",
-    slug: "solve",
-    lang: "EN",
-    text: "Urgent, complex problems with no playbook. First-principles diagnosis and evidence-traced solutions for EU and German realities.",
+    lang: "en",
+    langLabel: "EN",
+    cards: [
+      {
+        index: "01",
+        label: "SOLVE",
+        slug: "solve",
+        lang: "EN",
+        text: "Urgent, complex problems with no playbook. First-principles diagnosis and evidence-traced solutions for EU and German realities.",
+      },
+      {
+        index: "02",
+        label: "EDUCATE",
+        slug: "educate",
+        lang: "EN",
+        text: "Role-based upskilling, C-suite briefings and actionable roadmaps. Practical workflows for tomorrow’s AI world.",
+      },
+      {
+        index: "03",
+        label: "CREATE",
+        slug: "create",
+        lang: "EN",
+        text: "High-impact multimedia, creative direction and go-to-market systems that turn AI tools into useful attention.",
+      },
+    ],
   },
   {
-    label: "EDUCATE",
-    slug: "educate",
-    lang: "EN",
-    text: "Role-based upskilling, C-suite briefings and actionable roadmaps. Practical workflows for tomorrow’s AI world.",
-  },
-  {
-    label: "CREATE",
-    slug: "create",
-    lang: "EN",
-    text: "High-impact multimedia, creative direction and go-to-market systems that turn AI tools into useful attention.",
-  },
-  {
-    label: "LÖSEN",
-    slug: "loesen",
-    lang: "DE",
-    text: "Dringende, komplexe Probleme ohne Anleitung. Erstprinzipien-Diagnose und nachweisbare Lösungen für Deutschland und die EU.",
-  },
-  {
-    label: "FORTBILDEN",
-    slug: "fortbilden",
-    lang: "DE",
-    text: "Rollenbasierte Weiterbildung, C-Suite-Briefings und umsetzbare Roadmaps für eine handlungsfähige KI-Zukunft.",
-  },
-  {
-    label: "ENTWICKELN",
-    slug: "entwickeln",
-    lang: "DE",
-    text: "Wirkungsvolle Multimedia-Inhalte, Kreativdirektion und Go-to-Market-Systeme für Aufmerksamkeit mit Substanz.",
+    lang: "de",
+    langLabel: "DE",
+    heading: "Wie kann ich Ihnen helfen?",
+    cards: [
+      {
+        index: "01",
+        label: "LÖSEN",
+        slug: "loesen",
+        lang: "DE",
+        text: "Dringende, komplexe Probleme ohne Anleitung. Erstprinzipien-Diagnose und nachweisbare Lösungen für Deutschland und die EU.",
+      },
+      {
+        index: "02",
+        label: "FORTBILDEN",
+        slug: "fortbilden",
+        lang: "DE",
+        text: "Rollenbasierte Weiterbildung, C-Suite-Briefings und umsetzbare Roadmaps für eine handlungsfähige KI-Zukunft.",
+      },
+      {
+        index: "03",
+        label: "ENTWICKELN",
+        slug: "entwickeln",
+        lang: "DE",
+        text: "Wirkungsvolle Multimedia-Inhalte, Kreativdirektion und Go-to-Market-Systeme für Aufmerksamkeit mit Substanz.",
+      },
+    ],
   },
 ];
+
+/** Flat view retained for sitemap, markdown endpoints and tests. */
+export const landingCards: LandingCard[] = landingStacks.flatMap(
+  (stack) => stack.cards,
+);
+
+/** Landing-page social proof: two English, two German. */
+export const landingTestimonials = {
+  en: ["tom-acland", "crn"],
+  de: ["kerstin-putschke", "bastian-beggel"],
+} as const;

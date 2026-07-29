@@ -1,4 +1,4 @@
-import { caseStudies } from "./authority-data";
+import { caseStudies, whyHowWhat } from "./authority-data";
 import { services, type Language } from "./site-data";
 
 export const canonicalOrigin = "https://eliaskouloures.com";
@@ -65,10 +65,21 @@ export function profileMarkdown(language: Language) {
     "## WHAT",
     "SOLVE / EDUCATE / CREATE",
     "",
+    // The three pillars with their evidence, so search and AI retrieval can
+    // read the proof that used to be locked inside a keynote image.
+    ...whyHowWhat.pillars.flatMap((pillar) => [
+      `### ${pillar.index}. ${pillar.label[language]}`,
+      pillar.statement[language],
+      "",
+      ...pillar.proof.map(
+        (item) => `- **${item.title[language]}** — ${item.detail[language]}`,
+      ),
+      "",
+    ]),
     `## ${isGerman ? "Eckdaten" : "Selected facts"}`,
-    "- ~300 engagements and projects",
+    "- 350+ engagements and projects",
     "- 150+ European brands",
-    "- 150+ keynotes and workshops",
+    "- 200+ keynotes and workshops",
     "- 24 international awards",
     "- Berlin-based; native German and English",
     "",

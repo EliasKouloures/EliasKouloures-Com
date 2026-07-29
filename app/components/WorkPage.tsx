@@ -10,11 +10,18 @@ type WorkPageProps = {
   language: Language;
 };
 
+const HERO_BASE =
+  "/images/EliasKouloures-Com_Background_Image_Person_Sci-Fi_Holograms";
+
+function imageSet(base: string): string {
+  return `image-set(url("${base}.avif") type("image/avif"), url("${base}.webp") type("image/webp"), url("${base}.jpg") type("image/jpeg"))`;
+}
+
 const heroStyle = {
-  "--section-image":
-    'url("/images/EliasKouloures-Com_Background_Image_Person_Sci-Fi_Holograms.jpg")',
-  "--section-mobile-image":
-    'url("/images/EliasKouloures-Com_Background_Image_Person_Sci-Fi_Holograms_mobile.jpg")',
+  "--section-image": `url("${HERO_BASE}.jpg")`,
+  "--section-mobile-image": `url("${HERO_BASE}_mobile.jpg")`,
+  "--section-image-set": imageSet(HERO_BASE),
+  "--section-mobile-image-set": imageSet(`${HERO_BASE}_mobile`),
 } as CSSProperties;
 
 export function WorkPage({ language }: WorkPageProps) {

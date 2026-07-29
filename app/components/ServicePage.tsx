@@ -11,10 +11,22 @@ type ServicePageProps = {
   data: ServicePageData;
 };
 
+function imageSet(base: string): string {
+  return [
+    `url("${base}.avif") type("image/avif")`,
+    `url("${base}.webp") type("image/webp")`,
+    `url("${base}.jpg") type("image/jpeg")`,
+  ].join(", ");
+}
+
 function backgroundStyle(image: string): CSSProperties {
+  const base = image.replace(/\.jpg$/, "");
+  const mobileBase = `${base}_mobile`;
   return {
-    "--section-image": `url("${image}")`,
-    "--section-mobile-image": `url("${image.replace(".jpg", "_mobile.jpg")}")`,
+    "--section-image": `url("${base}.jpg")`,
+    "--section-mobile-image": `url("${mobileBase}.jpg")`,
+    "--section-image-set": `image-set(${imageSet(base)})`,
+    "--section-mobile-image-set": `image-set(${imageSet(mobileBase)})`,
   } as CSSProperties;
 }
 
@@ -94,6 +106,48 @@ export function ServicePage({ data }: ServicePageProps) {
         </div>
       </section>
 
+      {data.flagship ? (
+        <section className="flagship-section" id="flagship">
+          <div className="shell flagship-grid">
+            <div className="flagship-lede">
+              <p className="eyebrow">{data.flagship.eyebrow}</p>
+              <h2>{data.flagship.title}</h2>
+              <p className="flagship-intro">{data.flagship.intro}</p>
+              <a
+                className="button"
+                data-event="book_call_click"
+                data-event-label={`${data.label} flagship`}
+                href={contact.calendar}
+                target="_blank"
+                rel="noreferrer"
+              >
+                {data.flagship.cta}
+                <span aria-hidden="true">↗</span>
+              </a>
+            </div>
+            <div className="flagship-signals">
+              <h3 className="flagship-signal-heading">
+                {data.flagship.signalHeading}
+              </h3>
+              <ol>
+                {data.flagship.signals.map((signal, index) => (
+                  <li key={signal.title}>
+                    <span aria-hidden="true">
+                      {String(index + 1).padStart(2, "0")}
+                    </span>
+                    <div>
+                      <strong>{signal.title}</strong>
+                      <p>{signal.text}</p>
+                    </div>
+                  </li>
+                ))}
+              </ol>
+              <p className="flagship-response">{data.flagship.response}</p>
+            </div>
+          </div>
+        </section>
+      ) : null}
+
       <section className="content-section" id="capabilities">
         <div className="shell">
           <div className="section-heading">
@@ -107,6 +161,16 @@ export function ServicePage({ data }: ServicePageProps) {
                 <h3>{capability.title}</h3>
                 <p>{capability.text}</p>
               </article>
+            ))}
+            {/* Closes the grid outline when the final row is short. */}
+            {Array.from({
+              length: (3 - (data.capabilities.length % 3)) % 3,
+            }).map((_, index) => (
+              <div
+                aria-hidden="true"
+                className="capability-card capability-card-filler"
+                key={`filler-${index}`}
+              />
             ))}
           </div>
         </div>
@@ -221,14 +285,6 @@ export function ServicePage({ data }: ServicePageProps) {
             >
               {isGerman ? "E-Mail senden" : "Email me"}
             </a>
-            <Link
-              className="button button-secondary"
-              data-event="brief_open"
-              data-event-label={`${data.label} closing`}
-              href="/#brief"
-            >
-              {isGerman ? "Projekt beschreiben" : "Brief me"}
-            </Link>
           </div>
           <Link className="back-home" href="/">
             ← {isGerman ? "Zur Übersicht" : "Back to overview"}

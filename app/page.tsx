@@ -3,7 +3,8 @@ import Link from "next/link";
 import { BriefForm } from "./components/BriefForm";
 import { SiteFooter } from "./components/SiteFooter";
 import { SiteHeader } from "./components/SiteHeader";
-import { landingCards } from "./site-data";
+import { getTestimonials } from "./authority-data";
+import { contact, landingStacks, landingTestimonials } from "./site-data";
 
 export const metadata: Metadata = {
   title: "How may I help you?",
@@ -44,24 +45,38 @@ export default function Home() {
             <h1>How may I help you?</h1>
           </div>
 
-          <div className="service-card-grid">
-            {landingCards.map((card) => (
-              <Link
-                className="landing-card"
-                data-event="service_open"
-                data-event-label={`${card.label} · Landing`}
-                href={`/${card.slug}`}
-                key={card.slug}
-                lang={card.lang === "DE" ? "de" : "en"}
-              >
-                <span className="card-arrow" aria-hidden="true">
-                  ↗
-                </span>
-                <h2>{card.label}</h2>
-                <p>{card.text}</p>
-              </Link>
-            ))}
-          </div>
+          {landingStacks.map((stack) => (
+            <div className="landing-stack" key={stack.langLabel}>
+              {stack.heading ? (
+                <div className="landing-stack-head">
+                  <h2 lang={stack.lang}>{stack.heading}</h2>
+                </div>
+              ) : null}
+              <div className="service-card-grid">
+                {stack.cards.map((card) => (
+                  <Link
+                    className="landing-card"
+                    data-event="service_open"
+                    data-event-label={`${card.label} · Landing`}
+                    href={`/${card.slug}`}
+                    key={card.slug}
+                    lang={stack.lang}
+                  >
+                    <span className="card-arrow" aria-hidden="true">
+                      ↗
+                    </span>
+                    <p className="card-rail" aria-hidden="true">
+                      {card.index}
+                      <span />
+                      {card.lang}
+                    </p>
+                    <h3>{card.label}</h3>
+                    <p>{card.text}</p>
+                  </Link>
+                ))}
+              </div>
+            </div>
+          ))}
         </div>
       </section>
 
@@ -95,9 +110,9 @@ export default function Home() {
           </div>
 
           <div className="landing-proof-grid">
-            <div><strong>~300</strong><span>engagements</span></div>
+            <div><strong>350+</strong><span>engagements</span></div>
             <div><strong>150+</strong><span>European brands</span></div>
-            <div><strong>150+</strong><span>keynotes &amp; workshops</span></div>
+            <div><strong>200+</strong><span>keynotes &amp; workshops</span></div>
             <div><strong>24</strong><span>international awards</span></div>
           </div>
 
@@ -121,19 +136,50 @@ export default function Home() {
         </div>
       </section>
 
+      <section className="landing-quote-section" aria-label="Public recommendations">
+        <div className="shell">
+          <p className="eyebrow">
+            PUBLIC RECOMMENDATIONS · ÖFFENTLICHE EMPFEHLUNGEN
+          </p>
+          <div className="landing-quote-grid">
+            {(["en", "de"] as const).flatMap((lang) =>
+              getTestimonials([...landingTestimonials[lang]]).map((item) => (
+                <figure className="landing-quote" key={`${lang}-${item.id}`}>
+                  <blockquote lang={lang}>“{item.quote[lang]}”</blockquote>
+                  <figcaption>
+                    <strong>{item.author}</strong>
+                    <span>{item.role}</span>
+                  </figcaption>
+                </figure>
+              )),
+            )}
+          </div>
+          <p className="landing-quote-note">
+            <a
+              href={`${contact.linkedin}/details/recommendations/`}
+              target="_blank"
+              rel="noreferrer"
+            >
+              Public LinkedIn recommendations · Öffentliche LinkedIn-Empfehlungen
+              ↗
+            </a>
+          </p>
+        </div>
+      </section>
+
       <section className="brief-section" id="brief">
         <div className="shell brief-section-grid">
           <div>
             <p className="eyebrow">BRIEF ME · PROJEKT ANFRAGEN</p>
-            <h2>
-              What needs to become possible?
-              <br />
+            <h2>What needs to become possible?</h2>
+            <p className="brief-subhead" lang="de">
               Was soll möglich werden?
-            </h2>
+            </p>
             <p>
               Five fields are enough to establish the challenge, the stakes and
               whether I can help.
-              <br />
+            </p>
+            <p className="brief-note-de" lang="de">
               Fünf Angaben reichen, um Herausforderung, Tragweite und mögliche
               Zusammenarbeit einzuordnen.
             </p>

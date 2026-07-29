@@ -1,5 +1,6 @@
 import type { CSSProperties } from "react";
 import Link from "next/link";
+import { whyHowWhat } from "../authority-data";
 import { contact, type Language } from "../site-data";
 import { SiteFooter } from "./SiteFooter";
 import { SiteHeader } from "./SiteHeader";
@@ -9,11 +10,18 @@ type ProfilePageProps = {
   language: Language;
 };
 
+const HERO_BASE =
+  "/images/EliasKouloures-Com_Background_Image_Person_overlooking_Landscape";
+
+function imageSet(base: string): string {
+  return `image-set(url("${base}.avif") type("image/avif"), url("${base}.webp") type("image/webp"), url("${base}.jpg") type("image/jpeg"))`;
+}
+
 const heroStyle = {
-  "--section-image":
-    'url("/images/EliasKouloures-Com_Background_Image_Person_overlooking_Landscape.jpg")',
-  "--section-mobile-image":
-    'url("/images/EliasKouloures-Com_Background_Image_Person_overlooking_Landscape_mobile.jpg")',
+  "--section-image": `url("${HERO_BASE}.jpg")`,
+  "--section-mobile-image": `url("${HERO_BASE}_mobile.jpg")`,
+  "--section-image-set": imageSet(HERO_BASE),
+  "--section-mobile-image-set": imageSet(`${HERO_BASE}_mobile`),
 } as CSSProperties;
 
 export function ProfilePage({ language }: ProfilePageProps) {
@@ -68,7 +76,7 @@ export function ProfilePage({ language }: ProfilePageProps) {
       <section className="proof-band" aria-label={isGerman ? "Eckdaten" : "Selected facts"}>
         <div className="shell proof-grid authority-proof">
           <div className="proof-item">
-            <strong>~300</strong>
+            <strong>350+</strong>
             <span>{isGerman ? "Mandate und Projekte" : "Engagements and projects"}</span>
           </div>
           <div className="proof-item">
@@ -76,7 +84,7 @@ export function ProfilePage({ language }: ProfilePageProps) {
             <span>{isGerman ? "europäische Marken" : "European brands"}</span>
           </div>
           <div className="proof-item">
-            <strong>150+</strong>
+            <strong>200+</strong>
             <span>{isGerman ? "Keynotes und Workshops" : "Keynotes and workshops"}</span>
           </div>
           <div className="proof-item">
@@ -86,80 +94,88 @@ export function ProfilePage({ language }: ProfilePageProps) {
         </div>
       </section>
 
-      <section className="content-section north-star-section">
+      {/* Why-How-What as structured content, not baked image text: readable at
+          every viewport, indexable, translatable, and correctable in one line. */}
+      <section className="whw-section" aria-labelledby="whw-heading">
         <div className="shell">
-          <div className="section-heading">
-            <p className="eyebrow">WHY · HOW · WHAT</p>
-            <h2>
+          <div className="whw-head">
+            <p className="eyebrow">{whyHowWhat.eyebrow[language]}</p>
+            <h2 id="whw-heading">
               {isGerman
                 ? "Technologie wird erst wertvoll, wenn Menschen mit ihr weiterkommen."
                 : "Technology becomes valuable when people can move forward with it."}
             </h2>
+            <p className="whw-note">{whyHowWhat.frameworkNote[language]}</p>
           </div>
-          <div className="north-star-grid">
-            <article>
-              <span>WHY</span>
-              <h3>{isGerman ? "Fortschritt nutzbar machen" : "Make progress usable"}</h3>
-              <p>
-                {isGerman
-                  ? "Fortschritt soll Menschen befähigen statt sie zu überrollen. Ich arbeite an Systemen, Wissen und Kommunikation, die Selbstbestimmung und sinnvolle Innovation verbinden."
-                  : "Progress should expand human agency rather than overwhelm it. I work on systems, knowledge and communication that connect useful innovation with independent judgment."}
+
+          <div className="whw-spine">
+            <div className="whw-band whw-band-why">
+              <p className="whw-rail">{whyHowWhat.why.label[language]}</p>
+              <p className="whw-why-statement">
+                {whyHowWhat.why.statement[language]}
               </p>
-            </article>
-            <article>
-              <span>HOW</span>
-              <h3>{isGerman ? "Struktur sehen, wo andere Chaos sehen" : "See structure where others see chaos"}</h3>
-              <p>
-                {isGerman
-                  ? "Erstprinzipien, Systemdenken und globale Erfahrung verbinden sich mit KI, IT, Business, Strategie, Kommunikation und Kreativität."
-                  : "First-principles and systems thinking combine with global experience across AI, IT, business, strategy, communication and creativity."}
+              <p className="whw-why-qualifier">
+                {whyHowWhat.why.qualifier[language]}
               </p>
-            </article>
-            <article>
-              <span>WHAT</span>
-              <h3>SOLVE / EDUCATE / CREATE</h3>
-              <p>
-                {isGerman
-                  ? "Komplexe Probleme lösen. Menschen für angewandte KI fortbilden. Technische Ideen so entwickeln und kommunizieren, dass sie verstanden und genutzt werden."
-                  : "Solve complex problems. Build applied AI capability. Develop and communicate technical ideas so they are understood, trusted and used."}
+            </div>
+
+            <span className="whw-link" aria-hidden="true" />
+
+            <div className="whw-band whw-band-how">
+              <p className="whw-rail">{whyHowWhat.how.label[language]}</p>
+              <p className="whw-how-statement">
+                <strong>{whyHowWhat.how.lead[language]}</strong>{" "}
+                {whyHowWhat.how.statement[language]}
               </p>
-            </article>
+            </div>
+
+            <span className="whw-link" aria-hidden="true" />
+
+            <div className="whw-what">
+              <p className="whw-rail whw-rail-what">
+                {whyHowWhat.whatLabel[language]}
+              </p>
+              <div className="whw-pillars">
+                {whyHowWhat.pillars.map((pillar) => (
+                  <article className="whw-pillar" key={pillar.index}>
+                    <p className="whw-pillar-rail">
+                      {pillar.index}
+                      <span aria-hidden="true" />
+                      {pillar.label[language]}
+                    </p>
+                    <h3>{pillar.statement[language]}</h3>
+                    <p className="whw-proof-label">
+                      {whyHowWhat.proofLabel[language]}
+                    </p>
+                    <ul className="whw-proof">
+                      {pillar.proof.map((item) => (
+                        <li key={item.title.en}>
+                          <strong>{item.title[language]}</strong>
+                          <span>{item.detail[language]}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </article>
+                ))}
+              </div>
+            </div>
           </div>
+
+          <p className="whw-slide-link">
+            <a
+              href="/images/Elias_WHW-Kardashev_2026-07.jpg"
+              target="_blank"
+              rel="noreferrer"
+            >
+              {isGerman
+                ? "Dieselbe Übersicht als Keynote-Slide ansehen"
+                : "View the same overview as a keynote slide"}{" "}
+              <span aria-hidden="true">↗</span>
+            </a>
+          </p>
         </div>
       </section>
 
-      <section className="profile-visual-section">
-        <div className="shell profile-visual-grid">
-          <div>
-            <p className="eyebrow">
-              {isGerman ? "EIN PROFIL · DREI WIRKUNGSFELDER" : "ONE PROFILE · THREE FORMS OF IMPACT"}
-            </p>
-            <h2>
-              {isGerman
-                ? "Multidisziplinär ist kein Zusatz. Es ist das Betriebssystem."
-                : "Multidisciplinary is not an add-on. It is the operating system."}
-            </h2>
-            <p>
-              {isGerman
-                ? "Die seltene Kombination aus Technologie, Business, Kommunikation und Kreation verkürzt Übergaben, macht blinde Flecken sichtbar und hält Strategie und Ausführung zusammen."
-                : "The combination of technology, business, communication and creativity shortens handoffs, exposes blind spots and keeps strategy connected to execution."}
-            </p>
-          </div>
-          {/* Elias owns this keynote visual; the HTML beside it carries the same meaning accessibly. */}
-          {/* eslint-disable-next-line @next/next/no-img-element */}
-          <img
-            alt={
-              isGerman
-                ? "Elias Kouloures Why-How-What: Mission, multidisziplinäre Arbeitsweise und die drei Bereiche Lösen, Fortbilden und Entwickeln."
-                : "Elias Kouloures Why-How-What: mission, multidisciplinary operating method, and the three pillars Solve, Educate and Create."
-            }
-            loading="lazy"
-            src="/images/Elias_WHW-Kardashev_07-2026_V1.jpg"
-            srcSet="/images/Elias_WHW-Kardashev_07-2026_V1_mobile.jpg 1200w, /images/Elias_WHW-Kardashev_07-2026_V1.jpg 2752w"
-            sizes="(max-width: 1080px) 92vw, 58vw"
-          />
-        </div>
-      </section>
 
       <section className="content-section role-fit-section">
         <div className="shell role-fit-grid">

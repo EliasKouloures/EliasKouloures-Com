@@ -316,7 +316,357 @@ export const caseStudies: CaseStudy[] = [
     },
     pillars: ["CREATE"],
   },
+  {
+    id: "berlin-hospitality",
+    client: "Berlin hospitality venue",
+    domain: {
+      en: "Crisis pivot · Zero-CAPEX operations",
+      de: "Krisenpivot · Zero-CAPEX-Betrieb",
+    },
+    title: {
+      en: "Keep a business alive when its revenue goes to zero overnight.",
+      de: "Ein Unternehmen am Leben halten, wenn der Umsatz über Nacht auf null fällt.",
+    },
+    bottleneck: {
+      en: "Lockdown removed 100% of an established venue’s revenue. Every conventional recovery plan required capital the business no longer had.",
+      de: "Der Lockdown entzog einem etablierten Betrieb 100 % des Umsatzes. Jeder klassische Rettungsplan setzte Kapital voraus, das nicht mehr vorhanden war.",
+    },
+    execution: {
+      en: "I designed a survival architecture with zero capital expenditure: the existing space became a live-streaming production, supported by scalable SOPs for 8 to 12 rotating artists a week and data-based briefings that turned founder knowledge into a repeatable process.",
+      de: "Ich entwarf eine Überlebensarchitektur ohne Investitionsausgaben: Der bestehende Raum wurde zur Livestream-Produktion, getragen von skalierbaren SOPs für 8 bis 12 wechselnde Künstler pro Woche und datenbasierten Briefings, die Gründerwissen in einen wiederholbaren Prozess überführten.",
+    },
+    result: {
+      en: "The business kept operating through the closure, covered its fixed costs and built an owned audience that removed its dependency on paid acquisition.",
+      de: "Der Betrieb lief durch die Schließung weiter, deckte seine Fixkosten und baute eine eigene Reichweite auf, die die Abhängigkeit von bezahlter Akquise beendete.",
+    },
+    metrics: {
+      en: [
+        "35 jobs protected",
+        "€0 capital expenditure",
+        "€13,000 monthly fixed costs covered",
+        "20,000-subscriber owned audience",
+      ],
+      de: [
+        "35 Arbeitsplätze gesichert",
+        "0 € Investitionsausgaben",
+        "13.000 € monatliche Fixkosten gedeckt",
+        "20.000 Abonnenten eigene Reichweite",
+      ],
+    },
+    pillars: ["SOLVE", "CREATE"],
+  },
+  {
+    id: "eu-transform",
+    client: "EU TRANSFORM",
+    domain: {
+      en: "Workforce policy · Upskilling architecture",
+      de: "Arbeitsmarktpolitik · Upskilling-Architektur",
+    },
+    title: {
+      en: "Replace a roadmap with no measures with a model that can be tested.",
+      de: "Eine Roadmap ohne Maßnahmen durch ein prüfbares Modell ersetzen.",
+    },
+    bottleneck: {
+      en: "A two-year EU project closed with a future-of-work roadmap that carried no KPIs and no concrete measures, while automation pressure on routine roles kept rising.",
+      de: "Ein zweijähriges EU-Projekt endete mit einer Zukunfts-Roadmap ohne KPIs und ohne konkrete Maßnahmen, während der Automatisierungsdruck auf Routinetätigkeiten weiter stieg.",
+    },
+    execution: {
+      en: "After contributing as AI expert on the WP9 ethics panel, I synthesised public research from WEF, Harvard and McKinsey into a first-principles model: the European Modular Upskilling Framework. Four core modules, including agentic orchestration and deep cognition, move at-risk profiles into adjacent bridge roles rather than retraining them from zero. Figures are modelled estimates from published sources, not measured outcomes.",
+      de: "Nach meiner Mitarbeit als KI-Experte im WP9-Ethikpanel verdichtete ich öffentliche Forschung von WEF, Harvard und McKinsey zu einem Erstprinzipien-Modell: dem European Modular Upskilling Framework. Vier Kernmodule, darunter Agentic Orchestration und Deep Cognition, überführen gefährdete Profile in angrenzende Bridge Roles statt sie bei null neu auszubilden. Die Zahlen sind modellierte Schätzungen aus veröffentlichten Quellen, keine gemessenen Ergebnisse.",
+    },
+    result: {
+      en: "The consortium received a structured, ROI-aware blueprint with named modules and testable metrics in place of a strategic vacuum. Organisations can use it to keep institutional knowledge instead of cycling through layoffs.",
+      de: "Das Konsortium erhielt statt eines strategischen Vakuums einen strukturierten, ROI-bewussten Bauplan mit benannten Modulen und prüfbaren Kennzahlen. Organisationen können damit institutionelles Wissen halten, statt Entlassungszyklen zu durchlaufen.",
+    },
+    metrics: {
+      en: [
+        "0.5 days to a complete framework",
+        "4 core upskilling modules",
+        "Modelled exposure: ~41M EU routine roles",
+      ],
+      de: [
+        "0,5 Tage bis zum vollständigen Framework",
+        "4 Kern-Upskilling-Module",
+        "Modellierte Betroffenheit: ~41 Mio. EU-Routinerollen",
+      ],
+    },
+    pillars: ["SOLVE", "EDUCATE"],
+  },
+  {
+    id: "asu-max-planck",
+    client: "ASU & Max Planck",
+    domain: {
+      en: "Decision science · Stakeholder simulation",
+      de: "Entscheidungsforschung · Stakeholder-Simulation",
+    },
+    title: {
+      en: "Make billion-scale decisions feel their own consequences.",
+      de: "Milliardenentscheidungen ihre eigenen Folgen spüren lassen.",
+    },
+    bottleneck: {
+      en: "A collapsing workshop process put the Decision Theater Ideathon submission at risk. The underlying problem was larger: abstract big-data models keep decision-makers insulated from the consequences their choices create for affected groups.",
+      de: "Ein zusammenbrechender Workshop-Prozess gefährdete die Einreichung zum Decision Theater Ideathon. Das eigentliche Problem lag tiefer: Abstrakte Big-Data-Modelle halten Entscheider von den Folgen fern, die ihre Entscheidungen für betroffene Gruppen erzeugen.",
+    },
+    execution: {
+      en: "Working solo, I produced 24 concepts and built the full architecture and design for “Unheard Voices”: verified demographic datasets become synthetic personas through probabilistic models, then intervene in real time across the seven screens of the decision room to make cascade effects visible.",
+      de: "Allein arbeitend entwickelte ich 24 Konzepte und die vollständige Architektur und Gestaltung von „Unheard Voices“: Verifizierte demografische Datensätze werden über probabilistische Modelle zu synthetischen Personas, die in Echtzeit auf den sieben Screens des Entscheidungsraums eingreifen und Kaskadeneffekte sichtbar machen.",
+    },
+    result: {
+      en: "The submission was delivered on time with a pilot design, “The Phoenix Water Challenge”, that closes the gap between data modelling and human impact under explicit ethical safeguards.",
+      de: "Die Einreichung wurde termingerecht geliefert, inklusive Pilotdesign „The Phoenix Water Challenge“, das die Lücke zwischen Datenmodellierung und menschlicher Wirkung unter ausdrücklichen ethischen Leitplanken schließt.",
+    },
+    metrics: {
+      en: ["Under 8 hours", "24 concepts", "30-page keynote with 24 visuals"],
+      de: ["Unter 8 Stunden", "24 Konzepte", "30-seitige Keynote mit 24 Visuals"],
+    },
+    pillars: ["SOLVE", "CREATE"],
+  },
+  {
+    id: "laisterdam",
+    client: "Laisterdam Rijksmonument",
+    domain: {
+      en: "Heritage retrofit · Applied AI method",
+      de: "Denkmalsanierung · Angewandte KI-Methode",
+    },
+    title: {
+      en: "Retrofit a protected building without touching its fabric.",
+      de: "Ein denkmalgeschütztes Gebäude sanieren, ohne die Bausubstanz anzutasten.",
+    },
+    bottleneck: {
+      en: "Heritage-protection rules block conventional energy retrofits of historic Dutch buildings. At the CRN CicloSchools hackathon in Berlin, competing teams of up to six people spent a full working day and finished with unresolved sketches.",
+      de: "Denkmalschutzauflagen blockieren die klassische energetische Sanierung historischer niederländischer Gebäude. Beim CRN-CicloSchools-Hackathon in Berlin arbeiteten konkurrierende Teams von bis zu sechs Personen einen vollen Arbeitstag und kamen über unfertige Skizzen nicht hinaus.",
+    },
+    execution: {
+      en: "I competed solo with a dedicated AI stack and delivered the complete “Invisible Comfort Retrofit” strategy within hours: a fully reversible approach using clip-in secondary glazing, smart thermostats and decentralised ventilation routed through historic chimneys, which protects the building fabric and avoids lengthy permit procedures.",
+      de: "Ich trat allein mit einem eigens aufgebauten KI-Stack an und lieferte die vollständige Strategie „Invisible Comfort Retrofit“ innerhalb von Stunden: ein vollständig reversibler Ansatz mit einsetzbarer Sekundärverglasung, smarten Thermostaten und dezentraler Lüftung über historische Kamine, der die Bausubstanz schützt und langwierige Genehmigungsverfahren vermeidet.",
+    },
+    result: {
+      en: "The Dutch team received an actionable pattern book with finished presentation assets. The comfort and energy figures are modelled projections from the design, not measured post-installation results.",
+      de: "Das niederländische Team erhielt ein umsetzbares Pattern Book mit fertigen Präsentationsunterlagen. Die Komfort- und Energiewerte sind modellierte Projektionen aus dem Entwurf, keine gemessenen Ergebnisse nach Einbau.",
+    },
+    metrics: {
+      en: [
+        "Hours instead of a full team day",
+        "Modelled: −60% draft complaints",
+        "Modelled: −25% heating runtime",
+        "Design target: CO₂ under 1,000 ppm",
+      ],
+      de: [
+        "Stunden statt eines vollen Teamtages",
+        "Modelliert: −60 % Zugluftbeschwerden",
+        "Modelliert: −25 % Heizlaufzeit",
+        "Auslegungsziel: CO₂ unter 1.000 ppm",
+      ],
+    },
+    pillars: ["SOLVE", "CREATE"],
+  },
+  {
+    id: "beat-em-hub",
+    client: "Beat Em Hub · Games Ground",
+    domain: {
+      en: "Brand strategy · Event-tech go-to-market",
+      de: "Markenstrategie · Event-Tech-Go-to-Market",
+    },
+    title: {
+      en: "Scale a subculture into a B2B business without a media budget.",
+      de: "Eine Subkultur ohne Mediabudget zu einem B2B-Geschäft skalieren.",
+    },
+    bottleneck: {
+      en: "A grassroots gaming startup had credibility with its community but no route into profitable B2B event work, and no paid-media budget to buy one.",
+      de: "Ein Grassroots-Gaming-Startup hatte Glaubwürdigkeit in seiner Community, aber keinen Weg in profitables B2B-Eventgeschäft und kein Mediabudget, um sich einen zu kaufen.",
+    },
+    execution: {
+      en: "I built a go-to-market masterplan on a €0 paid-media budget. A three-persona model connected authentic subculture to B2B reliability, and a dual brand positioning generated inbound interest from corporate clients, institutional partners and gaming purists in parallel.",
+      de: "Ich entwickelte einen Go-to-Market-Masterplan mit 0 € Mediabudget. Ein Drei-Personas-Modell verband authentische Subkultur mit B2B-Verlässlichkeit, eine duale Markenpositionierung erzeugte parallel Inbound-Interesse bei Unternehmenskunden, institutionellen Partnern und Gaming-Puristen.",
+    },
+    result: {
+      en: "Optimised outreach secured B2B deployments at European festivals, and the operating blueprint enabled the company to launch its own Games Ground festival.",
+      de: "Optimierte Ansprache sicherte B2B-Einsätze auf europäischen Festivals, und der Betriebsbauplan ermöglichte den Start des eigenen Festivals Games Ground.",
+    },
+    metrics: {
+      en: [
+        "€0 paid-media budget",
+        "Festival deployments up to 70,000 visitors",
+        "Own festival past 8,000 visitors",
+      ],
+      de: [
+        "0 € Mediabudget",
+        "Festival-Einsätze bis 70.000 Besucher",
+        "Eigenes Festival über 8.000 Besucher",
+      ],
+    },
+    pillars: ["CREATE"],
+  },
 ];
+
+/**
+ * Why–How–What, as structured content rather than baked image text.
+ * Native markup keeps this readable at every viewport, indexable by search
+ * and AI retrieval, translatable, and correctable without regenerating art.
+ */
+export type WhwPillar = {
+  index: string;
+  label: Record<Language, string>;
+  statement: Record<Language, string>;
+  proof: Array<{ title: Record<Language, string>; detail: Record<Language, string> }>;
+};
+
+export const whyHowWhat = {
+  eyebrow: { en: "WHY · HOW · WHAT", de: "WHY · HOW · WHAT" },
+  frameworkNote: {
+    en: "Structured with Simon Sinek’s Why-How-What framework.",
+    de: "Strukturiert nach Simon Sineks Why-How-What-Framework.",
+  },
+  why: {
+    label: { en: "WHY", de: "WHY" },
+    statement: {
+      en: "Elevate humanity to an interplanetary civilisation.",
+      de: "Die Menschheit zu einer interplanetaren Zivilisation erheben.",
+    },
+    qualifier: {
+      en: "Egalitarian, peaceful and happy.",
+      de: "Egalitär, friedlich und glücklich.",
+    },
+  },
+  how: {
+    label: { en: "HOW", de: "HOW" },
+    lead: {
+      en: "Safeguard and accelerate progress",
+      de: "Fortschritt sichern und beschleunigen",
+    },
+    statement: {
+      en: "with unique AuDHD insight, first-principles systems thinking, global work experience and multidisciplinary knowhow across AI, IT, business, strategy, communication and creativity.",
+      de: "mit einer seltenen AuDHD-Perspektive, Erstprinzipien-Systemdenken, globaler Berufserfahrung und multidisziplinärem Knowhow in KI, IT, Business, Strategie, Kommunikation und Kreation.",
+    },
+  },
+  whatLabel: { en: "WHAT", de: "WHAT" },
+  proofLabel: { en: "Proof", de: "Belege" },
+  pillars: [
+    {
+      index: "01",
+      label: { en: "SOLVE", de: "LÖSEN" },
+      statement: {
+        en: "Solve the most urgent and complex challenges with compliance-grade solutions and innovations.",
+        de: "Die dringendsten und komplexesten Herausforderungen mit compliance-fähigen Lösungen und Innovationen bewältigen.",
+      },
+      proof: [
+        {
+          title: { en: "Rescued Berlin hospitality venue", de: "Berliner Gastronomiebetrieb gerettet" },
+          detail: {
+            en: "€0 CAPEX, 35 jobs protected, €13k monthly fixed costs covered, 15k concurrent viewers, €12k profit by monetising a 20k newsletter with a single affiliate post.",
+            de: "0 € Investitionsausgaben, 35 Arbeitsplätze gesichert, 13.000 € monatliche Fixkosten gedeckt, 15.000 gleichzeitige Zuschauer, 12.000 € Gewinn durch die Monetarisierung eines 20.000er-Newsletters mit einem einzigen Affiliate-Post.",
+          },
+        },
+        {
+          title: { en: "New Singapore outpost", de: "Neuer Standort Singapur" },
+          detail: {
+            en: "Deep research, 360° strategy, legal approach, IP failsafes, videos, keynotes, on-brand HR advertising and multimedia assets for E.ON’s C-suite.",
+            de: "Tiefenrecherche, 360°-Strategie, rechtlicher Rahmen, IP-Absicherung, Videos, Keynotes, markenkonforme HR-Anzeige und Multimedia-Assets für das C-Level von E.ON.",
+          },
+        },
+        {
+          title: { en: "Reinvent civil engineering", de: "Bauingenieurwesen neu gedacht" },
+          detail: {
+            en: "Addressed E.ON’s €6–7B CAPEX challenge and opened a new revenue path at the same time.",
+            de: "E.ONs CAPEX-Herausforderung von 6–7 Mrd. € adressiert und gleichzeitig einen neuen Erlöspfad eröffnet.",
+          },
+        },
+        {
+          title: { en: "COBI startup launch", de: "COBI-Startup-Launch" },
+          detail: {
+            en: "13 countries in 3 weeks: 401% of the Kickstarter goal, 250+ press features, €9M VC round and acquisition by Bosch.",
+            de: "13 Länder in 3 Wochen: 401 % des Kickstarter-Ziels, über 250 Presseberichte, 9 Mio. € VC-Runde und Übernahme durch Bosch.",
+          },
+        },
+        {
+          title: { en: "Commerzbank fintech GTM", de: "Commerzbank-Fintech-GTM" },
+          detail: {
+            en: "Three UHNWI markets, delivered in 2 weeks.",
+            de: "Drei UHNWI-Märkte, geliefert in 2 Wochen.",
+          },
+        },
+      ],
+    },
+    {
+      index: "02",
+      label: { en: "EDUCATE", de: "FORTBILDEN" },
+      statement: {
+        en: "Educate with upskilling formats, workshops and tools so everyone can participate in tomorrow’s world.",
+        de: "Mit Weiterbildungsformaten, Workshops und Werkzeugen dafür sorgen, dass alle an der Welt von morgen teilhaben können.",
+      },
+      proof: [
+        {
+          title: { en: "Berlin Science Week hackathon", de: "Berlin Science Week Hackathon" },
+          detail: {
+            en: "AI-powered stakeholder simulation for Max Planck and ASU in 8 hours: a 30-page keynote, 24 visuals and a groundtruth dataset.",
+            de: "KI-gestützte Stakeholder-Simulation für Max Planck und ASU in 8 Stunden: 30-seitige Keynote, 24 Visuals und ein Groundtruth-Datensatz.",
+          },
+        },
+        {
+          title: { en: "Corporate workshops", de: "Unternehmens-Workshops" },
+          detail: { en: "E.ON, Universal, BBDO and others.", de: "E.ON, Universal, BBDO und weitere." },
+        },
+        {
+          title: { en: "AI for families and schools", de: "KI für Familien und Schulen" },
+          detail: { en: "Waldorf and Bezirksamt programmes.", de: "Programme mit Waldorfschulen und Bezirksamt." },
+        },
+        {
+          title: { en: "Kardashev Campus", de: "Kardashev Campus" },
+          detail: { en: "Upskilling newsletter.", de: "Newsletter für Weiterbildung." },
+        },
+        {
+          title: { en: "LifeTeacher", de: "LifeTeacher" },
+          detail: { en: "Voluntary K-12 engagement.", de: "Ehrenamtliches Engagement für Schulklassen." },
+        },
+        {
+          title: { en: "Free EdTech tools", de: "Kostenlose EdTech-Werkzeuge" },
+          detail: {
+            en: "5-Level-Explainer, AI Homework Upgrader, Teen Career Explorer and more.",
+            de: "5-Level-Explainer, AI Homework Upgrader, Teen Career Explorer und weitere.",
+          },
+        },
+        {
+          title: { en: "Voluntary AI workshops and panels", de: "Ehrenamtliche KI-Workshops und Panels" },
+          detail: {
+            en: "Comparative Research Network, EU TRANSFORM and various NGOs.",
+            de: "Comparative Research Network, EU TRANSFORM und verschiedene NGOs.",
+          },
+        },
+      ],
+    },
+    {
+      index: "03",
+      label: { en: "CREATE", de: "ENTWICKELN" },
+      statement: {
+        en: "Create new, smart and engaging content that increases approval and anticipation for our exponential future.",
+        de: "Neue, kluge und mitreißende Inhalte entwickeln, die Zustimmung und Vorfreude auf unsere exponentielle Zukunft steigern.",
+      },
+      proof: [
+        {
+          title: { en: "360° upskilling content", de: "360°-Weiterbildungsinhalte" },
+          detail: {
+            en: "AI, IT, web, business, creativity, health, fitness, longevity, parenting, finance and life-hacks.",
+            de: "KI, IT, Web, Business, Kreation, Gesundheit, Fitness, Longevity, Elternschaft, Finanzen und Alltagshacks.",
+          },
+        },
+        {
+          title: { en: "Creative multimedia use cases", de: "Kreative Multimedia-Use-Cases" },
+          detail: {
+            en: "AI BS Analyser, C-Suite Coach, Secure AI for Schools, Teacher Bot, plus films, images, songs, playbooks and apps.",
+            de: "AI BS Analyser, C-Suite Coach, Secure AI for Schools, Teacher Bot sowie Filme, Bilder, Songs, Playbooks und Apps.",
+          },
+        },
+        {
+          title: { en: "First-principles frameworks for an AI-powered future", de: "Erstprinzipien-Frameworks für eine KI-gestützte Zukunft" },
+          detail: {
+            en: "EU upskilling initiative modelled to reach 41M workers, Exponential Education System, Superintelligent Democracy, Dual-Engine-Education, Vibe Matrix HR-Tool and the 8D-Business-Success-Matrix.",
+            de: "EU-Upskilling-Initiative, modelliert für 41 Mio. Beschäftigte, Exponential Education System, Superintelligent Democracy, Dual-Engine-Education, Vibe Matrix HR-Tool und die 8D-Business-Success-Matrix.",
+          },
+        },
+      ],
+    },
+  ] satisfies WhwPillar[],
+};
 
 export function getTestimonials(ids: string[]) {
   return ids
