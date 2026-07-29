@@ -11,6 +11,7 @@ project. It does not modify the current production website.
 - `/profile`, `/profil`
 - `/work`, `/projekte`
 - `/impressum-datenschutz`
+- `/anthropic-dach`, `/anthropic-dach-brief` (preserved unlisted reports)
 - `/llms.txt`, `/sitemap.xml`, `/robots.txt`
 - Markdown counterparts at `/{route}.md`
 
@@ -68,3 +69,7 @@ configure:
 
 AI search crawlers are allowed on production. Model-training crawlers remain
 blocked unless `ALLOW_AI_TRAINING=true` is explicitly configured.
+
+The two unlisted Anthropic reports continue to use their original Wix-hosted
+HTML under their existing public paths. All other `www` traffic is permanently
+normalized to the root domain.

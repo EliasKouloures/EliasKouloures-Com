@@ -391,6 +391,33 @@ test("applies redirects and security headers", async () => {
   assert.match(response.headers.get("permissions-policy") ?? "", /camera=\(\)/);
 });
 
+test("preserves both unlisted Anthropic reports on their original www paths", async () => {
+  const [workerSource, proxySource, briefRoute, fieldTestRoute] =
+    await Promise.all([
+      readFile(new URL("../worker/index.ts", import.meta.url), "utf8"),
+      readFile(
+        new URL("../app/preserved-anthropic-report.ts", import.meta.url),
+        "utf8",
+      ),
+      readFile(
+        new URL("../app/anthropic-dach-brief/route.ts", import.meta.url),
+        "utf8",
+      ),
+      readFile(
+        new URL("../app/anthropic-dach/route.ts", import.meta.url),
+        "utf8",
+      ),
+    ]);
+
+  assert.match(workerSource, /preservedWixPaths/);
+  assert.match(workerSource, /"\/anthropic-dach"/);
+  assert.match(workerSource, /"\/anthropic-dach-brief"/);
+  assert.match(proxySource, /3be268_51e7b42a1fa5217a4f72a5aebb8134e0/);
+  assert.match(proxySource, /3be268_8dc4dcc67aeda4ec772bf62a66179d07/);
+  assert.match(briefRoute, /preservedAnthropicReport\("brief"\)/);
+  assert.match(fieldTestRoute, /preservedAnthropicReport\("fieldTest"\)/);
+});
+
 test("uses optimized desktop and mobile visual assets", async () => {
   const css = await readFile(
     new URL("../app/globals.css", import.meta.url),

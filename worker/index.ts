@@ -28,6 +28,10 @@ interface ExecutionContext {
 const worker = {
   async fetch(request: Request, env: Env, ctx: ExecutionContext): Promise<Response> {
     const url = new URL(request.url);
+    const preservedWixPaths = new Set([
+      "/anthropic-dach",
+      "/anthropic-dach-brief",
+    ]);
     const redirectMap: Record<string, string> = {
       "/cv": "/profile",
       "/credentials": "/profile#credentials",
@@ -43,7 +47,10 @@ const worker = {
       "/impressum": "/impressum-datenschutz",
     };
 
-    if (url.hostname === "www.eliaskouloures.com") {
+    if (
+      url.hostname === "www.eliaskouloures.com" &&
+      !preservedWixPaths.has(url.pathname)
+    ) {
       url.hostname = "eliaskouloures.com";
       return Response.redirect(url, 308);
     }
