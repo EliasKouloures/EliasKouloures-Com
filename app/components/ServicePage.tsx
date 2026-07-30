@@ -32,9 +32,22 @@ function backgroundStyle(image: string): CSSProperties {
 
 export function ServicePage({ data }: ServicePageProps) {
   const isGerman = data.language === "de";
+  const spaciousCapabilityHeading = [
+    "create",
+    "loesen",
+    "fortbilden",
+    "entwickeln",
+  ].includes(data.slug);
+  const spaciousWorkHeading = [
+    "solve",
+    "create",
+    "loesen",
+    "fortbilden",
+    "entwickeln",
+  ].includes(data.slug);
 
   return (
-    <main className="service-page" lang={data.language}>
+    <main className={`service-page service-${data.slug}`} lang={data.language}>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{
@@ -150,7 +163,9 @@ export function ServicePage({ data }: ServicePageProps) {
 
       <section className="content-section" id="capabilities">
         <div className="shell">
-          <div className="section-heading">
+          <div
+            className={`section-heading${spaciousCapabilityHeading ? " section-heading-spacious" : ""}`}
+          >
             <p className="eyebrow">{data.label}</p>
             <h2>{data.capabilityHeading}</h2>
             <p>{data.capabilityIntro}</p>
@@ -191,7 +206,9 @@ export function ServicePage({ data }: ServicePageProps) {
 
       <section className="content-section work-section">
         <div className="shell">
-          <div className="section-heading">
+          <div
+            className={`section-heading${spaciousWorkHeading ? " section-heading-spacious" : ""}`}
+          >
             <p className="eyebrow">{isGerman ? "AUS DER PRAXIS" : "FROM THE FIELD"}</p>
             <h2>{data.workHeading}</h2>
             <p>{data.workIntro}</p>
@@ -209,7 +226,7 @@ export function ServicePage({ data }: ServicePageProps) {
 
       <section className="content-section testimonial-section">
         <div className="shell">
-          <div className="section-heading compact">
+          <div className="section-heading compact section-heading-full">
             <p className="eyebrow">
               {isGerman ? "ÖFFENTLICHE EMPFEHLUNGEN" : "PUBLIC RECOMMENDATIONS"}
             </p>
@@ -228,9 +245,21 @@ export function ServicePage({ data }: ServicePageProps) {
 
       <section className="engagement-section">
         <div className="shell">
-          <div className="section-heading compact">
+          <div
+            className={`section-heading compact${data.slug === "create" ? "" : " section-heading-full"}`}
+          >
             <p className="eyebrow">{isGerman ? "ZUSAMMENARBEIT" : "ENGAGEMENT"}</p>
-            <h2>{data.engagementHeading}</h2>
+            <h2>
+              {data.slug === "solve" ? (
+                <>
+                  Three proven approaches.
+                  <br className="desktop-line-break" /> Infinitely many more
+                  available.
+                </>
+              ) : (
+                data.engagementHeading
+              )}
+            </h2>
           </div>
           <div className="engagement-list">
             {data.engagements.map((item) => (

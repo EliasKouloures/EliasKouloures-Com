@@ -150,6 +150,30 @@ test("implements the approved landing, footer, and profile layout exceptions", a
   );
   assert.match(
     css,
+    /\.landing-proof-grid > div\s*\{[^}]*align-items: center;[^}]*text-align: center;/s,
+  );
+  assert.match(
+    css,
+    /\.authority-proof \.proof-item\s*\{[^}]*align-items: center;[^}]*justify-content: center;[^}]*text-align: center;/s,
+  );
+  assert.match(
+    css,
+    /\.authority-proof \.proof-item strong\s*\{[^}]*font-size: clamp\(2rem, 3vw, 3\.5rem\);/s,
+  );
+  assert.match(
+    css,
+    /\.service-educate \.proof-grid,\s*\.service-create \.proof-grid\s*\{[^}]*grid-template-columns: repeat\(4, minmax\(0, 1fr\)\);/s,
+  );
+  assert.match(
+    css,
+    /\.section-heading-spacious h2,\s*\.section-heading-full h2\s*\{[^}]*max-width: none;/,
+  );
+  assert.match(
+    css,
+    /@media \(min-width: 761px\)\s*\{[\s\S]*?\.authority-closing h2\s*\{[^}]*font-size: clamp\(2\.8rem, 4\.6vw, 5\.3rem\);/,
+  );
+  assert.match(
+    css,
     /\.footer-authority-links\s*\{[^}]*grid-template-columns: repeat\(2, minmax\(0, 1fr\)\);/s,
   );
   assert.match(
@@ -201,7 +225,6 @@ test("renders paired English and German service pages", async () => {
     "When your house is on fire. And panic flares up.",
     "Projects that started in chaos. And ended in cheers.",
     "Trust is earned through work others praise.",
-    "Three proven approaches. Infinitely many more available.",
     "RevOps automation",
     "3–5 days to 19 minutes",
     "~150 emails daily",
@@ -209,17 +232,21 @@ test("renders paired English and German service pages", async () => {
     "98% accuracy",
     "full pipeline visibility",
   ]);
+  assert.match(
+    english,
+    /Three proven approaches\.<br class="desktop-line-break"\/> Infinitely many more available\./,
+  );
   assert.doesNotMatch(english, /Federal budget/);
   assert.match(
     german,
-    /Geben Sie mir Herausforderungen, für die es kein Handbuch gibt\./,
+    /Bringen Sie mir Herausforderungen, für die es kein Handbuch gibt\./,
   );
   assert.match(german, /href="\/solve"/);
   assert.match(german, />ENGLISH</);
   assert.match(german, /APPLIED AI ARCHITECT · EXECUTIVE ADVISOR/);
   assert.match(
     german,
-    /Sie buchen keine Präsentation\. Sondern einen Full-Stack Problemlöser\./,
+    /Sie buchen keine Präsentation\. Sondern einen Full-Stack-Problemlöser\./,
   );
   assert.match(
     german,
@@ -230,11 +257,11 @@ test("renders paired English and German service pages", async () => {
     /Bringen Sie mir Probleme, die andere weder begreifen, strukturieren noch lösen können\./,
   );
   assertIncludesAll(german, [
-    "Geben Sie mir Herausforderungen, für die es kein Handbuch gibt.",
+    "Bringen Sie mir Herausforderungen, für die es kein Handbuch gibt.",
     "Wenn Ihr Projekt brennt. Und Panik auflodert.",
-    "Ausgewählte Ergebnisse unter Druck.",
+    "Ausgewählte Ergebnisse, die unter Hochdruck entstanden.",
     "Vertrauen entsteht durch Arbeit, die andere loben.",
-    "Drei Formen der Zusammenarbeit.",
+    "Drei Arten der Zusammenarbeit. Unendlich flexibel anpassbar.",
     "RevOps-Automatisierung",
     "3–5 Tagen auf 19 Minuten",
     "rund 150 E-Mails",
@@ -255,7 +282,7 @@ test("renders paired English and German service pages", async () => {
     german,
     /class="button button-secondary"[^>]*href="mailto:Elias\.Kouloures@gmail\.com">E-Mail senden<\/a>/,
   );
-  assert.match(german, /<main class="service-page" lang="de">/);
+  assert.match(german, /<main class="service-page service-loesen" lang="de">/);
   assert.equal(germanResponse.headers.get("content-language"), "de");
   assert.equal(englishResponse.headers.get("content-language"), "en");
   assert.match(english, /"@type":"Service"/);
@@ -418,7 +445,7 @@ test("renders bilingual profile pages with positioning, evidence, and role fit",
     "Bring your challenge. I will find at least one solution.",
     "Technical Deployment Lead",
     "PUBLIC RECOMMENDATIONS",
-    "COBI · BOSCH",
+    "COBI",
   ]);
   assertIncludesAll(german, [
     "Berater und Architekt für angewandte KI-Transformation",
@@ -442,6 +469,29 @@ test("renders bilingual profile pages with positioning, evidence, and role fit",
   assert.match(english, /href="\/profil"/);
   assert.match(german, /href="\/profile"/);
   assert.equal(germanResponse.headers.get("content-language"), "de");
+
+  for (const html of [english, german]) {
+    assert.equal((html.match(/class="whw-rail">WHAT<\/p>/g) ?? []).length, 3);
+    assert.doesNotMatch(html, /class="whw-rail whw-rail-what"/);
+
+    for (const anchor of [
+      "cobi",
+      "samsung",
+      "eon",
+      "galapagos",
+      "360x",
+      "waldorf-future-lab",
+      "hazumfefer",
+      "berlin-hospitality",
+      "eu-transform",
+      "asu-max-planck",
+      "laisterdam",
+      "beat-em-hub",
+    ]) {
+      assert.match(html, new RegExp(`href="/work/#${anchor}"`));
+    }
+    assert.doesNotMatch(html, />DATEV</);
+  }
 });
 
 test("renders Why-How-What as native text, not baked image content", async () => {

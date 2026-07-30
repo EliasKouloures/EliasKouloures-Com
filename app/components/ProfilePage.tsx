@@ -1,6 +1,6 @@
 import type { CSSProperties } from "react";
 import Link from "next/link";
-import { whyHowWhat } from "../authority-data";
+import { caseStudies, whyHowWhat } from "../authority-data";
 import { contact, type Language } from "../site-data";
 import { SiteFooter } from "./SiteFooter";
 import { SiteHeader } from "./SiteHeader";
@@ -132,12 +132,12 @@ export function ProfilePage({ language }: ProfilePageProps) {
             <span className="whw-link" aria-hidden="true" />
 
             <div className="whw-what">
-              <p className="whw-rail whw-rail-what">
-                {whyHowWhat.whatLabel[language]}
-              </p>
               <div className="whw-pillars">
                 {whyHowWhat.pillars.map((pillar) => (
                   <article className="whw-pillar" key={pillar.index}>
+                    <p className="whw-rail">
+                      {whyHowWhat.whatLabel[language]}
+                    </p>
                     <p className="whw-pillar-rail">
                       {pillar.index}
                       <span aria-hidden="true" />
@@ -228,17 +228,11 @@ export function ProfilePage({ language }: ProfilePageProps) {
                 : "From enterprise and EU programmes to startups and education."}
             </h2>
           </div>
-          <div className="wordmark-grid" aria-label={isGerman ? "Ausgewählte Organisationen" : "Selected organisations"}>
-            {[
-              "SAMSUNG",
-              "E.ON",
-              "COMMERZBANK · 360X",
-              "DATEV",
-              "COBI · BOSCH",
-              "EU TRANSFORM",
-              "WALDORF FUTURE LAB",
-            ].map((name) => (
-              <span key={name}>{name}</span>
+          <div className="landing-wordmarks profile-wordmarks" aria-label={isGerman ? "Ausgewählte Organisationen" : "Selected organisations"}>
+            {caseStudies.map((item) => (
+              <Link href={`/work/#${item.id}`} key={item.id}>
+                {item.client}
+              </Link>
             ))}
           </div>
           <p className="context-note">

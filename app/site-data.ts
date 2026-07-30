@@ -210,7 +210,7 @@ export const services: Record<string, ServicePageData> = {
     language: "de",
     label: "LÖSEN",
     eyebrow: "LÖSEN · SENIOR ADVISORY",
-    title: "Geben Sie mir Herausforderungen, für die es kein Handbuch gibt.",
+    title: "Bringen Sie mir Herausforderungen, für die es kein Handbuch gibt.",
     intro:
       "Erstprinzipien-Diagnose, nachvollziehbare Entscheidungen und funktionierende Lösungen für komplexe Wachstums-, Innovations- und KI-Herausforderungen—ausgerichtet auf Deutschland und die EU.",
     flagship: {
@@ -265,7 +265,7 @@ export const services: Record<string, ServicePageData> = {
       },
     ],
     capabilityHeading:
-      "Sie buchen keine Präsentation. Sondern einen Full-Stack Problemlöser.",
+      "Sie buchen keine Präsentation. Sondern einen Full-Stack-Problemlöser.",
     capabilityIntro:
       "Ich steige dort ein, wo das Briefing lückenhaft, der Einsatz hoch und mehrere Disziplinen betroffen sind. Dann reduziere ich das Problem auf Fakten, Prioritäten und lieferbare Ergebnisse.",
     capabilities: [
@@ -294,7 +294,8 @@ export const services: Record<string, ServicePageData> = {
     editorialTitle: "Engpässe finden. Systeme bauen. Anleitungen hinterlassen.",
     editorialText:
       "Jedes Mandat wird um Entscheidungen gebaut, die erklärbar, testbar und übertragbar sind. Keine Blackbox, kein Theater, keine gewollte Abhängigkeit.",
-    workHeading: "Ausgewählte Ergebnisse unter Druck.",
+    workHeading:
+      "Ausgewählte Ergebnisse, die unter Hochdruck entstanden.",
     workIntro:
       "Die Kontexte wechseln. Das Muster bleibt: das schwierige Problem verständlich machen, das richtige System bauen und in Entscheidungsgeschwindigkeit liefern.",
     work: [
@@ -323,7 +324,8 @@ export const services: Record<string, ServicePageData> = {
         text: "Prompt-Architekturen, Evaluationsschranken und Retrieval-Systeme für überprüfbare Ergebnisse entwickelt.",
       },
     ],
-    engagementHeading: "Drei Formen der Zusammenarbeit.",
+    engagementHeading:
+      "Drei Arten der Zusammenarbeit. Unendlich flexibel anpassbar.",
     engagements: [
       {
         title: "Krisenintervention",

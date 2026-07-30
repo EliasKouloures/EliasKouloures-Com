@@ -873,6 +873,45 @@ button:focus-visible {
   display: block;
 }
 
+.desktop-line-break {
+  display: none;
+}
+
+@media (min-width: 761px) {
+  .service-educate .proof-grid,
+  .service-create .proof-grid {
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+  }
+
+  .service-educate .proof-item:nth-child(4),
+  .service-create .proof-item:nth-child(4) {
+    border-top: 0;
+  }
+
+  .section-heading-spacious h2,
+  .section-heading-full h2 {
+    max-width: none;
+  }
+
+  .service-solve .desktop-line-break {
+    display: block;
+  }
+}
+
+@media (min-width: 1081px) and (max-width: 1240px) {
+  .section-heading-spacious {
+    grid-template-columns: 1fr;
+    row-gap: 26px;
+  }
+}
+
+@media (min-width: 1241px) {
+  .section-heading-spacious {
+    grid-template-columns: minmax(0, 1fr) minmax(280px, 360px);
+    column-gap: clamp(40px, 5vw, 90px);
+  }
+}
+
 /* ── Flagship offer band (Crisis Intervention / Krisenintervention) ──
    Sits directly under the proof band so the highest-urgency mandate
    is visible on the first screen after the hero. */
@@ -2306,11 +2345,13 @@ button:focus-visible {
 .landing-proof-grid > div {
   display: flex;
   min-height: 150px;
+  align-items: center;
   flex-direction: column;
   justify-content: center;
   padding: 28px 34px;
   border-right: 1px solid var(--line);
   border-bottom: 1px solid var(--line);
+  text-align: center;
 }
 
 .landing-proof-grid strong {
@@ -2327,8 +2368,7 @@ button:focus-visible {
   text-transform: uppercase;
 }
 
-.landing-wordmarks,
-.wordmark-grid {
+.landing-wordmarks {
   display: grid;
   margin-top: 38px;
   border-top: 1px solid var(--line);
@@ -2339,12 +2379,7 @@ button:focus-visible {
   grid-template-columns: repeat(4, minmax(0, 1fr));
 }
 
-.wordmark-grid {
-  grid-template-columns: repeat(7, minmax(0, 1fr));
-}
-
-.landing-wordmarks a,
-.wordmark-grid span {
+.landing-wordmarks a {
   display: grid;
   min-height: 82px;
   place-items: center;
@@ -2525,10 +2560,6 @@ button:focus-visible {
 
 .whw-what {
   padding-top: 4px;
-}
-
-.whw-rail-what {
-  margin-bottom: 22px;
 }
 
 .whw-pillars {
@@ -2968,6 +2999,21 @@ button:focus-visible {
 .authority-proof {
   grid-template-columns: repeat(4, minmax(0, 1fr));
 }
+
+.authority-proof .proof-item {
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.authority-proof .proof-item strong {
+  font-size: clamp(2rem, 3vw, 3.5rem);
+}
+
+.authority-proof .proof-item span {
+  font-size: 0.7rem;
+}
+
 .role-fit-panel p,
 .context-note {
   color: var(--muted);
@@ -3032,7 +3078,7 @@ button:focus-visible {
   border-top: 1px solid var(--line);
 }
 
-.wordmark-grid {
+.profile-wordmarks {
   margin-top: 0;
 }
 
@@ -3133,6 +3179,12 @@ button:focus-visible {
   font-weight: 490;
   letter-spacing: -0.06em;
   line-height: 0.94;
+}
+
+@media (min-width: 761px) {
+  .authority-closing h2 {
+    font-size: clamp(2.8rem, 4.6vw, 5.3rem);
+  }
 }
 
 .authority-closing .hero-actions {
@@ -3296,8 +3348,7 @@ button:focus-visible {
     max-width: 780px;
   }
 
-  .landing-wordmarks,
-  .wordmark-grid {
+  .landing-wordmarks {
     grid-template-columns: repeat(4, minmax(0, 1fr));
   }
 
@@ -3353,8 +3404,7 @@ button:focus-visible {
     min-height: 110px;
   }
 
-  .landing-wordmarks,
-  .wordmark-grid {
+  .landing-wordmarks {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 
