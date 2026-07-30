@@ -34,6 +34,9 @@ export function SiteFooter({ language = "en" }: SiteFooterProps) {
             <Link data-event="service_open" data-event-label="FORTBILDEN · Footer" href="/fortbilden">FORTBILDEN</Link>
             <Link data-event="service_open" data-event-label="ENTWICKELN · Footer" href="/entwickeln">ENTWICKELN</Link>
           </div>
+          <p className="footer-label footer-credentials-label">
+            {isGerman ? "MEINE REFERENZEN ANSEHEN" : "REVIEW MY CREDENTIALS"}
+          </p>
           <div className="footer-authority-links">
             <Link href={isGerman ? "/profil" : "/profile"}>
               {isGerman ? "Profil" : "Profile"}

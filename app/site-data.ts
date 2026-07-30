@@ -70,7 +70,7 @@ export const services: Record<string, ServicePageData> = {
       "First-principles diagnosis, evidence-traced decisions and working solutions for complex growth, innovation and AI challenges—built for EU and German realities.",
     flagship: {
       eyebrow: "FLAGSHIP MANDATE · CRISIS INTERVENTION",
-      title: "When it is already burning.",
+      title: "When your house is on fire. And panic flares up.",
       intro:
         "Crisis intervention is the flagship mandate inside SOLVE. It applies when a high-stakes problem is already costing customers, revenue, headcount or reputation, no playbook exists, and there is no time to write one. I take the constraint apart, name the root cause and ship the smallest defensible fix first.",
       signalHeading: "Three signals that this is the right mandate",
@@ -149,7 +149,7 @@ export const services: Record<string, ServicePageData> = {
     editorialTitle: "Find constraints. Build systems. Leave playbooks.",
     editorialText:
       "Every engagement is structured around decisions that can be explained, tested and handed over. No black box, no theatre, no dependency by design.",
-    workHeading: "Selected proof under pressure",
+    workHeading: "Projects that started in chaos. And ended in cheers.",
     workIntro:
       "The contexts change. The pattern does not: make the hard problem legible, assemble the right system and deliver at decision speed.",
     work: [
@@ -178,7 +178,7 @@ export const services: Record<string, ServicePageData> = {
         text: "Designed prompt architectures, evaluation gates and retrieval systems for outputs people can inspect.",
       },
     ],
-    engagementHeading: "Three ways to engage",
+    engagementHeading: "Three proven approaches. Infinitely many more available.",
     engagements: [
       {
         title: "Crisis intervention",
@@ -210,12 +210,12 @@ export const services: Record<string, ServicePageData> = {
     language: "de",
     label: "LÖSEN",
     eyebrow: "LÖSEN · SENIOR ADVISORY",
-    title: "Geben Sie mir Herausforderungen, für die es keine Anleitung gibt.",
+    title: "Geben Sie mir Herausforderungen, für die es kein Handbuch gibt.",
     intro:
       "Erstprinzipien-Diagnose, nachvollziehbare Entscheidungen und funktionierende Lösungen für komplexe Wachstums-, Innovations- und KI-Herausforderungen—ausgerichtet auf Deutschland und die EU.",
     flagship: {
       eyebrow: "KERNMANDAT · KRISENINTERVENTION",
-      title: "Wenn es bereits brennt.",
+      title: "Wenn Ihr Projekt brennt. Und Panik auflodert.",
       intro:
         "Krisenintervention ist das Kernmandat innerhalb von LÖSEN. Es greift, wenn ein Problem mit hoher Tragweite bereits Kunden, Umsatz, Personal oder Reputation kostet, keine Anleitung existiert und keine Zeit bleibt, eine zu schreiben. Ich zerlege die Rahmenbedingungen, benenne die Ursache und liefere zuerst die kleinste belastbare Lösung.",
       signalHeading: "Drei Anzeichen, dass dies das richtige Mandat ist",
@@ -294,7 +294,7 @@ export const services: Record<string, ServicePageData> = {
     editorialTitle: "Engpässe finden. Systeme bauen. Anleitungen hinterlassen.",
     editorialText:
       "Jedes Mandat wird um Entscheidungen gebaut, die erklärbar, testbar und übertragbar sind. Keine Blackbox, kein Theater, keine gewollte Abhängigkeit.",
-    workHeading: "Ausgewählte Ergebnisse unter Druck",
+    workHeading: "Ausgewählte Ergebnisse unter Druck.",
     workIntro:
       "Die Kontexte wechseln. Das Muster bleibt: das schwierige Problem verständlich machen, das richtige System bauen und in Entscheidungsgeschwindigkeit liefern.",
     work: [
@@ -323,7 +323,7 @@ export const services: Record<string, ServicePageData> = {
         text: "Prompt-Architekturen, Evaluationsschranken und Retrieval-Systeme für überprüfbare Ergebnisse entwickelt.",
       },
     ],
-    engagementHeading: "Drei Formen der Zusammenarbeit",
+    engagementHeading: "Drei Formen der Zusammenarbeit.",
     engagements: [
       {
         title: "Krisenintervention",
@@ -355,7 +355,7 @@ export const services: Record<string, ServicePageData> = {
     language: "en",
     label: "EDUCATE",
     eyebrow: "EDUCATE · APPLIED AI LITERACY",
-    title: "Turn AI confusion into a working advantage.",
+    title: "Transform AI confusion into your supercharged advantage.",
     intro:
       "Role-specific learning for leaders, teams and families—translated into useful workflows, shared language and a roadmap people can act on.",
     heroImage:
@@ -412,10 +412,10 @@ export const services: Record<string, ServicePageData> = {
     ],
     editorialKicker: "THE LEARNING PRINCIPLE",
     editorialTitle:
-      "Understand at any level. And practice on relevant use-cases.",
+      "Upskill at any AI level. Practise with relevant, smart and creative use cases.",
     editorialText:
       "The objective is not excitement about a tool. It is independent judgment: knowing when AI helps, how to test it and when to stop.",
-    workHeading: "Built for the room you actually have",
+    workHeading: "Tailor-made education that suits you best.",
     workIntro:
       "One method, adapted to the decision rights, incentives and baseline knowledge of each audience.",
     work: [
@@ -436,7 +436,8 @@ export const services: Record<string, ServicePageData> = {
         text: "Clear, age-aware guidance for using AI without surrendering curiosity, judgment or agency.",
       },
     ],
-    engagementHeading: "Formats that fit the outcome",
+    engagementHeading:
+      "Pick a format. Or let’s create a new one just for you.",
     engagements: [
       {
         title: "Executive briefing",
@@ -457,7 +458,7 @@ export const services: Record<string, ServicePageData> = {
     playlistHeading: "Educate · practical sessions",
     playlistIntro:
       "The complete playlist updates automatically as new videos are published.",
-    closingTitle: "Define the capability your people need.",
+    closingTitle: "You define the capabilities. I upskill your teams.",
     closingText:
       "Tell me who is in the room, what must change afterwards and where the current friction sits.",
   },
@@ -468,7 +469,7 @@ export const services: Record<string, ServicePageData> = {
     label: "FORTBILDEN",
     eyebrow: "FORTBILDEN · ANGEWANDTE KI-KOMPETENZ",
     title:
-      "Verwandeln Sie KI-Verwirrung zum Wettbewerbsvorteil. Mit maßgeschneiderten Fortbildungen.",
+      "Verwandeln Sie KI-Verwirrung in Ihren Wettbewerbsvorteil. Mit Fortbildungen nach Maß.",
     intro:
       "Rollenspezifische Weiterbildung für Führungskräfte, Teams und Familien—übersetzt in nützliche Workflows, eine gemeinsame Sprache und einen umsetzbaren Fahrplan.",
     heroImage:
@@ -526,11 +527,11 @@ export const services: Record<string, ServicePageData> = {
     ],
     editorialKicker: "DAS LERNPRINZIP",
     editorialTitle:
-      "KI besser verstehen – für jeden Wissensstand. Und üben mit relevanten Anwendungsfällen.",
+      "Verbessern Sie Ihre KI-Skills. Mit relevanten, smarten und kreativen Übungen.",
     editorialText:
       "Das Ziel ist keine Begeisterung für ein Tool. Das Ziel ist unabhängige Urteilskraft: wissen, wann KI hilft, wie man sie prüft und wann man stoppt.",
     workHeading:
-      "Maßgeschneiderte Fortbildungen. Von C-Suite bis Praktikant. Von Profi bis Beginner.",
+      "Fortbildungen nach Maß. Für CEOs, ICs, Teams, Teens, Eltern, Lehrkräfte und n00bs.",
     workIntro:
       "Eine Methode, angepasst an Entscheidungsrechte, Anreize und Wissensstand der jeweiligen Zielgruppe.",
     work: [
@@ -551,7 +552,8 @@ export const services: Record<string, ServicePageData> = {
         text: "Klare, altersgerechte Orientierung für KI-Nutzung ohne Verlust von Neugier, Urteilskraft oder Selbstbestimmung.",
       },
     ],
-    engagementHeading: "Formate passend zum Ergebnis",
+    engagementHeading:
+      "Drei Formatvorschläge. Unendlich viele Optionen.",
     engagements: [
       {
         title: "Executive Briefing",
@@ -572,7 +574,8 @@ export const services: Record<string, ServicePageData> = {
     playlistHeading: "Fortbilden · Praxissessions",
     playlistIntro:
       "Die vollständige Playlist aktualisiert sich automatisch, sobald neue Videos veröffentlicht werden.",
-    closingTitle: "Definieren Sie die Kompetenz, die Ihre Menschen brauchen.",
+    closingTitle:
+      "Sie definieren die Fähigkeiten. Ich upskille Ihre Teams.",
     closingText:
       "Sagen Sie mir, wer im Raum sitzt, was sich danach ändern muss und wo die aktuelle Reibung liegt.",
   },
@@ -583,7 +586,7 @@ export const services: Record<string, ServicePageData> = {
     label: "CREATE",
     eyebrow: "CREATE · MULTIMEDIA SYSTEMS",
     title:
-      "Book me as multimedia creator. Or learn how to become one yourself.",
+      "Book me as a creative director, strategist, writer, coder or multimedia producer. Or all five in one.",
     intro:
       "Creative direction and reusable AI production systems for high-impact multimedia—built around the audience, the channel and the result.",
     heroImage:
@@ -610,7 +613,7 @@ export const services: Record<string, ServicePageData> = {
       },
     ],
     capabilityHeading:
-      "Turn your ideas into images, films or songs that attract fans and customers.",
+      "Turn your ideas into images, films, songs, apps and websites that win fans, attract customers and generate revenue.",
     capabilityIntro:
       "I combine concept, direction, generation and quality control so every asset belongs to the same visual and strategic universe.",
     capabilities: [
@@ -644,7 +647,8 @@ export const services: Record<string, ServicePageData> = {
       "Invest in world-class creative assets because AI slop exists in abundance.",
     editorialText:
       "The tool is never the idea. Every choice—frame, rhythm, texture, voice—must strengthen what the audience should feel, understand or do next.",
-    workHeading: "From isolated asset to creative engine",
+    workHeading:
+      "Order anything—from an isolated asset to a 360° campaign or an end-to-end AI-powered production pipeline.",
     workIntro:
       "The output can be one decisive piece or a repeatable system. In both cases, the standard is the same: distinct, coherent and useful.",
     work: [
@@ -665,7 +669,8 @@ export const services: Record<string, ServicePageData> = {
         text: "Modular assets mapped to audience, channel, funnel moment and production reality.",
       },
     ],
-    engagementHeading: "Three ways to make",
+    engagementHeading:
+      "Three client favourites. Many more to be defined together.",
     engagements: [
       {
         title: "Hero asset",
@@ -697,7 +702,7 @@ export const services: Record<string, ServicePageData> = {
     label: "ENTWICKELN",
     eyebrow: "ENTWICKELN · MULTIMEDIA-SYSTEME",
     title:
-      "Buchen Sie mich als Multimedia-Künstler. Oder lernen Sie, selber einer zu werden.",
+      "Beauftragen Sie mich als Kreativdirektor, Strategen, Texter, Programmierer oder Multimedia-Designer. Oder alles in einer Person.",
     intro:
       "Kreativdirektion und wiederverwendbare KI-Produktionssysteme für wirkungsvolle Multimedia-Inhalte—gebaut um Zielgruppe, Kanal und Ergebnis.",
     heroImage:
@@ -724,7 +729,7 @@ export const services: Record<string, ServicePageData> = {
       },
     ],
     capabilityHeading:
-      "Verwandeln Sie Ihre Ideen in Bilder, Filme oder Lieder, die Fans und Kunden anziehen.",
+      "Verwandeln Sie Ihre Ideen in Bilder, Filme, Lieder, Apps oder Websites, die Fans gewinnen, Kunden überzeugen und Umsatz generieren.",
     capabilityIntro:
       "Ich verbinde Konzept, Direktion, Generierung und Qualitätskontrolle, damit jedes Asset zum selben visuellen und strategischen Universum gehört.",
     capabilities: [
@@ -758,7 +763,8 @@ export const services: Record<string, ServicePageData> = {
       "Investieren Sie in Weltklasse-Kreativität, weil KI-Müll kann jeder.",
     editorialText:
       "Das Tool ist niemals die Idee. Jede Entscheidung—Bild, Rhythmus, Textur, Stimme—muss verstärken, was die Zielgruppe fühlen, verstehen oder als Nächstes tun soll.",
-    workHeading: "Vom einzelnen Asset zur Kreativmaschine",
+    workHeading:
+      "Alles bestellbar: einzelne Assets, 360°-Kampagnen und End-to-End-KI-Produktionspipelines.",
     workIntro:
       "Das Ergebnis kann ein entscheidendes Einzelstück oder ein wiederholbares System sein. Der Maßstab bleibt: eigenständig, kohärent und nützlich.",
     work: [
@@ -779,7 +785,8 @@ export const services: Record<string, ServicePageData> = {
         text: "Modulare Assets, abgestimmt auf Zielgruppe, Kanal, Funnel-Moment und Produktionsrealität.",
       },
     ],
-    engagementHeading: "Drei Wege zur Produktion",
+    engagementHeading:
+      "Drei Kundenfavoriten. Viele weitere definieren wir gemeinsam.",
     engagements: [
       {
         title: "Hero Asset",

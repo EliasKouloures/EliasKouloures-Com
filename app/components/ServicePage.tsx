@@ -215,8 +215,8 @@ export function ServicePage({ data }: ServicePageProps) {
             </p>
             <h2>
               {isGerman
-                ? "Vertrauen entsteht durch Arbeit, die andere bestätigen."
-                : "Trust is earned through work others validate."}
+                ? "Vertrauen entsteht durch Arbeit, die andere loben."
+                : "Trust is earned through work others praise."}
             </h2>
           </div>
           <TestimonialGrid

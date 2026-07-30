@@ -3,7 +3,7 @@ import Link from "next/link";
 import { BriefForm } from "./components/BriefForm";
 import { SiteFooter } from "./components/SiteFooter";
 import { SiteHeader } from "./components/SiteHeader";
-import { getTestimonials } from "./authority-data";
+import { caseStudies, getTestimonials } from "./authority-data";
 import { contact, landingStacks, landingTestimonials } from "./site-data";
 
 export const metadata: Metadata = {
@@ -117,16 +117,10 @@ export default function Home() {
           </div>
 
           <div className="landing-wordmarks" aria-label="Selected organisations and contexts">
-            {[
-              "SAMSUNG",
-              "E.ON",
-              "COMMERZBANK · 360X",
-              "DATEV",
-              "COBI · BOSCH",
-              "EU TRANSFORM",
-              "WALDORF FUTURE LAB",
-            ].map((name) => (
-              <span key={name}>{name}</span>
+            {caseStudies.map((item) => (
+              <Link href={`/work/#${item.id}`} key={item.id}>
+                {item.client}
+              </Link>
             ))}
           </div>
           <p className="landing-context-note">

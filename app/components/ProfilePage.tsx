@@ -41,8 +41,8 @@ export function ProfilePage({ language }: ProfilePageProps) {
           </p>
           <h1>
             {isGerman
-              ? "Berater und Architekt für angewandte KI-Transformation."
-              : "Applied AI Architect & Executive Advisor."}
+              ? "Berater und Architekt für angewandte KI-Transformation"
+              : "Applied AI Architect & Executive Advisor"}
           </h1>
           <p className="authority-lede">
             {isGerman
@@ -197,8 +197,8 @@ export function ProfilePage({ language }: ProfilePageProps) {
           <div className="role-fit-panel">
             <h3>
               {isGerman
-                ? "Auch offen für eine außergewöhnliche Festanstellung"
-                : "Also open to an exceptional permanent role"}
+                ? "Auch offen für eine außergewöhnliche Festanstellung."
+                : "Also open to an exceptional permanent role."}
             </h3>
             <p>
               {isGerman
@@ -275,8 +275,8 @@ export function ProfilePage({ language }: ProfilePageProps) {
           </p>
           <h2>
             {isGerman
-              ? "Bringen Sie die Herausforderung. Wir finden den Engpass."
-              : "Bring the challenge. We will find the constraint."}
+              ? "Bringen Sie Ihre Herausforderung mit. Ich liefere mindestens eine Lösung."
+              : "Bring your challenge. I will find at least one solution."}
           </h2>
           <div className="hero-actions">
             <a

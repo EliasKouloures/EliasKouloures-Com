@@ -22,7 +22,7 @@ export function SiteHeader({
         >
           <span>ELIAS KOULOURES</span>
           <span className="brand-role">
-            {isGerman ? "ANGEWANDTE KI · EXECUTIVE ADVISOR" : "APPLIED AI ARCHITECT"}
+            APPLIED AI ARCHITECT · EXECUTIVE ADVISOR
           </span>
         </Link>
 

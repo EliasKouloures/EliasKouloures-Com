@@ -535,8 +535,8 @@ export const whyHowWhat = {
       de: "Fortschritt sichern und beschleunigen",
     },
     statement: {
-      en: "with unique AuDHD insight, first-principles systems thinking, global work experience and multidisciplinary knowhow across AI, IT, business, strategy, communication and creativity.",
-      de: "mit einer seltenen AuDHD-Perspektive, Erstprinzipien-Systemdenken, globaler Berufserfahrung und multidisziplinärem Knowhow in KI, IT, Business, Strategie, Kommunikation und Kreation.",
+      en: "with unique AuDHD insight, first-principles systems thinking, global work experience and multidisciplinary know-how across AI, IT, business, strategy, communication and creativity.",
+      de: "mit einer seltenen AuDHD-Perspektive, Erstprinzipien-Systemdenken, globaler Berufserfahrung und multidisziplinärem Know-how in KI, IT, Business, Strategie, Kommunikation und Kreation.",
     },
   },
   whatLabel: { en: "WHAT", de: "WHAT" },

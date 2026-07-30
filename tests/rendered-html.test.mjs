@@ -57,13 +57,31 @@ test("renders the bilingual landing page with all six flat routes", async () => 
     /href="https:\/\/kardashev-campus\.beehiiv\.com\/"[^>]*>German Newsletter/,
   );
   assertIncludesAll(html, [
-    "APPLIED AI ARCHITECT",
+    "APPLIED AI ARCHITECT · EXECUTIVE ADVISOR",
     "From ambiguity to deployed systems",
     "Profile",
     "Selected work",
+    "REVIEW MY CREDENTIALS",
     "BRIEF ME · PROJEKT ANFRAGEN",
     "Challenge or desired outcome",
   ]);
+  for (const anchor of [
+    "cobi",
+    "samsung",
+    "eon",
+    "galapagos",
+    "360x",
+    "waldorf-future-lab",
+    "hazumfefer",
+    "berlin-hospitality",
+    "eu-transform",
+    "asu-max-planck",
+    "laisterdam",
+    "beat-em-hub",
+  ]) {
+    assert.match(html, new RegExp(`href="/work/#${anchor}"`));
+  }
+  assert.doesNotMatch(html, />DATEV</);
   assert.doesNotMatch(html, /react-loading-skeleton|codex-preview/);
 });
 
@@ -111,6 +129,46 @@ test("uses the same responsive scale for every major service-page headline", asy
   );
 });
 
+test("implements the approved landing, footer, and profile layout exceptions", async () => {
+  const css = await readFile(
+    new URL("../app/globals.css", import.meta.url),
+    "utf8",
+  );
+
+  assert.match(
+    css,
+    /\.landing-stack-head\s*\{[^}]*display: grid;[^}]*grid-template-columns: 1fr auto 1fr;/s,
+  );
+  assert.match(css, /\.landing-stack-head::before,/);
+  assert.match(
+    css,
+    /\.landing-wordmarks\s*\{[^}]*grid-template-columns: repeat\(4, minmax\(0, 1fr\)\);/s,
+  );
+  assert.match(
+    css,
+    /\.landing-wordmarks a\s*\{[^}]*text-decoration: underline;/s,
+  );
+  assert.match(
+    css,
+    /\.footer-authority-links\s*\{[^}]*grid-template-columns: repeat\(2, minmax\(0, 1fr\)\);/s,
+  );
+  assert.match(
+    css,
+    /\.footer-authority-links a\s*\{[^}]*border-radius: 999px;/s,
+  );
+  for (const selector of [
+    ".whw-head",
+    ".whw-why-statement",
+    ".whw-how-statement",
+  ]) {
+    const escapedSelector = selector.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
+    assert.match(
+      css,
+      new RegExp(`${escapedSelector}\\s*\\{[^}]*max-width: none;`, "s"),
+    );
+  }
+});
+
 test("renders paired English and German service pages", async () => {
   const [englishResponse, germanResponse] = await Promise.all([
     render("/solve"),
@@ -126,6 +184,7 @@ test("renders paired English and German service pages", async () => {
   assert.match(english, /Give me your challenges where no playbook exists\./);
   assert.match(english, /href="\/loesen"/);
   assert.match(english, />DEUTSCH</);
+  assert.match(english, /APPLIED AI ARCHITECT · EXECUTIVE ADVISOR/);
   assert.match(
     english,
     /You don’t book a presentation\. You get a full-stack problem solver\./,
@@ -139,6 +198,10 @@ test("renders paired English and German service pages", async () => {
     /Bring me challenges others cannot fathom, structure nor solve\./,
   );
   assertIncludesAll(english, [
+    "When your house is on fire. And panic flares up.",
+    "Projects that started in chaos. And ended in cheers.",
+    "Trust is earned through work others praise.",
+    "Three proven approaches. Infinitely many more available.",
     "RevOps automation",
     "3–5 days to 19 minutes",
     "~150 emails daily",
@@ -149,10 +212,11 @@ test("renders paired English and German service pages", async () => {
   assert.doesNotMatch(english, /Federal budget/);
   assert.match(
     german,
-    /Geben Sie mir Herausforderungen, für die es keine Anleitung gibt\./,
+    /Geben Sie mir Herausforderungen, für die es kein Handbuch gibt\./,
   );
   assert.match(german, /href="\/solve"/);
   assert.match(german, />ENGLISH</);
+  assert.match(german, /APPLIED AI ARCHITECT · EXECUTIVE ADVISOR/);
   assert.match(
     german,
     /Sie buchen keine Präsentation\. Sondern einen Full-Stack Problemlöser\./,
@@ -166,6 +230,11 @@ test("renders paired English and German service pages", async () => {
     /Bringen Sie mir Probleme, die andere weder begreifen, strukturieren noch lösen können\./,
   );
   assertIncludesAll(german, [
+    "Geben Sie mir Herausforderungen, für die es kein Handbuch gibt.",
+    "Wenn Ihr Projekt brennt. Und Panik auflodert.",
+    "Ausgewählte Ergebnisse unter Druck.",
+    "Vertrauen entsteht durch Arbeit, die andere loben.",
+    "Drei Formen der Zusammenarbeit.",
     "RevOps-Automatisierung",
     "3–5 Tagen auf 19 Minuten",
     "rund 150 E-Mails",
@@ -210,9 +279,9 @@ test("promotes crisis intervention as the flagship offer in SOLVE and LÖSEN", a
   ]);
 
   assert.match(solve, /FLAGSHIP MANDATE · CRISIS INTERVENTION/);
-  assert.match(solve, /When it is already burning\./);
+  assert.match(solve, /When your house is on fire\. And panic flares up\./);
   assert.match(loesen, /KERNMANDAT · KRISENINTERVENTION/);
-  assert.match(loesen, /Wenn es bereits brennt\./);
+  assert.match(loesen, /Wenn Ihr Projekt brennt\. Und Panik auflodert\./);
 
   // Three numbered signals in each language.
   for (const html of [solve, loesen]) {
@@ -247,26 +316,39 @@ test("renders the revised educate and create headlines in both languages", async
   );
 
   assertIncludesAll(educate, [
-    "Turn AI confusion into a working advantage.",
+    "Transform AI confusion into your supercharged advantage.",
     "Eliminate your drudgery. And leverage your knowledge.",
-    "Understand at any level. And practice on relevant use-cases.",
+    "Upskill at any AI level. Practise with relevant, smart and creative use cases.",
+    "Tailor-made education that suits you best.",
+    "Trust is earned through work others praise.",
+    "Pick a format. Or let’s create a new one just for you.",
+    "You define the capabilities. I upskill your teams.",
   ]);
   assertIncludesAll(fortbilden, [
-    "Verwandeln Sie KI-Verwirrung zum Wettbewerbsvorteil. Mit maßgeschneiderten Fortbildungen.",
+    "Verwandeln Sie KI-Verwirrung in Ihren Wettbewerbsvorteil. Mit Fortbildungen nach Maß.",
     "Befreien Sie sich von unnötiger Arbeit. Und profitieren Sie von Ihrem Erfahrungsschatz.",
-    "KI besser verstehen – für jeden Wissensstand. Und üben mit relevanten Anwendungsfällen.",
-    "Maßgeschneiderte Fortbildungen. Von C-Suite bis Praktikant. Von Profi bis Beginner.",
+    "Verbessern Sie Ihre KI-Skills. Mit relevanten, smarten und kreativen Übungen.",
+    "Fortbildungen nach Maß. Für CEOs, ICs, Teams, Teens, Eltern, Lehrkräfte und n00bs.",
+    "Vertrauen entsteht durch Arbeit, die andere loben.",
+    "Drei Formatvorschläge. Unendlich viele Optionen.",
+    "Sie definieren die Fähigkeiten. Ich upskille Ihre Teams.",
   ]);
   assertIncludesAll(create, [
-    "Book me as multimedia creator. Or learn how to become one yourself.",
-    "Turn your ideas into images, films or songs that attract fans and customers.",
+    "Book me as a creative director, strategist, writer, coder or multimedia producer. Or all five in one.",
+    "Turn your ideas into images, films, songs, apps and websites that win fans, attract customers and generate revenue.",
     "Invest in world-class creative assets because AI slop exists in abundance.",
+    "Order anything—from an isolated asset to a 360° campaign or an end-to-end AI-powered production pipeline.",
+    "Trust is earned through work others praise.",
+    "Three client favourites. Many more to be defined together.",
     "Name your idea. And desired audience.",
   ]);
   assertIncludesAll(entwickeln, [
-    "Buchen Sie mich als Multimedia-Künstler. Oder lernen Sie, selber einer zu werden.",
-    "Verwandeln Sie Ihre Ideen in Bilder, Filme oder Lieder, die Fans und Kunden anziehen.",
+    "Beauftragen Sie mich als Kreativdirektor, Strategen, Texter, Programmierer oder Multimedia-Designer. Oder alles in einer Person.",
+    "Verwandeln Sie Ihre Ideen in Bilder, Filme, Lieder, Apps oder Websites, die Fans gewinnen, Kunden überzeugen und Umsatz generieren.",
     "Investieren Sie in Weltklasse-Kreativität, weil KI-Müll kann jeder.",
+    "Alles bestellbar: einzelne Assets, 360°-Kampagnen und End-to-End-KI-Produktionspipelines.",
+    "Vertrauen entsteht durch Arbeit, die andere loben.",
+    "Drei Kundenfavoriten. Viele weitere definieren wir gemeinsam.",
     "Nennen Sie Ihre Idee. Und Wunschzielgruppe.",
   ]);
 });
@@ -328,19 +410,34 @@ test("renders bilingual profile pages with positioning, evidence, and role fit",
   ]);
 
   assertIncludesAll(english, [
-    "Applied AI Architect &amp; Executive Advisor.",
+    "Applied AI Architect &amp; Executive Advisor",
     "deployed systems, adopted capabilities and clear market communication",
     "Freelance first. Open to exceptional missions.",
+    "Also open to an exceptional permanent role.",
+    "multidisciplinary know-how",
+    "Bring your challenge. I will find at least one solution.",
     "Technical Deployment Lead",
     "PUBLIC RECOMMENDATIONS",
     "COBI · BOSCH",
   ]);
   assertIncludesAll(german, [
-    "Berater und Architekt für angewandte KI-Transformation.",
+    "Berater und Architekt für angewandte KI-Transformation",
     "Freelance zuerst. Offen für außergewöhnliche Missionen.",
+    "Auch offen für eine außergewöhnliche Festanstellung.",
+    "multidisziplinärem Know-how",
+    "Bringen Sie Ihre Herausforderung mit. Ich liefere mindestens eine Lösung.",
+    "MEINE REFERENZEN ANSEHEN",
     "ÖFFENTLICHE EMPFEHLUNGEN",
     "lang=\"de\"",
   ]);
+  assert.doesNotMatch(
+    english,
+    /Applied AI Architect &amp; Executive Advisor\.<\/h1>/,
+  );
+  assert.doesNotMatch(
+    german,
+    /Berater und Architekt für angewandte KI-Transformation\.<\/h1>/,
+  );
   assert.match(english, /"@type":"ProfilePage"/);
   assert.match(english, /href="\/profil"/);
   assert.match(german, /href="\/profile"/);
