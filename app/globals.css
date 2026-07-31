@@ -825,8 +825,7 @@ button:focus-visible {
 }
 
 .content-section,
-.engagement-section,
-.playlist-section {
+.engagement-section {
   padding: clamp(94px, 11vw, 180px) 0;
 }
 
@@ -1202,133 +1201,36 @@ button:focus-visible {
   text-transform: uppercase;
 }
 
-.playlist-section {
-  background:
-    radial-gradient(
-      circle at 18% 4%,
-      rgba(235, 112, 216, 0.08),
-      transparent 24%
-    ),
-    #07070b;
+.playlist-thumbnail-section {
+  padding: clamp(94px, 11vw, 180px) 0;
+  background: #07070b;
 }
 
-.playlist-loading,
-.playlist-fallback {
-  position: relative;
-  min-height: min(60vw, 650px);
+.playlist-thumbnail-link {
+  display: block;
   overflow: hidden;
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  background:
-    linear-gradient(90deg, rgba(7, 7, 11, 0.9), rgba(7, 7, 11, 0.32)),
-    url("/images/EliasKouloures-Com_Background_Image_Spaceship_Liftoff.jpg")
-      center / cover;
-  background-image:
-    linear-gradient(90deg, rgba(7, 7, 11, 0.9), rgba(7, 7, 11, 0.32)),
-    image-set(
-      url("/images/EliasKouloures-Com_Background_Image_Spaceship_Liftoff.avif")
-        type("image/avif"),
-      url("/images/EliasKouloures-Com_Background_Image_Spaceship_Liftoff.webp")
-        type("image/webp"),
-      url("/images/EliasKouloures-Com_Background_Image_Spaceship_Liftoff.jpg")
-        type("image/jpeg")
-    );
-}
-
-.playlist-loading {
-  display: grid;
-  place-items: center;
-  color: var(--muted);
-  text-align: center;
-}
-
-.playlist-loading span {
-  display: block;
-  width: 34px;
-  height: 34px;
-  margin: 0 auto 12px;
-  border: 1px solid var(--line);
-  border-top-color: var(--teal);
-  border-radius: 50%;
-  animation: rotate 800ms linear infinite;
-}
-
-.playlist-fallback {
-  display: flex;
-  width: 100%;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 40px;
-  padding: clamp(30px, 6vw, 78px);
-  color: inherit;
-  cursor: pointer;
-  text-align: left;
+  background: #07070b;
   transition:
     border-color 200ms ease,
     filter 200ms ease;
 }
 
-.playlist-fallback:hover {
+.playlist-thumbnail-link:hover,
+.playlist-thumbnail-link:focus-visible {
   border-color: rgba(104, 241, 219, 0.52);
   filter: brightness(1.06);
 }
 
-.playlist-fallback > div {
-  max-width: 680px;
+.playlist-thumbnail-link:focus-visible {
+  outline: 2px solid var(--teal);
+  outline-offset: 6px;
 }
 
-.playlist-fallback h3 {
-  margin: 0;
-  font-size: clamp(2.2rem, 4vw, 4.8rem);
-  font-weight: 500;
-  letter-spacing: -0.05em;
-  line-height: 1;
-}
-
-.playlist-fallback p:last-child {
-  max-width: 58ch;
-  margin: 24px 0 0;
-  color: var(--muted);
-  line-height: 1.7;
-}
-
-.playlist-fallback .button {
-  flex: 0 0 auto;
-  pointer-events: none;
-}
-
-.playlist-channel-links {
-  display: flex;
-  justify-content: space-between;
-  gap: 24px;
-  padding: 18px 4px 0;
-}
-
-.playlist-channel-links a {
-  color: var(--muted);
-  font-size: 0.72rem;
-  font-weight: 650;
-  letter-spacing: 0.05em;
-  text-transform: uppercase;
-  transition: color 180ms ease;
-}
-
-.playlist-channel-links a:hover {
-  color: var(--teal);
-}
-
-.playlist-embed {
-  overflow: hidden;
-  aspect-ratio: 16 / 9;
-  border: 1px solid var(--line);
-  border-radius: var(--radius);
-  background: #0c0c12;
-}
-
-.playlist-embed iframe {
+.playlist-thumbnail-link img {
   width: 100%;
-  height: 100%;
-  border: 0;
+  height: auto;
 }
 
 .video-list {
@@ -2029,7 +1931,7 @@ button:focus-visible {
 
   .content-section,
   .engagement-section,
-  .playlist-section {
+  .playlist-thumbnail-section {
     padding: 88px 0;
   }
 
@@ -2106,23 +2008,6 @@ button:focus-visible {
   .engagement-list article > strong {
     justify-self: start;
     text-align: left;
-  }
-
-  .playlist-fallback {
-    min-height: 560px;
-    align-items: flex-start;
-    flex-direction: column;
-    justify-content: flex-end;
-  }
-
-  .playlist-fallback .button {
-    width: 100%;
-  }
-
-  .playlist-channel-links {
-    align-items: flex-start;
-    flex-direction: column;
-    gap: 12px;
   }
 
   .video-list {
@@ -3580,23 +3465,6 @@ button:focus-visible {
         rgba(5, 5, 9, 0.18) 100%
       ),
       var(--section-mobile-src);
-  }
-
-  .playlist-loading,
-  .playlist-fallback {
-    background-image:
-      linear-gradient(90deg, rgba(7, 7, 11, 0.9), rgba(7, 7, 11, 0.32)),
-      url("/images/EliasKouloures-Com_Background_Image_Spaceship_Liftoff_mobile.jpg");
-    background-image:
-      linear-gradient(90deg, rgba(7, 7, 11, 0.9), rgba(7, 7, 11, 0.32)),
-      image-set(
-        url("/images/EliasKouloures-Com_Background_Image_Spaceship_Liftoff_mobile.avif")
-          type("image/avif"),
-        url("/images/EliasKouloures-Com_Background_Image_Spaceship_Liftoff_mobile.webp")
-          type("image/webp"),
-        url("/images/EliasKouloures-Com_Background_Image_Spaceship_Liftoff_mobile.jpg")
-          type("image/jpeg")
-      );
   }
 
   .closing-section::before,

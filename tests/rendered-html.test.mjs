@@ -270,8 +270,6 @@ test("renders paired English and German service pages", async () => {
     "volle Pipeline-Transparenz",
   ]);
   assert.doesNotMatch(german, /Bundeshaushalt/);
-  assert.match(english, /YOUTUBE PLAYLIST/);
-  assert.match(german, /YOUTUBE PLAYLIST/);
   assert.match(english, /Award-winning/);
   assert.match(german, /Preisgekrönt/);
   assert.match(
@@ -380,14 +378,14 @@ test("renders the revised educate and create headlines in both languages", async
   ]);
 });
 
-test("assigns the supplied playlists to all six service pages", async () => {
+test("renders one supplied playlist thumbnail on each service page", async () => {
   const assignments = [
-    ["/solve", "PLJMSxPvhcOuA"],
-    ["/loesen", "PLJMSxPvhcOuA"],
-    ["/educate", "PLHtF5eYRujpY"],
-    ["/fortbilden", "PLHtF5eYRujpY"],
-    ["/create", "PLIlY05RIg36c"],
-    ["/entwickeln", "PLIlY05RIg36c"],
+    ["/solve", "SOLVE", "PLJMSxPvhcOuA"],
+    ["/loesen", "LOESEN", "PLJMSxPvhcOuA"],
+    ["/educate", "EDUCATE", "PLHtF5eYRujpY"],
+    ["/fortbilden", "FORTBILDEN", "PLHtF5eYRujpY"],
+    ["/create", "CREATE", "PLIlY05RIg36c"],
+    ["/entwickeln", "ENTWICKELN", "PLIlY05RIg36c"],
   ];
   const renderedPages = await Promise.all(
     assignments.map(([pathname]) => render(pathname)),
@@ -395,9 +393,62 @@ test("assigns the supplied playlists to all six service pages", async () => {
 
   for (const [index, response] of renderedPages.entries()) {
     assert.equal(response.status, 200);
-    assert.match(await response.text(), new RegExp(assignments[index][1]));
+    const html = await response.text();
+    const [, label, playlistId] = assignments[index];
+    const thumbnail =
+      `EliasKoulouresCom_YouTube_Playlist_Thumbnail-${label}.jpeg`;
+
+    assert.equal(
+      html.match(/class="playlist-thumbnail-link"/g)?.length ?? 0,
+      1,
+    );
+    assert.match(
+      html,
+      new RegExp(
+        `class="playlist-thumbnail-link"[^>]*href="https://www\\.youtube\\.com/playlist\\?list=${playlistId}"[^>]*target="_blank"[^>]*rel="noreferrer"`,
+      ),
+    );
+    assert.match(
+      html,
+      new RegExp(
+        `<img[^>]*src="/images/youtube-playlists/${thumbnail}"[^>]*width="2752"[^>]*height="1536"`,
+      ),
+    );
+    assert.ok(
+      html.indexOf("playlist-thumbnail-section") <
+        html.indexOf("closing-section"),
+    );
+    assert.doesNotMatch(html, /class="playlist-section"/);
+    assert.doesNotMatch(html, /class="playlist-fallback"/);
+    assert.doesNotMatch(html, /youtube-nocookie\.com/);
+    assert.doesNotMatch(html, /YOUTUBE PLAYLIST/);
   }
 
+  const css = await readFile(
+    new URL("../app/globals.css", import.meta.url),
+    "utf8",
+  );
+  assert.match(
+    css,
+    /\.playlist-thumbnail-section\s*\{[^}]*padding: clamp\(94px, 11vw, 180px\) 0;[^}]*background: #07070b;/s,
+  );
+  assert.match(
+    css,
+    /\.playlist-thumbnail-link\s*\{[^}]*border-radius: var\(--radius\);/s,
+  );
+  assert.match(
+    css,
+    /\.playlist-thumbnail-link img\s*\{[^}]*width: 100%;[^}]*height: auto;/s,
+  );
+  assert.match(
+    css,
+    /\.playlist-thumbnail-link:hover,\s*\.playlist-thumbnail-link:focus-visible\s*\{[^}]*border-color: rgba\(104, 241, 219, 0\.52\);[^}]*filter: brightness\(1\.06\);/s,
+  );
+  assert.doesNotMatch(css, /\.playlist-section\s*\{/);
+  assert.doesNotMatch(css, /\.playlist-fallback\s*\{/);
+});
+
+test("keeps the configured YouTube playlist API available", async () => {
   const response = await request(
     "/api/youtube?playlist=PLJMSxPvhcOuA",
     "application/json",

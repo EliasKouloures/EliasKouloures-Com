@@ -2,7 +2,6 @@ import type { CSSProperties } from "react";
 import Link from "next/link";
 import { testimonialIdsByService } from "../authority-data";
 import { contact, type ServicePageData } from "../site-data";
-import { PlaylistGallery } from "./PlaylistGallery";
 import { SiteFooter } from "./SiteFooter";
 import { SiteHeader } from "./SiteHeader";
 import { TestimonialGrid } from "./TestimonialGrid";
@@ -275,17 +274,41 @@ export function ServicePage({ data }: ServicePageProps) {
         </div>
       </section>
 
-      <section className="playlist-section">
+      <section
+        className="playlist-thumbnail-section"
+        aria-label={
+          isGerman
+            ? `${data.label} YouTube-Playlist`
+            : `${data.label} YouTube playlist`
+        }
+      >
         <div className="shell">
-          <div className="section-heading">
-            <p className="eyebrow">YOUTUBE PLAYLIST</p>
-            <h2>{data.playlistHeading}</h2>
-            <p>{data.playlistIntro}</p>
-          </div>
-          <PlaylistGallery
-            playlistId={data.playlistId}
-            language={data.language}
-          />
+          <a
+            className="playlist-thumbnail-link"
+            data-event="youtube_playlist_click"
+            data-event-label={`${data.label} playlist`}
+            href={`https://www.youtube.com/playlist?list=${data.playlistId}`}
+            target="_blank"
+            rel="noreferrer"
+            aria-label={
+              isGerman
+                ? `${data.label} YouTube-Playlist in einem neuen Fenster öffnen`
+                : `Open the ${data.label} YouTube playlist in a new window`
+            }
+          >
+            {/* Preserve the supplied artwork exactly, without optimizer resizing or cropping. */}
+            {/* eslint-disable-next-line @next/next/no-img-element */}
+            <img
+              src={data.playlistThumbnail}
+              alt={
+                isGerman
+                  ? `${data.label} YouTube-Playlist`
+                  : `${data.label} YouTube playlist`
+              }
+              width="2752"
+              height="1536"
+            />
+          </a>
         </div>
       </section>
 

@@ -26,6 +26,7 @@ export type ServicePageData = {
   heroImage: string;
   editorialImage: string;
   playlistId: string;
+  playlistThumbnail: string;
   proof: Array<{ value: string; label: string }>;
   capabilityHeading: string;
   capabilityIntro: string;
@@ -38,8 +39,6 @@ export type ServicePageData = {
   work: Array<{ title: string; text: string }>;
   engagementHeading: string;
   engagements: Array<{ title: string; timing: string; text: string }>;
-  playlistHeading: string;
-  playlistIntro: string;
   closingTitle: string;
   closingText: string;
 };
@@ -97,6 +96,8 @@ export const services: Record<string, ServicePageData> = {
     editorialImage:
       "/images/EliasKouloures-Com_Background_Image_Coding.jpg",
     playlistId: "PLJMSxPvhcOuA",
+    playlistThumbnail:
+      "/images/youtube-playlists/EliasKoulouresCom_YouTube_Playlist_Thumbnail-SOLVE.jpeg",
     proof: [
       {
         value: "Award-winning",
@@ -196,9 +197,6 @@ export const services: Record<string, ServicePageData> = {
         text: "For a promising workflow or AI system that needs evidence, guardrails and transferability.",
       },
     ],
-    playlistHeading: "Solve · field notes",
-    playlistIntro:
-      "The complete playlist updates automatically as new videos are published.",
     closingTitle:
       "Bring me challenges others cannot fathom, structure nor solve.",
     closingText:
@@ -242,6 +240,8 @@ export const services: Record<string, ServicePageData> = {
     editorialImage:
       "/images/EliasKouloures-Com_Background_Image_Coding.jpg",
     playlistId: "PLJMSxPvhcOuA",
+    playlistThumbnail:
+      "/images/youtube-playlists/EliasKoulouresCom_YouTube_Playlist_Thumbnail-LOESEN.jpeg",
     proof: [
       {
         value: "Preisgekrönt",
@@ -343,9 +343,6 @@ export const services: Record<string, ServicePageData> = {
         text: "Für einen vielversprechenden Workflow oder ein KI-System, das Nachweise, Leitplanken und Übertragbarkeit braucht.",
       },
     ],
-    playlistHeading: "Lösen · Praxisnotizen",
-    playlistIntro:
-      "Die vollständige Playlist aktualisiert sich automatisch, sobald neue Videos veröffentlicht werden.",
     closingTitle:
       "Bringen Sie mir Probleme, die andere weder begreifen, strukturieren noch lösen können.",
     closingText:
@@ -365,6 +362,8 @@ export const services: Record<string, ServicePageData> = {
     editorialImage:
       "/images/EliasKouloures-Com_Background_Image_Business_Meeting.jpg",
     playlistId: "PLHtF5eYRujpY",
+    playlistThumbnail:
+      "/images/youtube-playlists/EliasKoulouresCom_YouTube_Playlist_Thumbnail-EDUCATE.jpeg",
     proof: [
       {
         value: "Proven at scale",
@@ -457,9 +456,6 @@ export const services: Record<string, ServicePageData> = {
         text: "A sequenced learning path with transfer tasks, office hours and measurable adoption.",
       },
     ],
-    playlistHeading: "Educate · practical sessions",
-    playlistIntro:
-      "The complete playlist updates automatically as new videos are published.",
     closingTitle: "You define the capabilities. I upskill your teams.",
     closingText:
       "Tell me who is in the room, what must change afterwards and where the current friction sits.",
@@ -479,6 +475,8 @@ export const services: Record<string, ServicePageData> = {
     editorialImage:
       "/images/EliasKouloures-Com_Background_Image_Business_Meeting.jpg",
     playlistId: "PLHtF5eYRujpY",
+    playlistThumbnail:
+      "/images/youtube-playlists/EliasKoulouresCom_YouTube_Playlist_Thumbnail-FORTBILDEN.jpeg",
     proof: [
       {
         value: "Vielfach bewährt",
@@ -573,9 +571,6 @@ export const services: Record<string, ServicePageData> = {
         text: "Ein gestufter Lernpfad mit Transferaufgaben, Sprechstunden und messbarer Anwendung.",
       },
     ],
-    playlistHeading: "Fortbilden · Praxissessions",
-    playlistIntro:
-      "Die vollständige Playlist aktualisiert sich automatisch, sobald neue Videos veröffentlicht werden.",
     closingTitle:
       "Sie definieren die Fähigkeiten. Ich upskille Ihre Teams.",
     closingText:
@@ -596,6 +591,8 @@ export const services: Record<string, ServicePageData> = {
     editorialImage:
       "/images/EliasKouloures-Com_Background_Image_Sci-Fi_Steampunk_Device.jpg",
     playlistId: "PLIlY05RIg36c",
+    playlistThumbnail:
+      "/images/youtube-playlists/EliasKoulouresCom_YouTube_Playlist_Thumbnail-CREATE.jpeg",
     proof: [
       {
         value: "Decades of craft",
@@ -690,9 +687,6 @@ export const services: Record<string, ServicePageData> = {
         text: "A reusable generation and approval workflow your team can operate with confidence.",
       },
     ],
-    playlistHeading: "Create · process and output",
-    playlistIntro:
-      "The complete playlist updates automatically as new videos are published.",
     closingTitle: "Name your idea. And desired audience.",
     closingText:
       "We will establish the one thing the work must make people feel, understand or do.",
@@ -712,6 +706,8 @@ export const services: Record<string, ServicePageData> = {
     editorialImage:
       "/images/EliasKouloures-Com_Background_Image_Sci-Fi_Steampunk_Device.jpg",
     playlistId: "PLIlY05RIg36c",
+    playlistThumbnail:
+      "/images/youtube-playlists/EliasKoulouresCom_YouTube_Playlist_Thumbnail-ENTWICKELN.jpeg",
     proof: [
       {
         value: "Jahrzehntelange Erfahrung",
@@ -806,9 +802,6 @@ export const services: Record<string, ServicePageData> = {
         text: "Ein wiederverwendbarer Generierungs- und Freigabeprozess, den Ihr Team sicher bedienen kann.",
       },
     ],
-    playlistHeading: "Entwickeln · Prozess und Ergebnis",
-    playlistIntro:
-      "Die vollständige Playlist aktualisiert sich automatisch, sobald neue Videos veröffentlicht werden.",
     closingTitle: "Nennen Sie Ihre Idee. Und Wunschzielgruppe.",
     closingText:
       "Wir klären die eine Sache, die die Arbeit Menschen fühlen, verstehen oder als Nächstes tun lassen muss.",
