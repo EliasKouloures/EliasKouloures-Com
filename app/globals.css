@@ -1202,7 +1202,7 @@ button:focus-visible {
 }
 
 .playlist-thumbnail-section {
-  padding: clamp(94px, 11vw, 180px) 0;
+  padding: 0 0 clamp(94px, 11vw, 180px);
   background: #07070b;
 }
 
@@ -1930,9 +1930,12 @@ button:focus-visible {
   }
 
   .content-section,
-  .engagement-section,
-  .playlist-thumbnail-section {
+  .engagement-section {
     padding: 88px 0;
+  }
+
+  .playlist-thumbnail-section {
+    padding: 0 0 88px;
   }
 
   .section-heading {

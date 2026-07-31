@@ -430,7 +430,11 @@ test("renders one supplied playlist thumbnail on each service page", async () =>
   );
   assert.match(
     css,
-    /\.playlist-thumbnail-section\s*\{[^}]*padding: clamp\(94px, 11vw, 180px\) 0;[^}]*background: #07070b;/s,
+    /\.playlist-thumbnail-section\s*\{[^}]*padding: 0 0 clamp\(94px, 11vw, 180px\);[^}]*background: #07070b;/s,
+  );
+  assert.match(
+    css,
+    /@media \(max-width: 760px\)[\s\S]*?\.playlist-thumbnail-section\s*\{[^}]*padding: 0 0 88px;/s,
   );
   assert.match(
     css,
