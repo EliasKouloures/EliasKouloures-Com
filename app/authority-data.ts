@@ -121,8 +121,8 @@ export const caseStudies: CaseStudy[] = [
       de: "Kategorieentwicklung · Globaler Go-to-Market",
     },
     title: {
-      en: "Turn a complex product into a category people understand.",
-      de: "Ein komplexes Produkt in eine verständliche Kategorie verwandeln.",
+      en: "Create a new product category and 360° GTM to win global customers and investors for startup.",
+      de: "Neue Produktkategorie und 360° GTM erstellen, um globale Kunden und Investoren für Startup zu gewinnen.",
     },
     bottleneck: {
       en: "A hardware startup had three weeks to launch. Traditional agencies had failed to communicate the product’s complexity.",
@@ -150,8 +150,8 @@ export const caseStudies: CaseStudy[] = [
       de: "KI-Wissensarchitektur · Retail Enablement",
     },
     title: {
-      en: "Make product knowledge available across 7,200 stores.",
-      de: "Produktwissen in 7.200 Stores verfügbar machen.",
+      en: "Turn product data from global TelCo into B2B sales bot for 7,200 stores.",
+      de: "Produktkatalog von globalem TelCo für 7.200 Shops als B2B Sales-Bot verfügbar machen.",
     },
     bottleneck: {
       en: "Sales teams needed immediate product training across German retail. In-person delivery could not scale.",
@@ -179,8 +179,8 @@ export const caseStudies: CaseStudy[] = [
       de: "Executive Strategy · Venture Design",
     },
     title: {
-      en: "Move a stalled executive opportunity into a working decision.",
-      de: "Eine festgefahrene C-Suite-Chance in eine belastbare Entscheidung überführen.",
+      en: "Showcase AI mastery to C-suite during 5 months of standstill for €50k project approval.",
+      de: "C-Suite KI-Kompetenz vorführen, um 5 Monate Stillstand in €50k Projektzusage zu verwandeln.",
     },
     bottleneck: {
       en: "An APAC C-suite pitch had stalled for five months while a major infrastructure constraint demanded a new operating model.",
@@ -208,8 +208,8 @@ export const caseStudies: CaseStudy[] = [
       de: "KI-Revenue-Operations · CRM-Automatisierung",
     },
     title: {
-      en: "Turn an invisible B2B inbox into a visible revenue system.",
-      de: "Aus einem unsichtbaren B2B-Postfach ein transparentes Revenue-System bauen.",
+      en: "Cut lead response time from 5 days to 19 minutes with €0.5 daily CAPEX.",
+      de: "Verkürzung Leads-Reaktionszeit von 5 Tagen auf 19 Minuten bei 0,5 € CAPEX pro Tag.",
     },
     bottleneck: {
       en: "High-value enquiries waited up to five days. There was no CRM infrastructure and no pipeline visibility for the CEO.",
@@ -237,8 +237,8 @@ export const caseStudies: CaseStudy[] = [
       de: "Regulierte Fintech · UX und Kommunikation",
     },
     title: {
-      en: "Translate tokenisation into a platform investors can use.",
-      de: "Tokenisierung in eine Plattform übersetzen, die Investoren nutzen können.",
+      en: "Development of FinTech website for GTM across 3 tokenised markets in 2 weeks.",
+      de: "Entwicklung FinTech-Webseite für GTM in 3 tokenisierten Märkten in 2 Wochen.",
     },
     bottleneck: {
       en: "Blockchain tokenisation of art and real estate needed to become clear, credible and commercially usable for investors.",
@@ -253,8 +253,8 @@ export const caseStudies: CaseStudy[] = [
       de: "Die Plattform startete schnell, erreichte ihre Pre-Launch-Zielgruppe und reduzierte durch klarere UX den Supportaufwand.",
     },
     metrics: {
-      en: ["10-day sprint", "5–10 UHNWI target reached", "50% fewer support requests"],
-      de: ["10-Tage-Sprint", "Ziel von 5–10 UHNWI erreicht", "50 % weniger Supportanfragen"],
+      en: ["10-day sprint", "5–10 UHNWI target reached", "End2End compliance for investor journey"],
+      de: ["10-Tage-Sprint", "Ziel von 5–10 UHNWI erreicht", "End2End Compliance für Investoren-Journey"],
     },
     pillars: ["SOLVE", "CREATE"],
   },
@@ -266,8 +266,8 @@ export const caseStudies: CaseStudy[] = [
       de: "KI-Adoption · Bildung",
     },
     title: {
-      en: "Make AI useful without abandoning human values.",
-      de: "KI nutzbar machen, ohne menschliche Werte aufzugeben.",
+      en: "Create & teach GDPR-compliant AI workshops for value-led education.",
+      de: "Entwickeln und leiten DSGVO-konformer KI-Workshops für wertorientierte Bildung.",
     },
     bottleneck: {
       en: "Teachers faced administrative overload while students lacked future skills. The debate was trapped between rejection and hype.",
@@ -295,8 +295,8 @@ export const caseStudies: CaseStudy[] = [
       de: "Deep-Tech-Kommunikation · Sales Enablement",
     },
     title: {
-      en: "Sell the outcome—not an unreadable technology specification.",
-      de: "Das Ergebnis verkaufen – nicht eine unlesbare Technologiespezifikation.",
+      en: "Create 12 assets in 1 hour that show organisers what 32k lumens do for their event.",
+      de: "12 Assets in 1 Stunde erstellen, die Veranstaltern Vorteile von 32k Lumen visualisieren.",
     },
     bottleneck: {
       en: "Complex projection hardware was presented as raw specifications, so buyers could not understand the value of the complete service.",
@@ -324,8 +324,8 @@ export const caseStudies: CaseStudy[] = [
       de: "Krisenpivot · Zero-CAPEX-Betrieb",
     },
     title: {
-      en: "Keep a business alive when its revenue goes to zero overnight.",
-      de: "Ein Unternehmen am Leben halten, wenn der Umsatz über Nacht auf null fällt.",
+      en: "Turn locked-down venue into streaming business to save 35 staff over 1.5 years with 0 CAPEX.",
+      de: "Nachtclub während Lockdown mit Streaming refinanzieren, um 35 MA über 1,5 Jahre mit 0 CAPEX zu retten.",
     },
     bottleneck: {
       en: "Lockdown removed 100% of an established venue’s revenue. Every conventional recovery plan required capital the business no longer had.",
@@ -363,8 +363,8 @@ export const caseStudies: CaseStudy[] = [
       de: "Arbeitsmarktpolitik · Upskilling-Architektur",
     },
     title: {
-      en: "Replace a roadmap with no measures with a model that can be tested.",
-      de: "Eine Roadmap ohne Maßnahmen durch ein prüfbares Modell ersetzen.",
+      en: "Design modular upskilling framework for 41M AI-exposed EU jobs.",
+      de: "Modulares Weiterbildungskonzept für 41 Mio. EU-Arbeitskräfte erstellen, um vor KI-Jobverlust zu retten.",
     },
     bottleneck: {
       en: "A two-year EU project closed with a future-of-work roadmap that carried no KPIs and no concrete measures, while automation pressure on routine roles kept rising.",
@@ -400,8 +400,8 @@ export const caseStudies: CaseStudy[] = [
       de: "Entscheidungsforschung · Stakeholder-Simulation",
     },
     title: {
-      en: "Make billion-scale decisions feel their own consequences.",
-      de: "Milliardenentscheidungen ihre eigenen Folgen spüren lassen.",
+      en: "Give millions of unheard stakeholders a voice in political decision rooms.",
+      de: "Millionen überhörten Interessengruppen eine Stimme in politischen Entscheidungsgremien geben.",
     },
     bottleneck: {
       en: "A collapsing workshop process put the Decision Theater Ideathon submission at risk. The underlying problem was larger: abstract big-data models keep decision-makers insulated from the consequences their choices create for affected groups.",
@@ -429,8 +429,8 @@ export const caseStudies: CaseStudy[] = [
       de: "Denkmalsanierung · Angewandte KI-Methode",
     },
     title: {
-      en: "Retrofit a protected building without touching its fabric.",
-      de: "Ein denkmalgeschütztes Gebäude sanieren, ohne die Bausubstanz anzutasten.",
+      en: "Modernise monument in a way that makes staff and conservation authority happy.",
+      de: "Denkmal so modernisieren, dass Mitarbeiter und Schutzbehörde glücklich sind.",
     },
     bottleneck: {
       en: "Heritage-protection rules block conventional energy retrofits of historic Dutch buildings. At the CRN CicloSchools hackathon in Berlin, competing teams of up to six people spent a full working day and finished with unresolved sketches.",
@@ -468,8 +468,8 @@ export const caseStudies: CaseStudy[] = [
       de: "Markenstrategie · Event-Tech-Go-to-Market",
     },
     title: {
-      en: "Scale a subculture into a B2B business without a media budget.",
-      de: "Eine Subkultur ohne Mediabudget zu einem B2B-Geschäft skalieren.",
+      en: "Grow grassroots gaming event to 8k festival and secure bookings at 70k festivals.",
+      de: "Gaming-Event zum 8k Festival aufbauen und Buchungen bei 70k Festivals sichern.",
     },
     bottleneck: {
       en: "A grassroots gaming startup had credibility with its community but no route into profitable B2B event work, and no paid-media budget to buy one.",

@@ -618,10 +618,17 @@ test("renders twelve detailed bilingual case studies without sensitive cases", a
     "35 jobs protected",
   ]);
   assertIncludesAll(german, [
-    "Komplexe Probleme. Nutzbare Ergebnisse.",
+    "Ich löse Herausforderungen mit Systemdenken, Kreativität und KI.",
     "5 Tage → max. 19 Minuten",
     "9 Mio. € VC-Runde in 6 Monaten",
     "35 Arbeitsplätze gesichert",
+    "End2End Compliance für Investoren-Journey",
+  ]);
+  assertIncludesAll(english, [
+    "I solve challenges with systems thinking, creativity &amp; AI.",
+    "End2End compliance for investor journey",
+    "Multifaceted challenges. Single-minded trust.",
+    "Your project has no playbook? Let’s build something great together.",
   ]);
   assert.doesNotMatch(english, /Clinical Diagnostics|Talyo Property/);
   assert.doesNotMatch(german, /Klinische Diagnostik|Talyo/);

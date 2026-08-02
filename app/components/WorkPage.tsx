@@ -41,21 +41,21 @@ export function WorkPage({ language }: WorkPageProps) {
           </p>
           <h1>
             {isGerman
-              ? "Komplexe Probleme. Nutzbare Ergebnisse."
-              : "Complex problems. Useful outcomes."}
+              ? "Ich löse Herausforderungen mit Systemdenken, Kreativität und KI."
+              : "I solve challenges with systems thinking, creativity & AI."}
           </h1>
           <p>
             {isGerman
-              ? "Sieben Projekte zeigen dasselbe Muster über Branchen hinweg: Engpass verstehen, das richtige System bauen und Wirkung nachvollziehbar machen."
-              : "Seven engagements show the same pattern across industries: understand the constraint, build the right system and make the outcome inspectable."}
+              ? "12 vielschichtige Projekte. Eine bewährte Methode: den echten Engpass offenlegen, nach Erstprinzipien bauen und Wirkung messbar machen."
+              : "12 multifaceted cases. One proven method: expose the real constraint, build from first principles and make the outcome measurable."}
           </p>
-          <div className="case-index" aria-label={isGerman ? "Projektübersicht" : "Case study index"}>
+          <nav className="case-index" aria-label={isGerman ? "Projektübersicht" : "Case study index"}>
             {caseStudies.map((item) => (
               <a href={`#${item.id}`} key={item.id}>
                 {item.client}
               </a>
             ))}
-          </div>
+          </nav>
         </div>
       </section>
 
@@ -107,8 +107,8 @@ export function WorkPage({ language }: WorkPageProps) {
             </p>
             <h2>
               {isGerman
-                ? "Breite Kompetenz. Von anderen öffentlich bestätigt."
-                : "Breadth, validated publicly by collaborators."}
+                ? "Vielfältige Herausforderungen. Einstimmiges Vertrauen."
+                : "Multifaceted challenges. Single-minded trust."}
             </h2>
           </div>
           <TestimonialGrid
@@ -126,8 +126,8 @@ export function WorkPage({ language }: WorkPageProps) {
             </p>
             <h2>
               {isGerman
-                ? "Welches Ergebnis muss als Nächstes möglich werden?"
-                : "What outcome needs to become possible next?"}
+                ? "Es gibt kein Handbuch für Ihr Projekt? Lassen Sie uns zusammen etwas Großartiges bauen."
+                : "Your project has no playbook? Let’s build something great together."}
             </h2>
           </div>
           <div className="hero-actions">

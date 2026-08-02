@@ -3098,27 +3098,45 @@ button:focus-visible {
 }
 
 .case-index {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 9px;
+  display: grid;
+  grid-template-columns: repeat(6, minmax(0, 1fr));
+  gap: 10px;
   margin-top: 45px;
+  padding: 14px;
+  border: 1px solid var(--line-strong);
+  border-radius: 22px;
+  background: rgba(7, 7, 11, 0.78);
+  box-shadow: 0 22px 70px rgba(0, 0, 0, 0.28);
+  backdrop-filter: blur(18px) saturate(125%);
+  -webkit-backdrop-filter: blur(18px) saturate(125%);
 }
 
 .case-index a {
-  padding: 10px 14px;
+  display: flex;
+  min-height: 44px;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 12px;
   border: 1px solid var(--line);
   border-radius: 999px;
-  color: var(--muted);
+  background: rgba(255, 255, 255, 0.035);
+  color: rgba(247, 245, 242, 0.92);
   font-size: 0.66rem;
   font-weight: 650;
   letter-spacing: 0.04em;
+  line-height: 1.25;
+  text-align: center;
   transition:
+    background 180ms ease,
     color 180ms ease,
     border-color 180ms ease;
 }
 
-.case-index a:hover {
+.case-index a:hover,
+.case-index a:focus-visible {
   border-color: var(--teal);
+  outline: none;
+  background: rgba(104, 241, 219, 0.08);
   color: var(--ink);
 }
 
@@ -3151,7 +3169,7 @@ button:focus-visible {
 
 .case-study h2 {
   margin: 0;
-  font-size: clamp(2.45rem, 4.2vw, 5rem);
+  font-size: clamp(1.72rem, 2.94vw, 3.5rem);
   font-weight: 490;
   letter-spacing: -0.055em;
   line-height: 0.97;
@@ -3273,6 +3291,10 @@ button:focus-visible {
   .case-narrative {
     margin-top: 60px;
   }
+
+  .case-index {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
 }
 
 @media (max-width: 760px) {
@@ -3365,7 +3387,9 @@ button:focus-visible {
   }
 
   .case-index {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
     gap: 7px;
+    padding: 10px;
   }
 
   .case-study {
@@ -3373,7 +3397,7 @@ button:focus-visible {
   }
 
   .case-study h2 {
-    font-size: clamp(2.5rem, 12vw, 4.1rem);
+    font-size: clamp(1.75rem, 8.4vw, 2.9rem);
   }
 
   .case-metrics {

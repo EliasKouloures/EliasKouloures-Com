@@ -102,8 +102,8 @@ export function workMarkdown(language: Language) {
         : "Selected Work — Elias Kouloures"
     }`,
     isGerman
-      ? "Komplexe Probleme. Nutzbare Ergebnisse."
-      : "Complex problems. Useful outcomes.",
+      ? "Ich löse Herausforderungen mit Systemdenken, Kreativität und KI."
+      : "I solve challenges with systems thinking, creativity & AI.",
     `Canonical: ${canonicalOrigin}/${isGerman ? "projekte" : "work"}`,
   ];
 
