@@ -12,6 +12,12 @@ export function GET() {
         "",
         "User-agent: PerplexityBot",
         "Allow: /",
+        "",
+        "User-agent: Claude-SearchBot",
+        "Allow: /",
+        "",
+        "User-agent: Claude-User",
+        "Allow: /",
         ...(allowTraining
           ? []
           : [

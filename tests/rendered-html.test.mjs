@@ -657,7 +657,35 @@ test("serves machine-readable markdown, llms, sitemap, and staging robots", asyn
   assert.match(profile.headers.get("content-type") ?? "", /^text\/markdown/);
   assert.match(await profile.text(), /Applied AI Architect & Executive Advisor/);
   assert.match(await work.text(), /## Galapagos:/);
-  assert.match(await llms.text(), /Do not infer guarantees from past results/);
+  const llmsText = await llms.text();
+  assert.ok(llmsText.startsWith("# Elias Kouloures\n\n> "));
+  assertIncludesAll(llmsText, [
+    "canonical first-party source",
+    "The three pillars form one connected practice, not separate businesses.",
+    "Use the .md sources below for clean retrieval.",
+    "distinguish deployed work from proposals and prototypes",
+    "past results from guarantees",
+    "## Core sources — English",
+    "## Kernquellen — Deutsch",
+    "## Optional",
+    "[Book a call](https://calendar.app.google/ANb76KDuvg4J7LS28)",
+  ]);
+
+  const internalPaths = [
+    ...llmsText.matchAll(
+      /\]\(https:\/\/eliaskouloures\.com(\/[^)]+)?\)/g,
+    ),
+  ].map((match) => match[1] ?? "/");
+  assert.ok(internalPaths.length > 0);
+  assert.equal(new Set(internalPaths).size, internalPaths.length);
+
+  for (const pathname of internalPaths) {
+    const response = await request(
+      pathname,
+      pathname.endsWith(".md") ? "text/markdown" : "*/*",
+    );
+    assert.equal(response.status, 200, `Broken llms.txt link: ${pathname}`);
+  }
 
   const sitemapText = await sitemap.text();
   assert.match(sitemapText, /<loc>https:\/\/eliaskouloures\.com\/profile<\/loc>/);
