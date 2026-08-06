@@ -521,11 +521,11 @@ export const whyHowWhat = {
     label: { en: "WHY", de: "WHY" },
     statement: {
       en: "Elevate humanity to an interplanetary civilisation.",
-      de: "Die Menschheit zu einer interplanetaren Zivilisation erheben.",
+      de: "Den Aufstieg der Menschheit zur interplanetaren Zivilisation vorantreiben.",
     },
     qualifier: {
       en: "Egalitarian, peaceful and happy.",
-      de: "Egalitär, friedlich und glücklich.",
+      de: "Gleichberechtigt, friedlich und glücklich.",
     },
   },
   how: {

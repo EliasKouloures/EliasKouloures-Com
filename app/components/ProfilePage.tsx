@@ -102,8 +102,8 @@ export function ProfilePage({ language }: ProfilePageProps) {
             <p className="eyebrow">{whyHowWhat.eyebrow[language]}</p>
             <h2 id="whw-heading">
               {isGerman
-                ? "Technologie wird erst wertvoll, wenn Menschen mit ihr weiterkommen."
-                : "Technology becomes valuable when people can move forward with it."}
+                ? "Viele Kompetenzen. Ein Ziel."
+                : "Multidisciplinary expertise. Single-minded focus."}
             </h2>
             <p className="whw-note">{whyHowWhat.frameworkNote[language]}</p>
           </div>

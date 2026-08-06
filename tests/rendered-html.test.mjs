@@ -305,8 +305,18 @@ test("promotes crisis intervention as the flagship offer in SOLVE and LÖSEN", a
 
   assert.match(solve, /FLAGSHIP MANDATE · CRISIS INTERVENTION/);
   assert.match(solve, /When your house is on fire\. And panic flares up\./);
+  assertIncludesAll(solve, [
+    "Time is your biggest enemy",
+    "Brief and way forward are unclear",
+    "Challenge spans multiple disciplines",
+  ]);
   assert.match(loesen, /KERNMANDAT · KRISENINTERVENTION/);
   assert.match(loesen, /Wenn Ihr Projekt brennt\. Und Panik auflodert\./);
+  assertIncludesAll(loesen, [
+    "Zeit ist Ihr größter Feind",
+    "Briefing und Lösungsweg sind unklar",
+    "Herausforderung umfasst mehrere Disziplinen",
+  ]);
 
   // Three numbered signals in each language.
   for (const html of [solve, loesen]) {
@@ -360,16 +370,16 @@ test("renders the revised educate and create headlines in both languages", async
   ]);
   assertIncludesAll(create, [
     "Book me as a creative director, strategist, writer, coder or multimedia producer. Or all five in one.",
-    "Turn your ideas into images, films, songs, apps and websites that win fans, attract customers and generate revenue.",
+    "Turn ideas into images, films, songs, apps and websites. For more fans, customers and revenue.",
     "Invest in world-class creative assets because AI slop exists in abundance.",
-    "Order anything—from an isolated asset to a 360° campaign or an end-to-end AI-powered production pipeline.",
+    "Order anything: individual assets, 360° campaigns and end-to-end AI production pipelines.",
     "Trust is earned through work others praise.",
     "Three client favourites. Many more to be defined together.",
     "Name your idea. And desired audience.",
   ]);
   assertIncludesAll(entwickeln, [
     "Beauftragen Sie mich als Kreativdirektor, Strategen, Texter, Programmierer oder Multimedia-Designer. Oder alles in einer Person.",
-    "Verwandeln Sie Ihre Ideen in Bilder, Filme, Lieder, Apps oder Websites, die Fans gewinnen, Kunden überzeugen und Umsatz generieren.",
+    "Verwandeln Sie Ihre Ideen in Bilder, Filme, Lieder, Apps und Websites. Für mehr Fans, Kunden und Umsatz.",
     "Investieren Sie in Weltklasse-Kreativität, weil KI-Müll kann jeder.",
     "Alles bestellbar: einzelne Assets, 360°-Kampagnen und End-to-End-KI-Produktionspipelines.",
     "Vertrauen entsteht durch Arbeit, die andere loben.",
@@ -493,6 +503,7 @@ test("renders bilingual profile pages with positioning, evidence, and role fit",
 
   assertIncludesAll(english, [
     "Applied AI Architect &amp; Executive Advisor",
+    "Multidisciplinary expertise. Single-minded focus.",
     "deployed systems, adopted capabilities and clear market communication",
     "Freelance first. Open to exceptional missions.",
     "Also open to an exceptional permanent role.",
@@ -504,6 +515,7 @@ test("renders bilingual profile pages with positioning, evidence, and role fit",
   ]);
   assertIncludesAll(german, [
     "Berater und Architekt für angewandte KI-Transformation",
+    "Viele Kompetenzen. Ein Ziel.",
     "Freelance zuerst. Offen für außergewöhnliche Missionen.",
     "Auch offen für eine außergewöhnliche Festanstellung.",
     "multidisziplinärem Know-how",
@@ -550,16 +562,18 @@ test("renders bilingual profile pages with positioning, evidence, and role fit",
 });
 
 test("renders Why-How-What as native text, not baked image content", async () => {
-  const [english, german, profileMd] = await Promise.all([
+  const [english, german, profileMd, profilMd] = await Promise.all([
     render("/profile").then((r) => r.text()),
     render("/profil").then((r) => r.text()),
     request("/profile.md", "text/markdown").then((r) => r.text()),
+    request("/profil.md", "text/markdown").then((r) => r.text()),
   ]);
 
   // The three tiers exist as real markup.
   assert.match(english, /class="whw-section"/);
   assert.match(english, /Elevate humanity to an interplanetary civilisation\./);
-  assert.match(german, /Die Menschheit zu einer interplanetaren Zivilisation zu erheben\.|Die Menschheit zu einer interplanetaren Zivilisation erheben\./);
+  assert.match(german, /Den Aufstieg der Menschheit zur interplanetaren Zivilisation vorantreiben\./);
+  assert.match(german, /Gleichberechtigt, friedlich und glücklich\./);
 
   // Proof points are selectable text in both languages, not pixels.
   assertIncludesAll(english, [
@@ -578,8 +592,17 @@ test("renders Why-How-What as native text, not baked image content", async () =>
 
   // And they reach machine-readable endpoints for search and AI retrieval.
   assertIncludesAll(profileMd, [
+    "Multidisciplinary expertise. Single-minded focus.",
+    "Elevate humanity to an interplanetary civilisation.",
+    "Egalitarian, peaceful and happy.",
     "Rescued Berlin hospitality venue",
     "Comparative Research Network",
+  ]);
+  assertIncludesAll(profilMd, [
+    "Viele Kompetenzen. Ein Ziel.",
+    "Den Aufstieg der Menschheit zur interplanetaren Zivilisation vorantreiben.",
+    "Gleichberechtigt, friedlich und glücklich.",
+    "Berliner Gastronomiebetrieb gerettet",
   ]);
 
   // The old baked-image version must not come back.

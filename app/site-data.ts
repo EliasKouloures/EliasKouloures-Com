@@ -75,15 +75,15 @@ export const services: Record<string, ServicePageData> = {
       signalHeading: "Three signals that this is the right mandate",
       signals: [
         {
-          title: "The clock is the constraint",
+          title: "Time is your biggest enemy",
           text: "Damage compounds weekly. A conventional discovery phase would land after the deadline that actually matters.",
         },
         {
-          title: "The brief is incomplete",
+          title: "Brief and way forward are unclear",
           text: "Nobody can state the real problem in one sentence yet. Ownership is unclear and the evidence sits in five places.",
         },
         {
-          title: "It crosses disciplines",
+          title: "Challenge spans multiple disciplines",
           text: "Strategy, data, AI, compliance, communication and delivery all touch it, so no single specialist can close it alone.",
         },
       ],
@@ -219,15 +219,15 @@ export const services: Record<string, ServicePageData> = {
       signalHeading: "Drei Anzeichen, dass dies das richtige Mandat ist",
       signals: [
         {
-          title: "Die Zeit ist der Engpass",
+          title: "Zeit ist Ihr größter Feind",
           text: "Der Schaden wächst wöchentlich. Eine klassische Analysephase wäre erst nach dem entscheidenden Termin fertig.",
         },
         {
-          title: "Der Auftrag ist unvollständig",
+          title: "Briefing und Lösungsweg sind unklar",
           text: "Niemand kann das eigentliche Problem in einem Satz formulieren. Die Verantwortung ist ungeklärt, die Belege liegen verstreut.",
         },
         {
-          title: "Es reicht über Disziplinen hinweg",
+          title: "Herausforderung umfasst mehrere Disziplinen",
           text: "Strategie, Daten, KI, Compliance, Kommunikation und Umsetzung greifen ineinander. Kein einzelner Spezialist schließt das allein.",
         },
       ],
@@ -612,7 +612,7 @@ export const services: Record<string, ServicePageData> = {
       },
     ],
     capabilityHeading:
-      "Turn your ideas into images, films, songs, apps and websites that win fans, attract customers and generate revenue.",
+      "Turn ideas into images, films, songs, apps and websites. For more fans, customers and revenue.",
     capabilityIntro:
       "I combine concept, direction, generation and quality control so every asset belongs to the same visual and strategic universe.",
     capabilities: [
@@ -647,7 +647,7 @@ export const services: Record<string, ServicePageData> = {
     editorialText:
       "The tool is never the idea. Every choice—frame, rhythm, texture, voice—must strengthen what the audience should feel, understand or do next.",
     workHeading:
-      "Order anything—from an isolated asset to a 360° campaign or an end-to-end AI-powered production pipeline.",
+      "Order anything: individual assets, 360° campaigns and end-to-end AI production pipelines.",
     workIntro:
       "The output can be one decisive piece or a repeatable system. In both cases, the standard is the same: distinct, coherent and useful.",
     work: [
@@ -727,7 +727,7 @@ export const services: Record<string, ServicePageData> = {
       },
     ],
     capabilityHeading:
-      "Verwandeln Sie Ihre Ideen in Bilder, Filme, Lieder, Apps oder Websites, die Fans gewinnen, Kunden überzeugen und Umsatz generieren.",
+      "Verwandeln Sie Ihre Ideen in Bilder, Filme, Lieder, Apps und Websites. Für mehr Fans, Kunden und Umsatz.",
     capabilityIntro:
       "Ich verbinde Konzept, Direktion, Generierung und Qualitätskontrolle, damit jedes Asset zum selben visuellen und strategischen Universum gehört.",
     capabilities: [

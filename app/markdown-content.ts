@@ -54,8 +54,10 @@ export function profileMarkdown(language: Language) {
     "",
     "## WHY",
     isGerman
-      ? "Fortschritt soll Menschen befähigen statt sie zu überrollen. Technologie wird wertvoll, wenn Menschen mit ihr weiterkommen."
-      : "Progress should expand human agency rather than overwhelm it. Technology becomes valuable when people can move forward with it.",
+      ? "Viele Kompetenzen. Ein Ziel."
+      : "Multidisciplinary expertise. Single-minded focus.",
+    whyHowWhat.why.statement[language],
+    whyHowWhat.why.qualifier[language],
     "",
     "## HOW",
     isGerman
