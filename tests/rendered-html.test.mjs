@@ -661,6 +661,10 @@ test("serves machine-readable markdown, llms, sitemap, and staging robots", asyn
   assert.ok(llmsText.startsWith("# Elias Kouloures\n\n> "));
   assertIncludesAll(llmsText, [
     "canonical first-party source",
+    "Preferred engagement hierarchy",
+    "Fractional Chief AI Officer (Fractional CAIO)",
+    "Relevant German service and search vocabulary",
+    "not legal advice or certification of regulatory compliance",
     "The three pillars form one connected practice, not separate businesses.",
     "Use the .md sources below for clean retrieval.",
     "distinguish deployed work from proposals and prototypes",
@@ -668,8 +672,17 @@ test("serves machine-readable markdown, llms, sitemap, and staging robots", asyn
     "## Core sources — English",
     "## Kernquellen — Deutsch",
     "## Optional",
+    "[Brief Elias](https://eliaskouloures.com/#brief)",
     "[Book a call](https://calendar.app.google/ANb76KDuvg4J7LS28)",
   ]);
+  assert.ok(
+    llmsText.indexOf("[EDUCATE]") < llmsText.indexOf("[SOLVE]"),
+    "EDUCATE should precede SOLVE in the preferred service order",
+  );
+  assert.ok(
+    Buffer.byteLength(llmsText, "utf8") < 10_000,
+    "llms.txt should stay compact enough for efficient retrieval",
+  );
 
   const internalPaths = [
     ...llmsText.matchAll(
