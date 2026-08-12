@@ -7,7 +7,7 @@ export const metadata: Metadata = {
   title: "Impressum & Datenschutz",
   description:
     "Impressum und Datenschutzerklärung der Website von Elias Kouloures.",
-  alternates: { canonical: "/impressum-datenschutz" },
+  alternates: { canonical: "/impressum-datenschutz/" },
 };
 
 export default function LegalPage() {

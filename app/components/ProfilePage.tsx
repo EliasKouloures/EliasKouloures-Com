@@ -65,7 +65,7 @@ export function ProfilePage({ language }: ProfilePageProps) {
               className="button button-secondary"
               data-event="case_open"
               data-event-label="Profile to selected work"
-              href={isGerman ? "/projekte" : "/work"}
+              href={isGerman ? "/projekte/" : "/work/"}
             >
               {isGerman ? "Ausgewählte Projekte" : "Selected work"}
             </Link>

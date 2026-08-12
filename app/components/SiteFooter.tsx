@@ -27,21 +27,21 @@ export function SiteFooter({ language = "en" }: SiteFooterProps) {
             {isGerman ? "ZUSAMMENARBEIT" : "WORK WITH ME"}
           </p>
           <div className="tag-list">
-            <Link data-event="service_open" data-event-label="SOLVE · Footer" href="/solve">SOLVE</Link>
-            <Link data-event="service_open" data-event-label="EDUCATE · Footer" href="/educate">EDUCATE</Link>
-            <Link data-event="service_open" data-event-label="CREATE · Footer" href="/create">CREATE</Link>
-            <Link data-event="service_open" data-event-label="LÖSEN · Footer" href="/loesen">LÖSEN</Link>
-            <Link data-event="service_open" data-event-label="FORTBILDEN · Footer" href="/fortbilden">FORTBILDEN</Link>
-            <Link data-event="service_open" data-event-label="ENTWICKELN · Footer" href="/entwickeln">ENTWICKELN</Link>
+            <Link data-event="service_open" data-event-label="SOLVE · Footer" href="/solve/">SOLVE</Link>
+            <Link data-event="service_open" data-event-label="EDUCATE · Footer" href="/educate/">EDUCATE</Link>
+            <Link data-event="service_open" data-event-label="CREATE · Footer" href="/create/">CREATE</Link>
+            <Link data-event="service_open" data-event-label="LÖSEN · Footer" href="/loesen/">LÖSEN</Link>
+            <Link data-event="service_open" data-event-label="FORTBILDEN · Footer" href="/fortbilden/">FORTBILDEN</Link>
+            <Link data-event="service_open" data-event-label="ENTWICKELN · Footer" href="/entwickeln/">ENTWICKELN</Link>
           </div>
           <p className="footer-label footer-credentials-label">
             {isGerman ? "MEINE REFERENZEN ANSEHEN" : "REVIEW MY CREDENTIALS"}
           </p>
           <div className="footer-authority-links">
-            <Link href={isGerman ? "/profil" : "/profile"}>
+            <Link href={isGerman ? "/profil/" : "/profile/"}>
               {isGerman ? "Profil" : "Profile"}
             </Link>
-            <Link href={isGerman ? "/projekte" : "/work"}>
+            <Link href={isGerman ? "/projekte/" : "/work/"}>
               {isGerman ? "Projekte" : "Selected work"}
             </Link>
           </div>
@@ -88,7 +88,7 @@ export function SiteFooter({ language = "en" }: SiteFooterProps) {
 
       <div className="shell footer-bottom">
         <span>© 2026 Elias Kouloures</span>
-        <Link href="/impressum-datenschutz">
+        <Link href="/impressum-datenschutz/">
           Impressum &amp; Datenschutz
         </Link>
       </div>

@@ -7,8 +7,8 @@ export const metadata: Metadata = {
   description:
     "Ausgewählte Projekte von Elias Kouloures zu KI-Transformation, Automatisierung, Weiterbildung, Go-to-Market und Creative Technology.",
   alternates: {
-    canonical: "/projekte",
-    languages: { en: "/work", de: "/projekte", "x-default": "/work" },
+    canonical: "/projekte/",
+    languages: { en: "/work/", de: "/projekte/", "x-default": "/work/" },
   },
 };
 
@@ -22,8 +22,8 @@ export default function GermanWorkPage() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "CollectionPage",
-            "@id": "https://eliaskouloures.com/projekte#page",
-            url: "https://eliaskouloures.com/projekte",
+            "@id": "https://eliaskouloures.com/projekte/#page",
+            url: "https://eliaskouloures.com/projekte/",
             name: "Ausgewählte Projekte von Elias Kouloures",
             inLanguage: "de",
             mainEntity: {
@@ -31,7 +31,7 @@ export default function GermanWorkPage() {
               itemListElement: caseStudies.map((item, index) => ({
                 "@type": "ListItem",
                 position: index + 1,
-                url: `https://eliaskouloures.com/projekte#${item.id}`,
+                url: `https://eliaskouloures.com/projekte/#${item.id}`,
                 name: `${item.client}: ${item.title.de}`,
               })),
             },

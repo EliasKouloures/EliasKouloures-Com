@@ -7,8 +7,8 @@ export const metadata: Metadata = {
   description:
     "Kreativdirektion und wiederverwendbare KI-Produktionssysteme für wirkungsvolle Multimedia-Inhalte.",
   alternates: {
-    canonical: "/entwickeln",
-    languages: { en: "/create", de: "/entwickeln", "x-default": "/create" },
+    canonical: "/entwickeln/",
+    languages: { en: "/create/", de: "/entwickeln/", "x-default": "/create/" },
   },
 };
 

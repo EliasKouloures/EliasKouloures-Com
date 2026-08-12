@@ -9,7 +9,7 @@ export function serviceMarkdown(slug: keyof typeof services) {
   const sections = [
     `# ${data.label} — ${data.title}`,
     data.intro,
-    `Canonical: ${canonicalOrigin}/${data.slug}`,
+    `Canonical: ${canonicalOrigin}/${data.slug}/`,
     `Language: ${data.language}`,
     "",
     `## ${data.capabilityHeading}`,
@@ -50,7 +50,7 @@ export function profileMarkdown(language: Language) {
     isGerman
       ? "Ich verwandle komplexe, risikoreiche KI- und Business-Herausforderungen in funktionierende Systeme, gelebte Kompetenz und klare Marktkommunikation."
       : "I turn ambiguous, high-stakes AI and business challenges into deployed systems, adopted capabilities and clear market communication.",
-    `Canonical: ${canonicalOrigin}/${isGerman ? "profil" : "profile"}`,
+    `Canonical: ${canonicalOrigin}/${isGerman ? "profil" : "profile"}/`,
     "",
     "## WHY",
     isGerman
@@ -106,7 +106,7 @@ export function workMarkdown(language: Language) {
     isGerman
       ? "Ich löse Herausforderungen mit Systemdenken, Kreativität und KI."
       : "I solve challenges with systems thinking, creativity & AI.",
-    `Canonical: ${canonicalOrigin}/${isGerman ? "projekte" : "work"}`,
+    `Canonical: ${canonicalOrigin}/${isGerman ? "projekte" : "work"}/`,
   ];
 
   const items = caseStudies.flatMap((item) => [

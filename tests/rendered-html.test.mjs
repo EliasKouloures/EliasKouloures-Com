@@ -43,12 +43,12 @@ test("renders the bilingual landing page with all six flat routes", async () => 
 
   const html = await response.text();
   assert.match(html, /How may I help you\?/);
-  assert.match(html, /href="\/solve"/);
-  assert.match(html, /href="\/educate"/);
-  assert.match(html, /href="\/create"/);
-  assert.match(html, /href="\/loesen"/);
-  assert.match(html, /href="\/fortbilden"/);
-  assert.match(html, /href="\/entwickeln"/);
+  assert.match(html, /href="\/solve\/"/);
+  assert.match(html, /href="\/educate\/"/);
+  assert.match(html, /href="\/create\/"/);
+  assert.match(html, /href="\/loesen\/"/);
+  assert.match(html, /href="\/fortbilden\/"/);
+  assert.match(html, /href="\/entwickeln\/"/);
   assert.doesNotMatch(html, /href="\/de\//);
   assert.doesNotMatch(html, /Three service areas\. Two languages\./);
   assert.doesNotMatch(html, /class="card-lang"/);
@@ -206,7 +206,7 @@ test("renders paired English and German service pages", async () => {
     germanResponse.text(),
   ]);
   assert.match(english, /Give me your challenges where no playbook exists\./);
-  assert.match(english, /href="\/loesen"/);
+  assert.match(english, /href="\/loesen\/"/);
   assert.match(english, />DEUTSCH</);
   assert.match(english, /APPLIED AI ARCHITECT · EXECUTIVE ADVISOR/);
   assert.match(
@@ -241,7 +241,7 @@ test("renders paired English and German service pages", async () => {
     german,
     /Bringen Sie mir Herausforderungen, für die es kein Handbuch gibt\./,
   );
-  assert.match(german, /href="\/solve"/);
+  assert.match(german, /href="\/solve\/"/);
   assert.match(german, />ENGLISH</);
   assert.match(german, /APPLIED AI ARCHITECT · EXECUTIVE ADVISOR/);
   assert.match(
@@ -533,8 +533,8 @@ test("renders bilingual profile pages with positioning, evidence, and role fit",
     /Berater und Architekt für angewandte KI-Transformation\.<\/h1>/,
   );
   assert.match(english, /"@type":"ProfilePage"/);
-  assert.match(english, /href="\/profil"/);
-  assert.match(german, /href="\/profile"/);
+  assert.match(english, /href="\/profil\/"/);
+  assert.match(german, /href="\/profile\/"/);
   assert.equal(germanResponse.headers.get("content-language"), "de");
 
   for (const html of [english, german]) {
@@ -724,7 +724,7 @@ test("serves machine-readable markdown, llms, sitemap, and staging robots", asyn
   }
 
   const sitemapText = await sitemap.text();
-  assert.match(sitemapText, /<loc>https:\/\/eliaskouloures\.com\/profile<\/loc>/);
+  assert.match(sitemapText, /<loc>https:\/\/eliaskouloures\.com\/profile\/<\/loc>/);
   assert.match(sitemapText, /hreflang="x-default"/);
 
   const robotsText = await robots.text();
@@ -737,8 +737,22 @@ test("applies redirects and security headers", async () => {
   assert.equal(redirect.status, 308);
   assert.equal(
     redirect.headers.get("location"),
-    "http://localhost/profile",
+    "http://localhost/profile/",
   );
+
+  for (const [source, destination] of [
+    ["/ai-keynotes", "/educate/"],
+    ["/ki-werbemittel-check", "/loesen/"],
+    ["/ai-ad-approval-solution", "/solve/"],
+    ["/portfolio/landscape-magazine", "/work/"],
+  ]) {
+    const legacyRedirect = await render(source);
+    assert.equal(legacyRedirect.status, 308);
+    assert.equal(
+      legacyRedirect.headers.get("location"),
+      `http://localhost${destination}`,
+    );
+  }
 
   const response = await render("/profile");
   assert.equal(response.headers.get("x-content-type-options"), "nosniff");
@@ -747,6 +761,34 @@ test("applies redirects and security headers", async () => {
     "strict-origin-when-cross-origin",
   );
   assert.match(response.headers.get("permissions-policy") ?? "", /camera=\(\)/);
+});
+
+test("declares the GitHub Pages 200 URLs as canonical", async () => {
+  for (const pathname of [
+    "/solve",
+    "/educate",
+    "/create",
+    "/loesen",
+    "/fortbilden",
+    "/entwickeln",
+    "/profile",
+    "/profil",
+    "/work",
+    "/projekte",
+    "/impressum-datenschutz",
+  ]) {
+    const response = await render(pathname);
+    assert.equal(response.status, 200);
+    assert.match(
+      await response.text(),
+      new RegExp(
+        `<link rel="canonical" href="https://eliaskouloures\\.com${pathname}/"/?>`,
+      ),
+    );
+  }
+
+  const germanResponse = await render("/loesen/");
+  assert.equal(germanResponse.headers.get("content-language"), "de");
 });
 
 test("preserves both unlisted Anthropic reports on their original www paths", async () => {

@@ -31,7 +31,7 @@ export function SiteHeader({
           aria-label={isGerman ? "Hauptnavigation" : "Primary navigation"}
         >
           {pairSlug ? (
-            <Link className="language-link" href={`/${pairSlug}`}>
+            <Link className="language-link" href={`/${pairSlug}/`}>
               {isGerman ? "ENGLISH" : "DEUTSCH"}
             </Link>
           ) : null}

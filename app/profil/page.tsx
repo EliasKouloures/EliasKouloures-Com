@@ -6,8 +6,8 @@ export const metadata: Metadata = {
   description:
     "Profil von Elias Kouloures: angewandte KI-Architektur, Executive Advisory, KI-Transformation, Weiterbildung und multidisziplinäre Umsetzung.",
   alternates: {
-    canonical: "/profil",
-    languages: { en: "/profile", de: "/profil", "x-default": "/profile" },
+    canonical: "/profil/",
+    languages: { en: "/profile/", de: "/profil/", "x-default": "/profile/" },
   },
 };
 
@@ -21,8 +21,8 @@ export default function GermanProfilePage() {
           __html: JSON.stringify({
             "@context": "https://schema.org",
             "@type": "ProfilePage",
-            "@id": "https://eliaskouloures.com/profil#page",
-            url: "https://eliaskouloures.com/profil",
+            "@id": "https://eliaskouloures.com/profil/#page",
+            url: "https://eliaskouloures.com/profil/",
             name: "Elias Kouloures · Architekt für angewandte KI & Executive Advisor",
             inLanguage: "de",
             mainEntity: {

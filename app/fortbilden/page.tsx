@@ -7,8 +7,8 @@ export const metadata: Metadata = {
   description:
     "Rollenbasierte KI-Weiterbildung für Führungskräfte, Teams und Familien mit praktischen Workflows und Roadmaps.",
   alternates: {
-    canonical: "/fortbilden",
-    languages: { en: "/educate", de: "/fortbilden", "x-default": "/educate" },
+    canonical: "/fortbilden/",
+    languages: { en: "/educate/", de: "/fortbilden/", "x-default": "/educate/" },
   },
 };
 

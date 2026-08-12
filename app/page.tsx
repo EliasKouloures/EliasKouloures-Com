@@ -58,7 +58,7 @@ export default function Home() {
                     className="landing-card"
                     data-event="service_open"
                     data-event-label={`${card.label} · Landing`}
-                    href={`/${card.slug}`}
+                    href={`/${card.slug}/`}
                     key={card.slug}
                     lang={stack.lang}
                   >
@@ -99,10 +99,10 @@ export default function Home() {
                 communication and creativity—built for DACH and EU realities.
               </p>
               <div className="authority-links">
-                <Link href="/profile">
+                <Link href="/profile/">
                   Profile <span aria-hidden="true">↗</span>
                 </Link>
-                <Link href="/work">
+                <Link href="/work/">
                   Selected work <span aria-hidden="true">↗</span>
                 </Link>
               </div>

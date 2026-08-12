@@ -33,18 +33,42 @@ const worker = {
       "/anthropic-dach-brief",
     ]);
     const redirectMap: Record<string, string> = {
-      "/cv": "/profile",
-      "/credentials": "/profile#credentials",
-      "/first-principles": "/solve",
-      "/ai-multimedia": "/create",
-      "/creative-360-marketing": "/create",
-      "/ai-upskilling": "/educate",
-      "/prompt-engineering": "/educate",
-      "/ki-fuer-familien": "/fortbilden",
-      "/ai-for-families": "/educate",
-      "/ki-fuer-schulen": "/fortbilden",
-      "/gpts": "/educate",
-      "/impressum": "/impressum-datenschutz",
+      "/cv": "/profile/",
+      "/credentials": "/profile/#credentials",
+      "/first-principles": "/solve/",
+      "/ai-ad-approval-solution": "/solve/",
+      "/ai-for-families": "/educate/",
+      "/ai-for-schools": "/educate/",
+      "/ai-keynotes": "/educate/",
+      "/ai-markdown": "/profile/",
+      "/ai-multimedia": "/create/",
+      "/ai-upskilling": "/educate/",
+      "/creative-360-marketing": "/create/",
+      "/gpts": "/educate/",
+      "/impressum": "/impressum-datenschutz/",
+      "/ki-fuer-familien": "/fortbilden/",
+      "/ki-fuer-schulen": "/fortbilden/",
+      "/ki-werbemittel-check": "/loesen/",
+      "/portfolio": "/work/",
+      "/portfolio/espinas-mezcal-ad": "/work/",
+      "/portfolio/landscape-magazine": "/work/",
+      "/portfolio/may-28th": "/work/",
+      "/portfolio/summer-secrets": "/work/",
+      "/portfolio/under-the-sun": "/work/",
+      "/portfolio/wild-spirit": "/work/",
+      "/post/5e-lesson-plan-generator-5e-unterrichtsplan-ersteller-chatgpt-gemini": "/educate/",
+      "/post/ai-brainstorming-for-use-cases---für-anwendungsfälle": "/educate/",
+      "/post/gpt-prompt-brutal-truth-advisor-brutal-ehrlicher-berater": "/solve/",
+      "/post/longevity-research-report-bericht-zum-stand-der-langlebigkeits-forschung": "/solve/",
+      "/post/meeting-summary-besprechungsprotokoll": "/educate/",
+      "/post/multimedia-focused-competitive-research---multimedia-zentrierte-wettbewerbsanalyse": "/solve/",
+      "/post/optimise-old-llm-txt-with-new-data-alte-llm-txt-mit-neuen-infos-verbessern": "/profile/",
+      "/post/turn-ai-into-guru-with-1-sentence-prompt-ki-mit-einzeiligem-prompt-in-guru-verwandeln": "/educate/",
+      "/post/visual-prompt-hollywood-action": "/create/",
+      "/projects": "/work/",
+      "/prompt-engineering": "/educate/",
+      "/t-turbo-deutsch": "/loesen/",
+      "/t-turbo-eng": "/solve/",
     };
 
     if (
@@ -88,7 +112,11 @@ const worker = {
       "/projekte",
       "/impressum-datenschutz",
     ]);
-    const language = germanRoutes.has(url.pathname) ? "de" : "en";
+    const languagePathname =
+      url.pathname.endsWith("/") && url.pathname !== "/"
+        ? url.pathname.slice(0, -1)
+        : url.pathname;
+    const language = germanRoutes.has(languagePathname) ? "de" : "en";
     headers.set("content-language", language);
 
     let response = new Response(appResponse.body, {
