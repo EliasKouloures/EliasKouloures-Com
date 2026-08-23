@@ -791,6 +791,174 @@ test("declares the GitHub Pages 200 URLs as canonical", async () => {
   assert.equal(germanResponse.headers.get("content-language"), "de");
 });
 
+test("renders fixed-price offers only on EDUCATE and FORTBILDEN", async () => {
+  const routes = [
+    "/solve",
+    "/educate",
+    "/create",
+    "/loesen",
+    "/fortbilden",
+    "/entwickeln",
+  ];
+  const responses = await Promise.all(routes.map((route) => render(route)));
+
+  for (const response of responses) {
+    assert.equal(response.status, 200);
+  }
+
+  const pages = Object.fromEntries(
+    await Promise.all(
+      responses.map(async (response, index) => [
+        routes[index],
+        await response.text(),
+      ]),
+    ),
+  );
+
+  for (const route of ["/educate", "/fortbilden"]) {
+    assert.equal(
+      pages[route].match(/id="fixed-price-offers"/g)?.length,
+      1,
+    );
+    const engagementIndex = pages[route].indexOf(
+      '<section class="engagement-section">',
+    );
+    const offersIndex = pages[route].indexOf('id="fixed-price-offers"');
+    const playlistIndex = pages[route].indexOf(
+      'class="playlist-thumbnail-section"',
+    );
+    assert.ok(engagementIndex >= 0 && engagementIndex < offersIndex);
+    assert.ok(offersIndex < playlistIndex);
+  }
+
+  for (const route of ["/solve", "/create", "/loesen", "/entwickeln"]) {
+    assert.doesNotMatch(pages[route], /id="fixed-price-offers"/);
+  }
+
+  const educate = pages["/educate"];
+  const educateOffers = educate.slice(
+    educate.lastIndexOf("<section", educate.indexOf('id="fixed-price-offers"')),
+    educate.indexOf('<section class="playlist-thumbnail-section"'),
+  );
+  assertIncludesAll(educateOffers, [
+    "TWO FIXED-PRICE OFFERS",
+    "Two offers. Fixed prices. No proposal phase.",
+    "Most training engagements start with four weeks of alignment. These two do not. They are pre-configured, fixed-price, and deliverable the week after you say yes.",
+    "AI Literacy under Article 4 of the EU AI Act",
+    "The documented training your management can file.",
+    "Role-specific: leadership, functional teams and everyday users get different examples, not the same slide.",
+    "Attendance records for every person in the room.",
+    "A one-page competence concept as an annex for your records.",
+    "An inventory of the tools you actually use, including the unofficial ones.",
+    "I will also tell you what you do not need.",
+    "3 hours · up to 25 people · on-site or online",
+    "€2,400",
+    "AI Family Evening for your employees",
+    "The benefit nobody else offers.",
+    "90 minutes online, for employees together with their children aged 10 to 18.",
+    "Every family receives the 107-page AI for Families guidebook.",
+    "Age-appropriate system prompts for ages 8, 12 and 16.",
+    "The Teen Career Explorer, for the question that actually gets asked at home.",
+    "90 minutes · online · unlimited attendees",
+    "€1,400",
+    "Both in one week",
+    "The obligation in the morning, the benefit in the evening. One invoice, one date, one signature.",
+    "€3,500",
+    "For the record: since 27 July 2026, Article 4 of the EU AI Act is a best-efforts obligation with no dedicated penalty tier. Anyone selling you otherwise is selling you fear. What counts is the documentation, and that is what you get here.",
+    "Book a call",
+    "Email me",
+  ]);
+  assert.match(
+    educateOffers,
+    /No child(?:'|&#x27;)s data goes into an AI\. I operate the tools, your children do not\./,
+  );
+  assert.equal(educateOffers.match(/>plus VAT</g)?.length, 3);
+
+  const fortbilden = pages["/fortbilden"];
+  const fortbildenOffers = fortbilden.slice(
+    fortbilden.lastIndexOf(
+      "<section",
+      fortbilden.indexOf('id="fixed-price-offers"'),
+    ),
+    fortbilden.indexOf('<section class="playlist-thumbnail-section"'),
+  );
+  assertIncludesAll(fortbildenOffers, [
+    "ZWEI FESTPREIS-ANGEBOTE",
+    "Zwei Angebote. Feste Preise. Keine Angebotsphase.",
+    "Die meisten Weiterbildungen beginnen mit vier Wochen Abstimmung. Diese beiden nicht. Sie sind fertig konfiguriert, fest bepreist und in der Woche nach Ihrer Zusage lieferbar.",
+    "KI-Basiskompetenz nach Art. 4 EU AI Act",
+    "Die dokumentierte Schulung, die Ihre Geschäftsführung ablegen kann.",
+    "Rollenspezifisch: Führung, Fachbereiche und Alltagsnutzer bekommen unterschiedliche Beispiele, nicht dieselbe Folie.",
+    "Teilnahmenachweise für jede anwesende Person.",
+    "Einseitiges Kompetenzkonzept als Anlage für Ihre Ablage.",
+    "Bestandsaufnahme Ihrer real genutzten Werkzeuge, inklusive der inoffiziellen.",
+    "Was Sie nicht brauchen, sage ich Ihnen auch.",
+    "3 Stunden · bis 25 Personen · vor Ort oder online",
+    "2.400 €",
+    "KI-Familienabend für Ihre Mitarbeitenden",
+    "Der Benefit, den sonst niemand anbietet.",
+    "90 Minuten online, für Mitarbeitende gemeinsam mit ihren Kindern von 10 bis 18.",
+    "Jede Familie bekommt den 107-seitigen KI-Familien-Ratgeber auf Deutsch.",
+    "Altersgerechte System-Prompts für 8, 12 und 16 Jahre.",
+    "Der „Teen Career Explorer“ für die Frage, die zu Hause wirklich gestellt wird.",
+    "Keine Kinderdaten in einer KI. Ich führe die Werkzeuge, nicht Ihre Kinder.",
+    "90 Minuten · online · unbegrenzte Teilnehmerzahl",
+    "1.400 €",
+    "Beides in einer Woche",
+    "Die Pflicht am Vormittag, der Benefit am Abend. Eine Rechnung, ein Termin, eine Unterschrift.",
+    "3.500 €",
+    "Zur Einordnung: Artikel 4 EU AI Act ist seit dem 27. Juli 2026 eine Bemühenspflicht und hat keine eigene Bußgeldstufe. Wer Ihnen etwas anderes verkauft, verkauft Ihnen Angst. Was zählt, ist die Dokumentation — und die bekommen Sie hier.",
+    "Gespräch buchen",
+    "E-Mail senden",
+  ]);
+  assert.equal(fortbildenOffers.match(/>zzgl\. USt\.</g)?.length, 3);
+
+  for (const offerSection of [educateOffers, fortbildenOffers]) {
+    assert.match(
+      offerSection,
+      /href="https:\/\/calendar\.app\.google\/ANb76KDuvg4J7LS28"/,
+    );
+    assert.match(
+      offerSection,
+      /href="mailto:Elias\.Kouloures@gmail\.com"/,
+    );
+  }
+
+  assertIncludesAll(educate, [
+    "Role-specific AI learning for leaders, teams and families, translated into useful workflows and roadmaps. Two fixed-price offers from €1,400.",
+    '"name":"AI Literacy under Article 4 of the EU AI Act"',
+    '"name":"AI Family Evening for your employees"',
+    '"price":"2400","priceCurrency":"EUR"',
+    '"price":"1400","priceCurrency":"EUR"',
+  ]);
+  assertIncludesAll(fortbilden, [
+    "Rollenbasierte KI-Weiterbildung für Führungskräfte, Teams und Familien mit praktischen Workflows und Roadmaps. Zwei Festpreis-Angebote ab 1.400 €.",
+    '"name":"KI-Basiskompetenz nach Art. 4 EU AI Act"',
+    '"name":"KI-Familienabend für Ihre Mitarbeitenden"',
+    '"price":"2400","priceCurrency":"EUR"',
+    '"price":"1400","priceCurrency":"EUR"',
+  ]);
+  assert.equal(educate.match(/"priceCurrency":"EUR"/g)?.length, 2);
+  assert.equal(fortbilden.match(/"priceCurrency":"EUR"/g)?.length, 2);
+
+  const css = await readFile(
+    new URL("../app/components/FixedPriceOffers.module.css", import.meta.url),
+    "utf8",
+  );
+  assert.match(
+    css,
+    /\.offerGrid\s*\{[^}]*grid-template-columns: repeat\(2, minmax\(0, 1fr\)\);/s,
+  );
+  assert.match(
+    css,
+    /@media \(max-width: 760px\)[\s\S]*?\.offerGrid\s*\{[^}]*grid-template-columns: 1fr;/,
+  );
+  assert.match(
+    css,
+    /\.offerCard \.price,\s*\.bundlePrice strong\s*\{[^}]*color: var\(--teal\);[^}]*font-size: clamp\(2rem, 3vw, 3\.5rem\);/s,
+  );
+});
+
 test("preserves both unlisted Anthropic reports on their original www paths", async () => {
   const [workerSource, proxySource, briefRoute, fieldTestRoute] =
     await Promise.all([

@@ -5,7 +5,7 @@ import { services } from "../site-data";
 export const metadata: Metadata = {
   title: "Educate",
   description:
-    "Role-specific AI learning for leaders, teams and families, translated into useful workflows and roadmaps.",
+    "Role-specific AI learning for leaders, teams and families, translated into useful workflows and roadmaps. Two fixed-price offers from €1,400.",
   alternates: {
     canonical: "/educate/",
     languages: { en: "/educate/", de: "/fortbilden/", "x-default": "/educate/" },

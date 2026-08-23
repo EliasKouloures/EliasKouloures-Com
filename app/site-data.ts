@@ -14,6 +14,30 @@ export type FlagshipOffer = {
   cta: string;
 };
 
+type FixedPriceOffer = {
+  title: string;
+  positioning: string;
+  bullets: string[];
+  duration: string;
+  price: string;
+  schemaPrice: string;
+  tax: string;
+};
+
+type FixedPriceSection = {
+  eyebrow: string;
+  title: string;
+  intro: string;
+  offers: FixedPriceOffer[];
+  bundle: {
+    title: string;
+    text: string;
+    price: string;
+    tax: string;
+  };
+  honesty: string;
+};
+
 export type ServicePageData = {
   slug: string;
   pairSlug: string;
@@ -39,6 +63,7 @@ export type ServicePageData = {
   work: Array<{ title: string; text: string }>;
   engagementHeading: string;
   engagements: Array<{ title: string; timing: string; text: string }>;
+  fixedPriceSection?: FixedPriceSection;
   closingTitle: string;
   closingText: string;
 };
@@ -456,6 +481,52 @@ export const services: Record<string, ServicePageData> = {
         text: "A sequenced learning path with transfer tasks, office hours and measurable adoption.",
       },
     ],
+    fixedPriceSection: {
+      eyebrow: "TWO FIXED-PRICE OFFERS",
+      title: "Two offers. Fixed prices. No proposal phase.",
+      intro:
+        "Most training engagements start with four weeks of alignment. These two do not. They are pre-configured, fixed-price, and deliverable the week after you say yes.",
+      offers: [
+        {
+          title: "AI Literacy under Article 4 of the EU AI Act",
+          positioning: "The documented training your management can file.",
+          bullets: [
+            "Role-specific: leadership, functional teams and everyday users get different examples, not the same slide.",
+            "Attendance records for every person in the room.",
+            "A one-page competence concept as an annex for your records.",
+            "An inventory of the tools you actually use, including the unofficial ones.",
+            "I will also tell you what you do not need.",
+          ],
+          duration: "3 hours · up to 25 people · on-site or online",
+          price: "€2,400",
+          schemaPrice: "2400",
+          tax: "plus VAT",
+        },
+        {
+          title: "AI Family Evening for your employees",
+          positioning: "The benefit nobody else offers.",
+          bullets: [
+            "90 minutes online, for employees together with their children aged 10 to 18.",
+            "Every family receives the 107-page AI for Families guidebook.",
+            "Age-appropriate system prompts for ages 8, 12 and 16.",
+            "The Teen Career Explorer, for the question that actually gets asked at home.",
+            "No child's data goes into an AI. I operate the tools, your children do not.",
+          ],
+          duration: "90 minutes · online · unlimited attendees",
+          price: "€1,400",
+          schemaPrice: "1400",
+          tax: "plus VAT",
+        },
+      ],
+      bundle: {
+        title: "Both in one week",
+        text: "The obligation in the morning, the benefit in the evening. One invoice, one date, one signature.",
+        price: "€3,500",
+        tax: "plus VAT",
+      },
+      honesty:
+        "For the record: since 27 July 2026, Article 4 of the EU AI Act is a best-efforts obligation with no dedicated penalty tier. Anyone selling you otherwise is selling you fear. What counts is the documentation, and that is what you get here.",
+    },
     closingTitle: "You define the capabilities. I upskill your teams.",
     closingText:
       "Tell me who is in the room, what must change afterwards and where the current friction sits.",
@@ -571,6 +642,53 @@ export const services: Record<string, ServicePageData> = {
         text: "Ein gestufter Lernpfad mit Transferaufgaben, Sprechstunden und messbarer Anwendung.",
       },
     ],
+    fixedPriceSection: {
+      eyebrow: "ZWEI FESTPREIS-ANGEBOTE",
+      title: "Zwei Angebote. Feste Preise. Keine Angebotsphase.",
+      intro:
+        "Die meisten Weiterbildungen beginnen mit vier Wochen Abstimmung. Diese beiden nicht. Sie sind fertig konfiguriert, fest bepreist und in der Woche nach Ihrer Zusage lieferbar.",
+      offers: [
+        {
+          title: "KI-Basiskompetenz nach Art. 4 EU AI Act",
+          positioning:
+            "Die dokumentierte Schulung, die Ihre Geschäftsführung ablegen kann.",
+          bullets: [
+            "Rollenspezifisch: Führung, Fachbereiche und Alltagsnutzer bekommen unterschiedliche Beispiele, nicht dieselbe Folie.",
+            "Teilnahmenachweise für jede anwesende Person.",
+            "Einseitiges Kompetenzkonzept als Anlage für Ihre Ablage.",
+            "Bestandsaufnahme Ihrer real genutzten Werkzeuge, inklusive der inoffiziellen.",
+            "Was Sie nicht brauchen, sage ich Ihnen auch.",
+          ],
+          duration: "3 Stunden · bis 25 Personen · vor Ort oder online",
+          price: "2.400 €",
+          schemaPrice: "2400",
+          tax: "zzgl. USt.",
+        },
+        {
+          title: "KI-Familienabend für Ihre Mitarbeitenden",
+          positioning: "Der Benefit, den sonst niemand anbietet.",
+          bullets: [
+            "90 Minuten online, für Mitarbeitende gemeinsam mit ihren Kindern von 10 bis 18.",
+            "Jede Familie bekommt den 107-seitigen KI-Familien-Ratgeber auf Deutsch.",
+            "Altersgerechte System-Prompts für 8, 12 und 16 Jahre.",
+            "Der „Teen Career Explorer“ für die Frage, die zu Hause wirklich gestellt wird.",
+            "Keine Kinderdaten in einer KI. Ich führe die Werkzeuge, nicht Ihre Kinder.",
+          ],
+          duration: "90 Minuten · online · unbegrenzte Teilnehmerzahl",
+          price: "1.400 €",
+          schemaPrice: "1400",
+          tax: "zzgl. USt.",
+        },
+      ],
+      bundle: {
+        title: "Beides in einer Woche",
+        text: "Die Pflicht am Vormittag, der Benefit am Abend. Eine Rechnung, ein Termin, eine Unterschrift.",
+        price: "3.500 €",
+        tax: "zzgl. USt.",
+      },
+      honesty:
+        "Zur Einordnung: Artikel 4 EU AI Act ist seit dem 27. Juli 2026 eine Bemühenspflicht und hat keine eigene Bußgeldstufe. Wer Ihnen etwas anderes verkauft, verkauft Ihnen Angst. Was zählt, ist die Dokumentation — und die bekommen Sie hier.",
+    },
     closingTitle:
       "Sie definieren die Fähigkeiten. Ich upskille Ihre Teams.",
     closingText:

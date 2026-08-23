@@ -5,7 +5,7 @@ import { services } from "../site-data";
 export const metadata: Metadata = {
   title: "Fortbilden",
   description:
-    "Rollenbasierte KI-Weiterbildung für Führungskräfte, Teams und Familien mit praktischen Workflows und Roadmaps.",
+    "Rollenbasierte KI-Weiterbildung für Führungskräfte, Teams und Familien mit praktischen Workflows und Roadmaps. Zwei Festpreis-Angebote ab 1.400 €.",
   alternates: {
     canonical: "/fortbilden/",
     languages: { en: "/educate/", de: "/fortbilden/", "x-default": "/educate/" },

@@ -5,6 +5,7 @@ import { contact, type ServicePageData } from "../site-data";
 import { SiteFooter } from "./SiteFooter";
 import { SiteHeader } from "./SiteHeader";
 import { TestimonialGrid } from "./TestimonialGrid";
+import styles from "./FixedPriceOffers.module.css";
 
 type ServicePageProps = {
   data: ServicePageData;
@@ -67,6 +68,31 @@ export function ServicePage({ data }: ServicePageProps) {
           }),
         }}
       />
+      {data.fixedPriceSection ? (
+        <script
+          type="application/ld+json"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@graph": data.fixedPriceSection.offers.map((offer) => ({
+                "@type": "Service",
+                name: offer.title,
+                description: offer.positioning,
+                provider: {
+                  "@type": "Person",
+                  "@id": "https://eliaskouloures.com/#elias-kouloures",
+                  name: "Elias Kouloures",
+                },
+                offers: {
+                  "@type": "Offer",
+                  price: offer.schemaPrice,
+                  priceCurrency: "EUR",
+                },
+              })),
+            }),
+          }}
+        />
+      ) : null}
       <SiteHeader
         language={data.language}
         pairSlug={data.pairSlug}
@@ -273,6 +299,78 @@ export function ServicePage({ data }: ServicePageProps) {
           </div>
         </div>
       </section>
+
+      {data.fixedPriceSection ? (
+        <section
+          aria-labelledby="fixed-price-offers-heading"
+          className={`engagement-section ${styles.section}`}
+          id="fixed-price-offers"
+        >
+          <div className="shell">
+            <div className="section-heading section-heading-full">
+              <p className="eyebrow">{data.fixedPriceSection.eyebrow}</p>
+              <h2 id="fixed-price-offers-heading">
+                {data.fixedPriceSection.title}
+              </h2>
+              <p>{data.fixedPriceSection.intro}</p>
+            </div>
+            <div className={`engagement-list ${styles.offerGrid}`}>
+              {data.fixedPriceSection.offers.map((offer) => (
+                <article className={styles.offerCard} key={offer.title}>
+                  <div>
+                    <h3>{offer.title}</h3>
+                    <p className={styles.positioning}>{offer.positioning}</p>
+                    <ul className={styles.bullets}>
+                      {offer.bullets.map((bullet) => (
+                        <li key={bullet}>{bullet}</li>
+                      ))}
+                    </ul>
+                  </div>
+                  <div className={styles.offerFooter}>
+                    <p className={styles.duration}>{offer.duration}</p>
+                    <p className={styles.price}>{offer.price}</p>
+                    <small className={styles.tax}>{offer.tax}</small>
+                  </div>
+                </article>
+              ))}
+            </div>
+            <div className={`engagement-list ${styles.bundleList}`}>
+              <article className={styles.bundle}>
+                <div>
+                  <h3>{data.fixedPriceSection.bundle.title}</h3>
+                  <p>{data.fixedPriceSection.bundle.text}</p>
+                </div>
+                <div className={styles.bundlePrice}>
+                  <strong>{data.fixedPriceSection.bundle.price}</strong>
+                  <small>{data.fixedPriceSection.bundle.tax}</small>
+                </div>
+              </article>
+            </div>
+            <p className={styles.honesty}>{data.fixedPriceSection.honesty}</p>
+            <div className={`hero-actions ${styles.actions}`}>
+              <a
+                className="button"
+                data-event="book_call_click"
+                data-event-label={`${data.label} fixed-price offers`}
+                href={contact.calendar}
+                target="_blank"
+                rel="noreferrer"
+              >
+                {isGerman ? "Gespräch buchen" : "Book a call"}
+                <span aria-hidden="true">↗</span>
+              </a>
+              <a
+                className="button button-secondary"
+                data-event="email_click"
+                data-event-label={`${data.label} fixed-price offers`}
+                href={`mailto:${contact.email}`}
+              >
+                {isGerman ? "E-Mail senden" : "Email me"}
+              </a>
+            </div>
+          </div>
+        </section>
+      ) : null}
 
       <section
         className="playlist-thumbnail-section"
