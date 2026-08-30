@@ -36,8 +36,8 @@ export function ProfilePage({ language }: ProfilePageProps) {
         <div className="shell authority-hero-inner">
           <p className="eyebrow">
             {isGerman
-              ? "ARCHITEKT FÜR ANGEWANDTE KI · EXECUTIVE ADVISOR"
-              : "APPLIED AI ARCHITECT · EXECUTIVE ADVISOR"}
+              ? "BERLIN · DACH & EU · FREIBERUFLICH SEIT 2014"
+              : "BERLIN · DACH & EU · FREELANCE SINCE 2014"}
           </p>
           <h1>
             {isGerman
@@ -57,6 +57,11 @@ export function ProfilePage({ language }: ProfilePageProps) {
               href={contact.calendar}
               target="_blank"
               rel="noreferrer"
+              aria-label={
+                isGerman
+                  ? "Gespräch buchen – öffnet in neuem Fenster"
+                  : "Book a call – opens in a new window"
+              }
             >
               {isGerman ? "Gespräch buchen" : "Book a call"}{" "}
               <span aria-hidden="true">↗</span>
@@ -166,6 +171,11 @@ export function ProfilePage({ language }: ProfilePageProps) {
               href="/images/Elias_WHW-Kardashev_2026-07.jpg"
               target="_blank"
               rel="noreferrer"
+              aria-label={
+                isGerman
+                  ? "Keynote-Slide – öffnet in neuem Fenster"
+                  : "Keynote slide – opens in a new window"
+              }
             >
               {isGerman
                 ? "Dieselbe Übersicht als Keynote-Slide ansehen"
@@ -280,6 +290,11 @@ export function ProfilePage({ language }: ProfilePageProps) {
               href={contact.calendar}
               target="_blank"
               rel="noreferrer"
+              aria-label={
+                isGerman
+                  ? "Gespräch buchen – öffnet in neuem Fenster"
+                  : "Book a call – opens in a new window"
+              }
             >
               {isGerman ? "Gespräch buchen" : "Book a call"}{" "}
               <span aria-hidden="true">↗</span>

@@ -3590,3 +3590,79 @@ button:focus-visible {
     transition-duration: 0.01ms !important;
   }
 }
+
+/* --------------------------------------------------------------------------
+   UX-audit fixes, 2026-08-30: skip link, touch-target hit areas,
+   brief-form fallback panel. See output/EliasKouloures-Com_UX-Audit_2026-08-30.
+   -------------------------------------------------------------------------- */
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  z-index: 100;
+}
+
+.skip-link:focus {
+  position: fixed;
+  top: 12px;
+  left: 12px;
+  padding: 12px 18px;
+  border: 1px solid var(--teal);
+  border-radius: 999px;
+  background: #07070b;
+  color: var(--ink);
+  font-size: 0.84rem;
+  font-weight: 600;
+}
+
+#main-content {
+  scroll-margin-top: 96px;
+}
+
+/* Raise sub-24px text links to a >=24px hit area (WCAG 2.5.8) without
+   shifting layout: vertical padding paired with compensating margins. */
+.text-link,
+.brand-lockup,
+.footer-name,
+.footer-links a,
+.authority-links a,
+.footer-authority-links a,
+.landing-quote-note a {
+  padding-block: 5px;
+  margin-block: -5px;
+}
+
+.brief-optional {
+  font-style: normal;
+  font-weight: 400;
+  color: var(--muted);
+}
+
+.brief-fallback {
+  margin-top: 26px;
+  padding: 22px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 18px;
+  background: rgba(255, 255, 255, 0.04);
+  display: grid;
+  gap: 14px;
+  justify-items: start;
+}
+
+.brief-fallback-heading {
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.brief-fallback-text {
+  width: 100%;
+  padding: 14px;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 12px;
+  background: rgba(7, 7, 11, 0.6);
+  color: var(--ink);
+  font-family: inherit;
+  font-size: 0.9rem;
+  line-height: 1.5;
+  resize: vertical;
+}

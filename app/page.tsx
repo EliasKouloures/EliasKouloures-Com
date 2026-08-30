@@ -153,6 +153,7 @@ export default function Home() {
               href={`${contact.linkedin}/details/recommendations/`}
               target="_blank"
               rel="noreferrer"
+              aria-label="Public LinkedIn recommendations – opens in a new window · Öffentliche LinkedIn-Empfehlungen – öffnet in neuem Fenster"
             >
               Public LinkedIn recommendations · Öffentliche LinkedIn-Empfehlungen
               ↗

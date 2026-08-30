@@ -58,6 +58,11 @@ export function SiteFooter({ language = "en" }: SiteFooterProps) {
               href={contact.calendar}
               target="_blank"
               rel="noreferrer"
+              aria-label={
+                isGerman
+                  ? "Gespräch buchen – öffnet in neuem Fenster"
+                  : "Book a call – opens in a new window"
+              }
             >
               {isGerman ? "Gespräch buchen" : "Book a call"}{" "}
               <span aria-hidden="true">↗</span>
@@ -69,16 +74,52 @@ export function SiteFooter({ language = "en" }: SiteFooterProps) {
             >
               {isGerman ? "E-Mail" : "Email"}
             </a>
-            <a href={contact.linkedin} target="_blank" rel="noreferrer">
+            <a
+              href={contact.linkedin}
+              target="_blank"
+              rel="noreferrer"
+              aria-label={
+                isGerman
+                  ? "LinkedIn – öffnet in neuem Fenster"
+                  : "LinkedIn – opens in a new window"
+              }
+            >
               LinkedIn <span aria-hidden="true">↗</span>
             </a>
-            <a href={contact.github} target="_blank" rel="noreferrer">
+            <a
+              href={contact.github}
+              target="_blank"
+              rel="noreferrer"
+              aria-label={
+                isGerman
+                  ? "GitHub – öffnet in neuem Fenster"
+                  : "GitHub – opens in a new window"
+              }
+            >
               GitHub <span aria-hidden="true">↗</span>
             </a>
-            <a href={contact.youtube} target="_blank" rel="noreferrer">
+            <a
+              href={contact.youtube}
+              target="_blank"
+              rel="noreferrer"
+              aria-label={
+                isGerman
+                  ? "YouTube – öffnet in neuem Fenster"
+                  : "YouTube – opens in a new window"
+              }
+            >
               YouTube <span aria-hidden="true">↗</span>
             </a>
-            <a href={contact.newsletter} target="_blank" rel="noreferrer">
+            <a
+              href={contact.newsletter}
+              target="_blank"
+              rel="noreferrer"
+              aria-label={
+                isGerman
+                  ? "Deutscher Newsletter – öffnet in neuem Fenster"
+                  : "German Newsletter – opens in a new window"
+              }
+            >
               {isGerman ? "Deutscher Newsletter" : "German Newsletter"}{" "}
               <span aria-hidden="true">↗</span>
             </a>

@@ -13,8 +13,12 @@ export function SiteHeader({
   const isGerman = language === "de";
 
   return (
-    <header className="site-header">
-      <div className="shell header-inner">
+    <>
+      <a className="skip-link" href="#main-content">
+        {isGerman ? "Zum Inhalt springen" : "Skip to content"}
+      </a>
+      <header className="site-header">
+        <div className="shell header-inner">
         <Link
           className="brand-lockup"
           href="/"
@@ -50,12 +54,19 @@ export function SiteHeader({
             href={contact.calendar}
             target="_blank"
             rel="noreferrer"
+            aria-label={
+              isGerman
+                ? "Gespräch buchen – öffnet in neuem Fenster"
+                : "Book a call – opens in a new window"
+            }
           >
             {isGerman ? "Gespräch buchen" : "Book a call"}
             <span aria-hidden="true">↗</span>
           </a>
         </nav>
       </div>
-    </header>
+      </header>
+      <span id="main-content" tabIndex={-1} />
+    </>
   );
 }

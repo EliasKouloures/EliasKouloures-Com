@@ -23,8 +23,14 @@ const copy = {
     challenge: "Challenge or desired outcome",
     timing: "Timing",
     timingPlaceholder: "Now, this quarter, exploring",
+    optional: "optional",
     submit: "Send brief",
     note: "Opens your email app with a prepared message. No form data is stored on this website.",
+    fallbackHeading: "No email window opened?",
+    fallbackBody: "Copy the prepared message below and send it from any email tool to",
+    copy: "Copy message",
+    copied: "Copied",
+    preparedLabel: "Prepared message",
   },
   de: {
     toggleLabel: "Formularsprache",
@@ -34,8 +40,14 @@ const copy = {
     challenge: "Herausforderung oder Ziel",
     timing: "Zeitrahmen",
     timingPlaceholder: "Jetzt, dieses Quartal, Orientierung",
+    optional: "optional",
     submit: "Anfrage senden",
     note: "Öffnet Ihr E-Mail-Programm mit einer vorbereiteten Nachricht. Diese Website speichert keine Formulardaten.",
+    fallbackHeading: "Kein E-Mail-Fenster geöffnet?",
+    fallbackBody: "Kopieren Sie die vorbereitete Nachricht und senden Sie sie mit einem beliebigen E-Mail-Programm an",
+    copy: "Nachricht kopieren",
+    copied: "Kopiert",
+    preparedLabel: "Vorbereitete Nachricht",
   },
 } as const;
 
@@ -53,6 +65,8 @@ export function BriefForm() {
     serverPrefersGerman,
   );
   const [chosen, setChosen] = useState<FormLanguage | null>(null);
+  const [prepared, setPrepared] = useState<string | null>(null);
+  const [copied, setCopied] = useState(false);
   const language: FormLanguage = chosen ?? (prefersGerman ? "de" : "en");
   const setLanguage = setChosen;
 
@@ -75,23 +89,42 @@ export function BriefForm() {
       },
     });
 
-    const subject = encodeURIComponent(
-      `Project brief · ${organisation || name}`,
-    );
-    const body = encodeURIComponent(
-      [
-        `Preferred language: ${languageName}`,
-        `Name: ${name}`,
-        `Work email: ${email}`,
-        `Organisation: ${organisation}`,
-        `Timing: ${timing}`,
-        "",
-        "Challenge / desired outcome:",
-        challenge,
-      ].join("\n"),
+    const subjectText = `Project brief · ${organisation || name}`;
+    const bodyText = [
+      `Preferred language: ${languageName}`,
+      `Name: ${name}`,
+      `Work email: ${email}`,
+      `Organisation: ${organisation}`,
+      `Timing: ${timing}`,
+      "",
+      "Challenge / desired outcome:",
+      challenge,
+    ].join("\n");
+
+    // Fallback for visitors without a configured mail client: the same
+    // message stays available on the page for manual copy and send.
+    setCopied(false);
+    setPrepared(
+      [`To: ${contact.email}`, `Subject: ${subjectText}`, "", bodyText].join(
+        "\n",
+      ),
     );
 
+    const subject = encodeURIComponent(subjectText);
+    const body = encodeURIComponent(bodyText);
+
     window.location.href = `mailto:${contact.email}?subject=${subject}&body=${body}`;
+  }
+
+  async function copyPrepared() {
+    if (!prepared) return;
+    try {
+      await navigator.clipboard.writeText(prepared);
+      setCopied(true);
+      window.plausible?.("brief_copy_fallback");
+    } catch {
+      // Clipboard unavailable: the message stays selectable in the textarea.
+    }
   }
 
   return (
@@ -123,20 +156,21 @@ export function BriefForm() {
           <input autoComplete="email" name="email" required type="email" />
         </label>
         <label className="brief-form-wide">
-          <span>{t.organisation}</span>
-          <input autoComplete="organization" name="organisation" required />
+          <span>
+            {t.organisation}{" "}
+            <em className="brief-optional">({t.optional})</em>
+          </span>
+          <input autoComplete="organization" name="organisation" />
         </label>
         <label className="brief-form-wide">
           <span>{t.challenge}</span>
           <textarea name="challenge" required rows={5} />
         </label>
         <label className="brief-form-wide">
-          <span>{t.timing}</span>
-          <input
-            name="timing"
-            placeholder={t.timingPlaceholder}
-            required
-          />
+          <span>
+            {t.timing} <em className="brief-optional">({t.optional})</em>
+          </span>
+          <input name="timing" placeholder={t.timingPlaceholder} />
         </label>
       </div>
       <div className="brief-form-actions">
@@ -145,6 +179,29 @@ export function BriefForm() {
         </button>
         <p>{t.note}</p>
       </div>
+      {prepared ? (
+        <div className="brief-fallback" role="status">
+          <p className="brief-fallback-heading">{t.fallbackHeading}</p>
+          <p>
+            {t.fallbackBody}{" "}
+            <a href={`mailto:${contact.email}`}>{contact.email}</a>.
+          </p>
+          <textarea
+            aria-label={t.preparedLabel}
+            className="brief-fallback-text"
+            readOnly
+            rows={8}
+            value={prepared}
+          />
+          <button
+            className="button button-secondary"
+            onClick={copyPrepared}
+            type="button"
+          >
+            {copied ? `${t.copied} ✓` : t.copy}
+          </button>
+        </div>
+      ) : null}
     </form>
   );
 }
