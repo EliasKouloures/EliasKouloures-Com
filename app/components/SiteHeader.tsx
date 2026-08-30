@@ -4,11 +4,14 @@ import { contact, type Language } from "../site-data";
 type SiteHeaderProps = {
   language?: Language;
   pairSlug?: string;
+  /** Landing page only: link the language pill to the on-page German section. */
+  germanAnchor?: boolean;
 };
 
 export function SiteHeader({
   language = "en",
   pairSlug,
+  germanAnchor,
 }: SiteHeaderProps) {
   const isGerman = language === "de";
 
@@ -38,6 +41,14 @@ export function SiteHeader({
             <Link className="language-link" href={`/${pairSlug}/`}>
               {isGerman ? "ENGLISH" : "DEUTSCH"}
             </Link>
+          ) : germanAnchor ? (
+            <a
+              className="language-link"
+              href="#deutsch"
+              aria-label="Zum deutschen Angebot auf dieser Seite springen"
+            >
+              DEUTSCH
+            </a>
           ) : null}
           <a
             className="text-link header-email"

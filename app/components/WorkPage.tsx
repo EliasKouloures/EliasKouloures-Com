@@ -28,7 +28,7 @@ export function WorkPage({ language }: WorkPageProps) {
   const isGerman = language === "de";
 
   return (
-    <main className="work-page" lang={language}>
+    <main className="work-page" id="top" lang={language}>
       <SiteHeader
         language={language}
         pairSlug={isGerman ? "work" : "projekte"}
@@ -153,6 +153,16 @@ export function WorkPage({ language }: WorkPageProps) {
           </div>
         </div>
       </section>
+
+      <a
+        className="back-to-top"
+        href="#top"
+        aria-label={
+          isGerman ? "Zurück nach oben" : "Back to top"
+        }
+      >
+        <span aria-hidden="true">↑</span>
+      </a>
 
       <SiteFooter language={language} />
     </main>
