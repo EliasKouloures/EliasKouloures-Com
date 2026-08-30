@@ -27,10 +27,6 @@ export default function LegalPage() {
             Angaben zum Anbieter sowie Informationen über die Verarbeitung
             personenbezogener Daten auf dieser Website.
           </p>
-          <div className="draft-notice">
-            Entwurfsstand für die Review-Version. Rechtliche Prüfung vor dem
-            öffentlichen Livegang empfohlen.
-          </div>
         </div>
       </header>
 
@@ -111,16 +107,14 @@ export default function LegalPage() {
             <h3>Hosting und Server-Protokolle</h3>
             <p>
               {isProduction
-                ? "Diese Website wird über eine codebasierte Hosting-Infrastruktur bereitgestellt."
+                ? "Diese Website wird über GitHub Pages gehostet, einen Dienst der GitHub, Inc. (USA). Bei der Auslieferung können personenbezogene Daten in die USA übermittelt werden; Einzelheiten regelt die Datenschutzerklärung von GitHub."
                 : "Die Review-Version wird über OpenAI Sites bereitgestellt."}{" "}
-              Dabei können technische Infrastruktur-Dienstleister,
-              insbesondere Cloudflare, eingesetzt werden. Beim Aufruf können
-              technisch notwendige Daten wie IP-Adresse, Zeitpunkt, aufgerufene
-              URL, Referrer, Browser- und Betriebssysteminformationen in
-              Server-Protokollen verarbeitet werden. Dies dient der sicheren
-              und stabilen Bereitstellung der Website. Rechtsgrundlage ist Art.
-              6 Abs. 1 lit. f DSGVO. Das berechtigte Interesse liegt im sicheren
-              Betrieb des Angebots.
+              Beim Aufruf können technisch notwendige Daten wie IP-Adresse,
+              Zeitpunkt, aufgerufene URL, Referrer, Browser- und
+              Betriebssysteminformationen in Server-Protokollen verarbeitet
+              werden. Dies dient der sicheren und stabilen Bereitstellung der
+              Website. Rechtsgrundlage ist Art. 6 Abs. 1 lit. f DSGVO. Das
+              berechtigte Interesse liegt im sicheren Betrieb des Angebots.
             </p>
 
             {analyticsEnabled ? (
@@ -161,22 +155,17 @@ export default function LegalPage() {
             <p className="eyebrow">03 · EXTERNE MEDIEN</p>
             <h2>YouTube-Playlists</h2>
             <p>
-              Die Serviceseiten können über die YouTube Data API öffentlich
-              verfügbare Titel und Vorschaubilder der hinterlegten Playlists
-              abrufen. Vorschaubilder werden über diese Website ausgeliefert.
-              Der YouTube-Player wird erst nach Ihrem bewussten Klick auf ein
-              Video geladen.
+              Die Serviceseiten zeigen statische Vorschaubilder, die direkt
+              von dieser Website ausgeliefert werden. Beim Laden der Seiten
+              wird keine Verbindung zu YouTube aufgebaut.
             </p>
             <p>
-              Mit dem Klick wird eine Verbindung zu YouTube hergestellt. Dabei
-              können insbesondere Ihre IP-Adresse, Geräte- und Browserdaten
-              sowie Informationen über die aufgerufene Seite an Google
-              übermittelt und außerhalb der EU bzw. des EWR verarbeitet
-              werden. Eingebunden wird die
-              datenschutzfreundlichere Domain youtube-nocookie.com. Die
-              Aktivierung erfolgt auf Grundlage Ihrer Einwilligung gemäß Art. 6
-              Abs. 1 lit. a DSGVO. Sie können die Seite neu laden, bevor Sie ein
-              weiteres Video aktivieren.
+              Erst wenn Sie ein Vorschaubild anklicken, öffnet sich die
+              jeweilige Playlist in einem neuen Fenster direkt auf YouTube.
+              Ab diesem Zeitpunkt gelten die Datenschutzbestimmungen von
+              Google; dabei können insbesondere Ihre IP-Adresse sowie Geräte-
+              und Browserdaten an Google übermittelt und außerhalb der EU
+              bzw. des EWR verarbeitet werden. Der Aufruf ist freiwillig.
             </p>
           </section>
 
@@ -200,13 +189,14 @@ export default function LegalPage() {
                 href="https://www.datenschutz-berlin.de/"
                 target="_blank"
                 rel="noreferrer"
+                aria-label="www.datenschutz-berlin.de – öffnet in neuem Fenster"
               >
                 www.datenschutz-berlin.de ↗
               </a>
             </p>
 
             <h3>Stand</h3>
-            <p>Juli 2026</p>
+            <p>August 2026</p>
           </section>
         </div>
       </div>

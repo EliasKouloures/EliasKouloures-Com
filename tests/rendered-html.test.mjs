@@ -483,7 +483,11 @@ test("renders current legal identity data", async () => {
   assert.match(html, /Luisenstr\. 48/);
   assert.match(html, /DE 293435334/);
   assert.match(html, /§ 5 DDG/);
-  assert.match(html, /youtube-nocookie\.com/);
+  // Legal copy must describe the shipped playlist behaviour (outbound link,
+  // no embedded player) and must not carry the pre-launch draft notice.
+  assert.match(html, /direkt auf YouTube/);
+  assert.doesNotMatch(html, /youtube-nocookie\.com/);
+  assert.doesNotMatch(html, /Entwurfsstand/);
   assert.match(html, /20\. Juli 2025/);
 });
 
