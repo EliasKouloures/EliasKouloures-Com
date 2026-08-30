@@ -37,7 +37,7 @@ export default function Home() {
         }}
       />
       <div className="landing-backdrop" aria-hidden="true" />
-      <SiteHeader />
+      <SiteHeader germanAnchor />
       <section className="landing-content">
         <div className="shell">
           <div className="landing-heading">
@@ -46,7 +46,11 @@ export default function Home() {
           </div>
 
           {landingStacks.map((stack) => (
-            <div className="landing-stack" key={stack.langLabel}>
+            <div
+              className="landing-stack"
+              id={stack.lang === "de" ? "deutsch" : undefined}
+              key={stack.langLabel}
+            >
               {stack.heading ? (
                 <div className="landing-stack-head">
                   <h2 lang={stack.lang}>{stack.heading}</h2>
@@ -125,7 +129,8 @@ export default function Home() {
           </div>
           <p className="landing-context-note">
             Engagements took place directly, through agency partners, or within
-            consortia and events depending on context.
+            consortia and events depending on context. Some engagements appear
+            under altered names for confidentiality.
           </p>
         </div>
       </section>

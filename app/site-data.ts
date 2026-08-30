@@ -170,6 +170,10 @@ export const services: Record<string, ServicePageData> = {
         title: "Speed under pressure",
         text: "Short feedback loops expose risk early and move useful work into the world quickly.",
       },
+      {
+        title: "Evidence over hype",
+        text: "Every claim ships with a number, a source or a mechanism—EU- and Germany-correct, so legal and the board can sign off.",
+      },
     ],
     editorialKicker: "THE OPERATING PRINCIPLE",
     editorialTitle: "Find constraints. Build systems. Leave playbooks.",
@@ -313,6 +317,10 @@ export const services: Record<string, ServicePageData> = {
       {
         title: "Tempo unter Druck",
         text: "Kurze Feedbackschleifen machen Risiken früh sichtbar und bringen brauchbare Arbeit schnell in die Anwendung.",
+      },
+      {
+        title: "Substanz statt Hype",
+        text: "Jede Aussage kommt mit Zahl, Quelle oder Mechanismus—EU- und deutschlandkonform, sodass Legal und Vorstand unterschreiben können.",
       },
     ],
     editorialKicker: "DAS ARBEITSPRINZIP",

@@ -72,6 +72,21 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+        {/* React 19 hoists these into <head>; woff2 fonts gate first paint. */}
+        <link
+          rel="preload"
+          href="/fonts/figtree-latin.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
+        <link
+          rel="preload"
+          href="/fonts/plex-mono-500-latin.woff2"
+          as="font"
+          type="font/woff2"
+          crossOrigin="anonymous"
+        />
         {children}
         <Analytics />
         <script
